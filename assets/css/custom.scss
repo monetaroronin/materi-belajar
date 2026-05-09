@@ -119,22 +119,23 @@
 }
 
 /* Spaceship animation di sidebar */
-#sidebar .sidebar-bottom::before {
+#sidebar {
+  position: relative !important;
+}
+
+#sidebar::after {
   content: "🚀";
-  font-size: 1.2rem;
-  position: absolute;
-  bottom: 80px;
-  left: -30px;
-  animation: spaceship-fly 8s linear infinite alternate;
+  font-size: 1.5rem;
+  position: fixed;
+  bottom: 120px;
+  left: 15px;
+  animation: spaceship-fly 6s ease-in-out infinite alternate;
   filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.6));
+  pointer-events: none;
+  z-index: 99;
 }
 
 @keyframes spaceship-fly {
-  0%   { left: 10px; transform: scaleX(1); }
-  100% { left: 180px; transform: scaleX(-1); }
-}
-
-/* Pastikan sidebar punya positioning */
-#sidebar {
-  position: relative !important;
+  0%   { left: 15px;  transform: scaleX(1)  rotate(-15deg); }
+  100% { left: 195px; transform: scaleX(-1) rotate(15deg); }
 }
