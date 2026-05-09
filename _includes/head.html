@@ -123,9 +123,39 @@
   {% endif %}
 
   {% include metadata-hook.html %}
+
+  <!-- =============================================
+       FIX: Hapus ruang kosong di atas konten
+       Chirpy set padding-top via JS, kita reset via JS juga
+       ============================================= -->
+  <script>
+    // Jalankan sesegera mungkin saat DOM siap
+    document.addEventListener("DOMContentLoaded", function () {
+      const mainWrapper = document.getElementById("main-wrapper");
+      if (!mainWrapper) return;
+
+      // Reset padding yang di-set Chirpy JS
+      mainWrapper.style.setProperty("padding-top", "0px", "important");
+      mainWrapper.style.setProperty("margin-top", "0px", "important");
+
+      // Reset CSS variable --topbar-height di root
+      document.documentElement.style.setProperty("--topbar-height", "0px", "important");
+
+      // Jaga-jaga: kalau Chirpy JS set ulang setelah ini, kita override lagi
+      const observer = new MutationObserver(function () {
+        const pt = mainWrapper.style.paddingTop;
+        if (pt && pt !== "0px") {
+          mainWrapper.style.setProperty("padding-top", "0px", "important");
+        }
+      });
+      observer.observe(mainWrapper, { attributes: true, attributeFilter: ["style"] });
+    });
+  </script>
+
 </head>
 
 <script>
+  // Rocket di sidebar
   document.addEventListener("DOMContentLoaded", function () {
     const sidebar = document.getElementById("sidebar");
     if (!sidebar) return;
