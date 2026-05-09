@@ -134,3 +134,6 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+head_scripts:
+  - /materi-belajar/assets/css/custom.css
