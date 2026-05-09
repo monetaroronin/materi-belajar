@@ -1,59 +1,40 @@
 ---
 ---
 
-/* =============================================
-   MATERI BELAJAR - Colorful Theme
-   ============================================= */
-
-/* Warna tiap card bergilir */
-#post-list .card-wrapper:nth-child(1) { border-left: 4px solid #6366f1 !important; }
-#post-list .card-wrapper:nth-child(2) { border-left: 4px solid #f59e0b !important; }
-#post-list .card-wrapper:nth-child(3) { border-left: 4px solid #10b981 !important; }
-#post-list .card-wrapper:nth-child(4) { border-left: 4px solid #ef4444 !important; }
-#post-list .card-wrapper:nth-child(5) { border-left: 4px solid #3b82f6 !important; }
-#post-list .card-wrapper:nth-child(6) { border-left: 4px solid #ec4899 !important; }
-#post-list .card-wrapper:nth-child(7) { border-left: 4px solid #8b5cf6 !important; }
-#post-list .card-wrapper:nth-child(8) { border-left: 4px solid #14b8a6 !important; }
-#post-list .card-wrapper:nth-child(9) { border-left: 4px solid #f97316 !important; }
-#post-list .card-wrapper:nth-child(10) { border-left: 4px solid #06b6d4 !important; }
-
 /* Card base */
 .card-wrapper {
   border-radius: 14px !important;
   margin-bottom: 1.25rem !important;
-  border: 1px solid #e5e7eb !important;
-  transition: box-shadow 0.2s ease, transform 0.2s ease !important;
   overflow: hidden !important;
+  transition: box-shadow 0.2s ease, transform 0.2s ease !important;
 }
 
 .card-wrapper:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.10) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12) !important;
   transform: translateY(-3px) !important;
 }
 
-/* Featured Post */
-#post-list .card-wrapper:first-child {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%) !important;
-  border: none !important;
-  border-left: 4px solid #6366f1 !important;
-}
+/* Warna background tiap card */
+#post-list .card-wrapper:nth-child(1) { background: linear-gradient(135deg, #1a1a2e, #0f3460) !important; border: none !important; }
+#post-list .card-wrapper:nth-child(2) { background: #fff8e1 !important; border: 1px solid #fcd34d !important; }
+#post-list .card-wrapper:nth-child(3) { background: #f0fdf4 !important; border: 1px solid #6ee7b7 !important; }
+#post-list .card-wrapper:nth-child(4) { background: #fff1f2 !important; border: 1px solid #fda4af !important; }
+#post-list .card-wrapper:nth-child(5) { background: #eff6ff !important; border: 1px solid #93c5fd !important; }
+#post-list .card-wrapper:nth-child(6) { background: #fdf4ff !important; border: 1px solid #e879f9 !important; }
+#post-list .card-wrapper:nth-child(7) { background: #fff8e1 !important; border: 1px solid #fcd34d !important; }
+#post-list .card-wrapper:nth-child(8) { background: #f0fdf4 !important; border: 1px solid #6ee7b7 !important; }
+#post-list .card-wrapper:nth-child(9) { background: #fff1f2 !important; border: 1px solid #fda4af !important; }
+#post-list .card-wrapper:nth-child(10) { background: #eff6ff !important; border: 1px solid #93c5fd !important; }
 
-#post-list .card-wrapper:first-child .post-preview {
-  background: transparent !important;
-}
+/* Teks card 1 (gelap) */
+#post-list .card-wrapper:nth-child(1) h1,
+#post-list .card-wrapper:nth-child(1) h2,
+#post-list .card-wrapper:nth-child(1) .card-title,
+#post-list .card-wrapper:nth-child(1) a { color: #fff !important; }
+#post-list .card-wrapper:nth-child(1) p,
+#post-list .card-wrapper:nth-child(1) .post-meta { color: #94a3b8 !important; }
 
-#post-list .card-wrapper:first-child h1,
-#post-list .card-wrapper:first-child h2,
-#post-list .card-wrapper:first-child .card-title,
-#post-list .card-wrapper:first-child a {
-  color: #ffffff !important;
-}
-
-#post-list .card-wrapper:first-child p {
-  color: #94a3b8 !important;
-}
-
-/* Tag pills - warna-warni */
+/* Tag pills */
 .post-preview .post-meta a {
   display: inline-block !important;
   padding: 3px 12px !important;
@@ -62,40 +43,33 @@
   font-weight: 700 !important;
   margin-right: 4px !important;
   text-decoration: none !important;
-  letter-spacing: 0.03em !important;
 }
 
-/* Tag warna bergilir per posisi */
-.post-preview .post-meta a:nth-child(1) {
-  background: #ede9fe !important; color: #6d28d9 !important; border: 1px solid #c4b5fd !important;
-}
-.post-preview .post-meta a:nth-child(2) {
-  background: #fef3c7 !important; color: #92400e !important; border: 1px solid #fcd34d !important;
-}
-.post-preview .post-meta a:nth-child(3) {
-  background: #d1fae5 !important; color: #065f46 !important; border: 1px solid #6ee7b7 !important;
-}
+/* Tag per card */
+#post-list .card-wrapper:nth-child(1) .post-meta a { background: rgba(255,255,255,0.15) !important; color: #e0e7ff !important; border: 1px solid rgba(255,255,255,0.3) !important; }
+#post-list .card-wrapper:nth-child(2) .post-meta a { background: #fef9c3 !important; color: #a16207 !important; border: 1px solid #fde047 !important; }
+#post-list .card-wrapper:nth-child(3) .post-meta a { background: #dcfce7 !important; color: #166534 !important; border: 1px solid #4ade80 !important; }
+#post-list .card-wrapper:nth-child(4) .post-meta a { background: #ffe4e6 !important; color: #9f1239 !important; border: 1px solid #fb7185 !important; }
+#post-list .card-wrapper:nth-child(5) .post-meta a { background: #dbeafe !important; color: #1e40af !important; border: 1px solid #60a5fa !important; }
+#post-list .card-wrapper:nth-child(6) .post-meta a { background: #fae8ff !important; color: #86198f !important; border: 1px solid #e879f9 !important; }
+#post-list .card-wrapper:nth-child(7) .post-meta a { background: #fef9c3 !important; color: #a16207 !important; border: 1px solid #fde047 !important; }
+#post-list .card-wrapper:nth-child(8) .post-meta a { background: #dcfce7 !important; color: #166534 !important; border: 1px solid #4ade80 !important; }
+#post-list .card-wrapper:nth-child(9) .post-meta a { background: #ffe4e6 !important; color: #9f1239 !important; border: 1px solid #fb7185 !important; }
+#post-list .card-wrapper:nth-child(10) .post-meta a { background: #dbeafe !important; color: #1e40af !important; border: 1px solid #60a5fa !important; }
 
-/* Tag di featured post */
-#post-list .card-wrapper:first-child .post-preview .post-meta a:nth-child(1) {
-  background: rgba(99,102,241,0.25) !important; color: #c7d2fe !important; border-color: rgba(99,102,241,0.4) !important;
-}
-#post-list .card-wrapper:first-child .post-preview .post-meta a:nth-child(2) {
-  background: rgba(245,158,11,0.25) !important; color: #fde68a !important; border-color: rgba(245,158,11,0.4) !important;
-}
-
-/* Trending tags di sidebar */
+/* Trending tags sidebar */
 #panel-wrapper .post-tag {
   border-radius: 999px !important;
-  padding: 3px 12px !important;
+  padding: 4px 14px !important;
   font-size: 0.75rem !important;
   font-weight: 600 !important;
-  background: #f0f4ff !important;
-  color: #4338ca !important;
-  border: 1px solid #c7d2fe !important;
+  background: #6366f1 !important;
+  color: #fff !important;
+  border: none !important;
+  margin: 3px !important;
 }
 
 #panel-wrapper .post-tag:hover {
-  background: #6366f1 !important;
-  color: #fff !important;
+  background: #4338ca !important;
+  transform: scale(1.05) !important;
 }
