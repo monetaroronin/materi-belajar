@@ -123,9 +123,32 @@
   {% endif %}
 
   {% include metadata-hook.html %}
+
+  <!-- FIX: Force topbar height to zero via JS sebelum render -->
+  <style>
+    #topbar-wrapper, #topbar {
+      display: none !important;
+      height: 0 !important;
+      min-height: 0 !important;
+      max-height: 0 !important;
+      overflow: hidden !important;
+      flex-basis: 0 !important;
+      flex-shrink: 1 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .container.d-flex.flex-column {
+      min-height: auto !important;
+    }
+    .row.flex-grow-1 {
+      flex-grow: 0 !important;
+    }
+  </style>
+
 </head>
 
 <script>
+  // Rocket di sidebar
   document.addEventListener("DOMContentLoaded", function () {
     const sidebar = document.getElementById("sidebar");
     if (!sidebar) return;
