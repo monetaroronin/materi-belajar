@@ -36,41 +36,38 @@
    REVISI 2 · Tipografi — Judul lebih menonjol
    ============================================= */
 
-.card-wrapper .card-title a,
-.card-wrapper h2 a,
-.card-body h1 a,
-.card-body h2 a,
-.post-preview h1 a,
-.post-preview h2 a,
-#post-list .card-title a {
-  color: #111827 !important;
-  font-weight: 700 !important;
+/* Paksa semua kemungkinan selector judul di Chirpy */
+#post-list .card-wrapper .card-title,
+#post-list .card-wrapper .card-title a,
+#post-list .card-wrapper h1,
+#post-list .card-wrapper h1 a,
+#post-list .card-wrapper h2,
+#post-list .card-wrapper h2 a,
+#post-list .card-wrapper h3,
+#post-list .card-wrapper h3 a {
   font-size: 1.15rem !important;
+  font-weight: 700 !important;
   line-height: 1.35 !important;
   letter-spacing: -0.02em !important;
+  color: #111827 !important;
 }
 
-.card-wrapper .card-title a:hover,
-.card-wrapper h2 a:hover,
-.card-body h1 a:hover,
-.card-body h2 a:hover,
-.post-preview h1 a:hover,
-.post-preview h2 a:hover,
-#post-list .card-title a:hover {
+#post-list .card-wrapper .card-title a:hover,
+#post-list .card-wrapper h1 a:hover,
+#post-list .card-wrapper h2 a:hover,
+#post-list .card-wrapper h3 a:hover {
   color: #7c3aed !important;
 }
 
 /* Excerpt */
-.card-wrapper p,
-.card-body p {
+#post-list .card-wrapper p {
   color: #6b7280 !important;
   font-size: 0.92rem !important;
   line-height: 1.6 !important;
 }
 
 /* Post meta */
-.card-wrapper .post-meta,
-.card-body .post-meta {
+#post-list .card-wrapper .post-meta {
   color: #9ca3af !important;
   font-size: 0.8rem !important;
 }
@@ -79,16 +76,12 @@
    REVISI 3 · Tag color-coded per kategori
    ============================================= */
 
-/* Base pill — semua selector dicoba sekaligus */
-.post-preview .post-meta a,
-.post-preview .categories a,
-.post-preview .post-categories a,
-.card-wrapper .categories a,
-.card-wrapper .post-meta a,
-.card-body .categories a,
-.card-body .post-meta a,
+/* Base pill — jaring lebar khusus di dalam #post-list */
 #post-list .card-wrapper a[href*="/categories/"],
-#post-list .card-wrapper a[href*="/tags/"] {
+#post-list .card-wrapper a[href*="/tags/"],
+#post-list .card-wrapper .post-meta a,
+#post-list .card-wrapper .categories a,
+#post-list .card-wrapper .post-categories a {
   display: inline-block !important;
   padding: 2px 10px !important;
   border-radius: 999px !important;
@@ -104,79 +97,33 @@
   border: 1px solid #ddd6fe !important;
 }
 
-/* Teknologi — biru */
-a[href*="teknologi"] {
-  background: #dbeafe !important;
-  color: #1d4ed8 !important;
-  border-color: #bfdbfe !important;
-}
+/* Warna per kategori — scoped ke #post-list agar tidak bocor ke kartu */
+#post-list a[href*="teknologi"]        { background: #dbeafe !important; color: #1d4ed8 !important; border-color: #bfdbfe !important; }
+#post-list a[href*="politik"]          { background: #fce7f3 !important; color: #be185d !important; border-color: #fbcfe8 !important; }
+#post-list a[href*="ekonomi"]          { background: #d1fae5 !important; color: #065f46 !important; border-color: #a7f3d0 !important; }
+#post-list a[href*="sosial"]           { background: #fef3c7 !important; color: #92400e !important; border-color: #fde68a !important; }
+#post-list a[href*="produktivitas"]    { background: #ede9fe !important; color: #5b21b6 !important; border-color: #ddd6fe !important; }
+#post-list a[href*="kecerdasan-buatan"]{ background: #e0f2fe !important; color: #0369a1 !important; border-color: #bae6fd !important; }
+#post-list a[href*="kesehatan"]        { background: #ccfbf1 !important; color: #0f766e !important; border-color: #99f6e4 !important; }
+#post-list a[href*="budaya"]           { background: #ffedd5 !important; color: #9a3412 !important; border-color: #fed7aa !important; }
+#post-list a[href*="demokrasi"]        { background: #e0e7ff !important; color: #3730a3 !important; border-color: #c7d2fe !important; }
+#post-list a[href*="sejarah"]          { background: #fef9c3 !important; color: #854d0e !important; border-color: #fef08a !important; }
 
-/* Politik — merah muda */
-a[href*="politik"] {
-  background: #fce7f3 !important;
-  color: #be185d !important;
-  border-color: #fbcfe8 !important;
-}
-
-/* Ekonomi — hijau */
-a[href*="ekonomi"] {
-  background: #d1fae5 !important;
-  color: #065f46 !important;
-  border-color: #a7f3d0 !important;
-}
-
-/* Sosial — amber */
-a[href*="sosial"] {
-  background: #fef3c7 !important;
-  color: #92400e !important;
-  border-color: #fde68a !important;
-}
-
-/* Produktivitas — violet */
-a[href*="produktivitas"] {
-  background: #ede9fe !important;
-  color: #5b21b6 !important;
-  border-color: #ddd6fe !important;
-}
-
-/* AI — cyan */
-a[href*="/ai"],
-a[href*="kecerdasan-buatan"] {
+/* AI — khusus slug pendek, pastikan tidak menangkap kata lain */
+#post-list a[href="/materi-belajar/categories/ai/"],
+#post-list a[href="/materi-belajar/tags/ai/"] {
   background: #e0f2fe !important;
   color: #0369a1 !important;
   border-color: #bae6fd !important;
 }
 
-/* Kesehatan — teal */
-a[href*="kesehatan"] {
-  background: #ccfbf1 !important;
-  color: #0f766e !important;
-  border-color: #99f6e4 !important;
-}
-
-/* Budaya — oranye */
-a[href*="budaya"] {
-  background: #ffedd5 !important;
-  color: #9a3412 !important;
-  border-color: #fed7aa !important;
-}
-
-/* Demokrasi — indigo */
-a[href*="demokrasi"] {
-  background: #e0e7ff !important;
-  color: #3730a3 !important;
-  border-color: #c7d2fe !important;
-}
-
 /* Hover semua tag */
-.post-preview .post-meta a:hover,
-.post-preview .categories a:hover,
-.card-wrapper .categories a:hover,
-.card-body .categories a:hover {
+#post-list .card-wrapper a[href*="/categories/"]:hover,
+#post-list .card-wrapper a[href*="/tags/"]:hover {
   opacity: 0.75 !important;
 }
 
-/* Trending tags sidebar */
+/* Trending tags sidebar — warna violet konsisten */
 #panel-wrapper .post-tag,
 #panel-wrapper a.post-tag {
   border-radius: 999px !important;
@@ -199,14 +146,22 @@ a[href*="demokrasi"] {
 
 /* =============================================
    REVISI 4 · Sidebar kanan — card wrapper
+   FIX: hapus > div dan > section yang bocor ke kartu artikel
    ============================================= */
 
-/* Wrapper semua section panel */
-#panel-wrapper > div,
-#panel-wrapper > section,
-#panel-wrapper #access-lastmod,
+#panel-wrapper #access-lastmod {
+  background: #f9fafb !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  padding: 1rem 1.25rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Target wrapper tagar — coba semua kemungkinan ID/class Chirpy */
+#panel-wrapper #tags,
 #panel-wrapper .post-tag-wrapper,
-#panel-wrapper .panel-section {
+#panel-wrapper .panel-section,
+#panel-wrapper #trending-tags {
   background: #f9fafb !important;
   border: 1px solid #e5e7eb !important;
   border-radius: 12px !important;
@@ -227,27 +182,24 @@ a[href*="demokrasi"] {
 }
 
 /* Item postingan terbaru */
-#panel-wrapper #access-lastmod li,
-#panel-wrapper ul li {
+#panel-wrapper #access-lastmod li {
   padding: 6px 0 !important;
   border-bottom: 1px solid #f3f4f6 !important;
   font-size: 0.82rem !important;
   line-height: 1.4 !important;
+  list-style: none !important;
 }
 
-#panel-wrapper #access-lastmod li:last-child,
-#panel-wrapper ul li:last-child {
+#panel-wrapper #access-lastmod li:last-child {
   border-bottom: none !important;
 }
 
-#panel-wrapper #access-lastmod a,
-#panel-wrapper ul li a {
+#panel-wrapper #access-lastmod a {
   color: #374151 !important;
   text-decoration: none !important;
 }
 
-#panel-wrapper #access-lastmod a:hover,
-#panel-wrapper ul li a:hover {
+#panel-wrapper #access-lastmod a:hover {
   color: #7c3aed !important;
 }
 
