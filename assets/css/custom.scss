@@ -127,16 +127,12 @@
   position: relative !important;
 }
 
-/* Kurangi padding atas konten utama */
-#main-wrapper {
-  padding-top: 0 !important;
-}
-
-#main-wrapper .container {
-  padding-top: 0 !important;
-}
-
-/* Hilangkan space topbar */
+/* Kembalikan topbar, kurangi margin atas konten */
 #topbar-wrapper {
-  display: none !important;
+  display: block !important;
+}
+
+#main-wrapper .row {
+  margin-top: 0 !important;
+  padding-top: 1rem !important;
 }
