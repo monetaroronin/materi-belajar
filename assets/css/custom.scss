@@ -126,3 +126,12 @@
 #sidebar {
   position: relative !important;
 }
+
+/* Kurangi padding atas konten utama */
+#main-wrapper {
+  padding-top: 0 !important;
+}
+
+#main-wrapper .container {
+  padding-top: 0 !important;
+}
