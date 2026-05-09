@@ -6,12 +6,27 @@
    Accent: Violet #7c3aed
    ============================================= */
 
-/* Reset semua card putih */
+/* =============================================
+   GLOBAL FIX
+   ============================================= */
+
+html,
+body {
+  overflow-x: hidden !important;
+}
+
+/* =============================================
+   RESET CARD
+   ============================================= */
+
 #post-list .card-wrapper {
   --card-bg: #ffffff !important;
 }
 
-/* Card base */
+/* =============================================
+   CARD BASE
+   ============================================= */
+
 .card-wrapper {
   background: #ffffff !important;
   border: 1px solid #e5e7eb !important;
@@ -19,13 +34,17 @@
   border-left: 4px solid #e5e7eb !important;
   margin-bottom: 1rem !important;
   overflow: hidden !important;
+
   transition:
     box-shadow 0.3s ease,
     transform 0.3s ease,
     border-left-color 0.3s ease !important;
 }
 
-/* Hover effect */
+/* =============================================
+   CARD HOVER EFFECT
+   ============================================= */
+
 #post-list .card-wrapper:nth-child(1):hover {
   border-left-color: #7c3aed !important;
   box-shadow:
@@ -106,7 +125,10 @@
   transform: translateY(-2px) !important;
 }
 
-/* Hover warna judul */
+/* =============================================
+   HOVER WARNA JUDUL
+   ============================================= */
+
 #post-list .card-wrapper:nth-child(1):hover .post-preview h1,
 #post-list .card-wrapper:nth-child(1):hover .post-preview h2 {
   color: #7c3aed !important;
@@ -157,7 +179,10 @@
   color: #dc2626 !important;
 }
 
-/* Judul */
+/* =============================================
+   TYPOGRAPHY
+   ============================================= */
+
 .card-wrapper .post-preview h1,
 .card-wrapper .post-preview h2 {
   color: #111827 !important;
@@ -166,20 +191,21 @@
   transition: color 0.3s ease !important;
 }
 
-/* Excerpt */
 .card-wrapper p {
   color: #6b7280 !important;
   font-size: 0.92rem !important;
   line-height: 1.6 !important;
 }
 
-/* Post meta */
 .card-wrapper .post-meta {
   color: #9ca3af !important;
   font-size: 0.8rem !important;
 }
 
-/* Tag pills */
+/* =============================================
+   TAG PILLS
+   ============================================= */
+
 .post-preview .post-meta a {
   display: inline-block !important;
   padding: 2px 10px !important;
@@ -188,11 +214,14 @@
   font-weight: 700 !important;
   letter-spacing: 0.04em !important;
   text-transform: uppercase !important;
+
   background: #f5f3ff !important;
   color: #6d28d9 !important;
   border: 1px solid #ddd6fe !important;
+
   text-decoration: none !important;
   margin-right: 4px !important;
+
   transition: background 0.2s !important;
 }
 
@@ -202,15 +231,20 @@
   border-color: #7c3aed !important;
 }
 
-/* Trending tags sidebar */
+/* =============================================
+   SIDEBAR TAGS
+   ============================================= */
+
 #panel-wrapper .post-tag {
   border-radius: 999px !important;
   padding: 4px 14px !important;
   font-size: 0.73rem !important;
   font-weight: 600 !important;
+
   background: #f5f3ff !important;
   color: #6d28d9 !important;
   border: 1px solid #ddd6fe !important;
+
   margin: 3px !important;
   transition: all 0.2s !important;
 }
@@ -221,13 +255,16 @@
   border-color: #7c3aed !important;
 }
 
-/* Sembunyikan breadcrumb */
+/* =============================================
+   BREADCRUMB
+   ============================================= */
+
 #breadcrumb {
-  visibility: hidden !important;
+  display: none !important;
 }
 
 /* =============================================
-   FIX ANIMASI ROKET
+   ROCKET FIX
    ============================================= */
 
 #sidebar {
@@ -235,73 +272,37 @@
   overflow: hidden !important;
 }
 
-/* Pastikan rocket tidak ikut layout */
+/* Rocket tidak ikut layout */
 #sidebar .rocket,
 #sidebar .rocket-ship,
 #sidebar .ship,
 .rocket,
 .rocket-ship,
 .ship {
-  position: absolute !important;
-  pointer-events: none !important;
+  position: fixed !important;
+  left: 80px !important;
+  bottom: 50px !important;
   z-index: 9999 !important;
+  pointer-events: none !important;
 }
 
 /* =============================================
-   Layout Fix
+   SAFE LAYOUT FIX
    ============================================= */
 
 #topbar-wrapper {
   display: block !important;
 }
 
-#main-wrapper .row {
-  margin-top: 0 !important;
-  padding-top: 1rem !important;
-}
-
-/* =========================================
-   FIX KONTEN TURUN KE BAWAH
-   ========================================= */
-
-body {
-  overflow-x: hidden !important;
-}
-
-/* Reset wrapper utama */
-#main-wrapper,
-#main-wrapper > .container,
-#main-wrapper > .container > .row,
-#topbar-wrapper,
-#topbar {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  top: 0 !important;
-  transform: none !important;
-}
-
-/* Pastikan content mulai dari atas */
-#main-wrapper .row {
-  align-items: flex-start !important;
-}
-
-/* Reset kemungkinan spacer kosong */
-main,
-#main,
-.page,
-.page-content,
-.content {
+#post-list {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
 
-/* Rocket jangan mempengaruhi layout */
-.rocket,
-.rocket-ship,
-.ship {
-  position: fixed !important;
-  left: 70px !important;
-  bottom: 40px !important;
-  z-index: 9999 !important;
-  pointer-events: none !important;
+/* Hilangkan kemungkinan spacer kosong */
+.empty-space,
+.spacer,
+.hero,
+.banner {
+  display: none !important;
 }
