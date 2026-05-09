@@ -2,55 +2,47 @@
 ---
 
 /* Card Style */
-.post-preview {
-  border: 1px solid #e8e8e8 !important;
+.card-wrapper {
   border-radius: 12px !important;
-  padding: 1.25rem 1.5rem !important;
   margin-bottom: 1.25rem !important;
   transition: box-shadow 0.2s ease, transform 0.2s ease !important;
 }
 
-.post-preview:hover {
+.card-wrapper:hover {
   box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
   transform: translateY(-2px) !important;
 }
 
-/* Tag Pills */
-.post-preview .categories a,
-.post-preview a.category,
+/* Featured Post - card pertama */
+#post-list .card-wrapper:first-child {
+  background: #1a1a2e !important;
+  border-color: transparent !important;
+}
+
+#post-list .card-wrapper:first-child .post-preview {
+  background: #1a1a2e !important;
+}
+
+#post-list .card-wrapper:first-child h1,
+#post-list .card-wrapper:first-child h2,
+#post-list .card-wrapper:first-child .card-title {
+  color: #ffffff !important;
+}
+
+#post-list .card-wrapper:first-child p {
+  color: #cccccc !important;
+}
+
+/* Tag/Category links */
+.post-preview .post-meta .categories,
 .post-preview .post-meta a {
   display: inline-block !important;
   padding: 2px 10px !important;
   border-radius: 999px !important;
   font-size: 0.72rem !important;
   font-weight: 600 !important;
-  margin-right: 4px !important;
   background: #f0f4ff !important;
   color: #3b5bdb !important;
   border: 1px solid #c5d0fa !important;
   text-decoration: none !important;
-}
-
-/* Featured Post - post pertama */
-#post-list > li:first-child .post-preview {
-  background: #1a1a2e !important;
-  border-color: transparent !important;
-  padding: 2rem !important;
-}
-
-#post-list > li:first-child .post-preview h1,
-#post-list > li:first-child .post-preview h2,
-#post-list > li:first-child .post-preview a.post-title {
-  color: #ffffff !important;
-}
-
-#post-list > li:first-child .post-preview p {
-  color: #cccccc !important;
-}
-
-#post-list > li:first-child .post-preview .categories a,
-#post-list > li:first-child .post-preview .post-meta a {
-  background: rgba(255,255,255,0.15) !important;
-  color: #fff !important;
-  border-color: transparent !important;
 }
