@@ -117,3 +117,13 @@
   color: #fff !important;
   border-color: #7c3aed !important;
 }
+
+/* Fix judul card 1 — semua kemungkinan selector */
+#post-list .card-wrapper:first-child .post-preview,
+#post-list .card-wrapper:first-child .post-preview *:not(.post-meta a) {
+  color: #ede9fe !important;
+}
+
+#post-list .card-wrapper:first-child .post-meta {
+  color: #a78bfa !important;
+}
