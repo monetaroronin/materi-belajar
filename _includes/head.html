@@ -151,7 +151,7 @@
       if (pos >= maxPos) { pos = maxPos; dir = -1; }
       if (pos <= 20)     { pos = 20;     dir = 1;  }
       ship.style.left = pos + "px";
-      ship.style.bottom = "220px";
+      ship.style.bottom = "60px";
       ship.style.transform = dir === 1 ? "scaleX(1) rotate(-10deg)" : "scaleX(-1) rotate(10deg)";
     }, 16);
   });
