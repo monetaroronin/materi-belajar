@@ -1,328 +1,158 @@
----
----
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+  >
 
+  {%- capture seo_tags -%}
+    {% seo title=false %}
+  {%- endcapture -%}
 
-/* =============================================
-   FIX KRITIS: TOPBAR MENYEBABKAN RUANG KOSONG
-   #topbar pakai h-100 = ambil tinggi penuh container
-   ============================================= */
+  {% if page.image %}
+    {% assign src = page.image.path | default: page.image %}
 
-#topbar-wrapper {
-  height: 0 !important;
-  min-height: 0 !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  flex-shrink: 0 !important;
-}
+    {% unless src contains '://' %}
+      {%- capture img_url -%}
+        {% include media-url.html src=src subpath=page.media_subpath absolute=true %}
+      {%- endcapture -%}
 
-#topbar {
-  display: none !important;
-  height: 0 !important;
-}
+      {%- capture old_url -%}{{ src | absolute_url }}{%- endcapture -%}
+      {%- capture new_url -%}{{ img_url }}{%- endcapture -%}
 
-/* Row flex-grow-1 langsung mulai dari atas */
-.container.d-flex.flex-column > .row.flex-grow-1,
-#main-wrapper .row.flex-grow-1 {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
+      {% assign seo_tags = seo_tags | replace: old_url, new_url %}
+    {% endunless %}
 
-/* =============================================
-   MATERI BELAJAR — Custom CSS (Fixed v3)
-   ============================================= */
+  {% elsif site.social_preview_image %}
+    {%- capture img_url -%}
+      {% include media-url.html src=site.social_preview_image absolute=true %}
+    {%- endcapture -%}
 
-/* =============================================
-   FIX RUANG KOSONG — main-wrapper langsung di body
-   ============================================= */
+    {%- capture og_image -%}
+      <meta property="og:image" content="{{ img_url }}" />
+    {%- endcapture -%}
 
-/* Chirpy set padding-top via CSS var --topbar-height pada main-wrapper */
-#main-wrapper {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-  --topbar-height: 0px !important;
-}
+    {%- capture twitter_image -%}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta property="twitter:image" content="{{ img_url }}" />
+    {%- endcapture -%}
 
-/* Override CSS variable yang dipakai Chirpy untuk offset topbar */
-:root {
-  --topbar-height: 0px !important;
-}
+    {% assign old_meta_clip = '<meta name="twitter:card" content="summary" />' %}
+    {% assign new_meta_clip = og_image | append: twitter_image %}
+    {% assign seo_tags = seo_tags | replace: old_meta_clip, new_meta_clip %}
+  {% endif %}
 
-/* Kolom konten utama */
-#main-wrapper > .container-xl > .row,
-#main-wrapper > .container > .row {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-  align-items: flex-start !important;
-}
+  {{ seo_tags }}
 
-/* Post list */
-#post-list {
-  padding-top: 0.75rem !important;
-  margin-top: 0 !important;
-}
+  {%- if site.social.fediverse_handle %}
+    <meta name="fediverse:creator" content="{{ site.social.fediverse_handle }}">
+  {% endif %}
 
-/* Hapus topbar jika ada (beberapa versi masih punya) */
-#topbar-wrapper {
-  display: none !important;
-}
+  <title>
+    {%- unless page.layout == 'home' -%}
+      {%- capture title -%}
+        {%- if page.collection == 'tabs' -%}
+          {%- assign tab_key = page.title | downcase -%}
+          {{- site.data.locales[include.lang].tabs[tab_key] -}}
+        {%- else -%}
+          {{- page.title -}}
+        {%- endif -%}
+      {%- endcapture -%}
+      {{- title | append: ' | ' -}}
+    {%- endunless -%}
+    {{- site.title -}}
+  </title>
 
-/* =============================================
-   ROOT
-   ============================================= */
+  {% include_cached favicons.html %}
 
-html, body {
-  overflow-x: hidden !important;
-  scroll-behavior: smooth;
-}
+  {% unless site.assets.self_host.enabled %}
+    {% for hint in site.data.origin.cors.resource_hints %}
+      {% for link in hint.links %}
+        <link rel="{{ link.rel }}" href="{{ hint.url }}" {{ link.opts | join: ' ' }}>
+      {% endfor %}
+    {% endfor %}
+  {% endunless %}
 
-/* =============================================
-   FEATURED CARD (post pertama)
-   ============================================= */
+  {% unless jekyll.environment == 'production' %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  {% endunless %}
 
-.featured-card {
-  background: #1a1a2e;
-  border-radius: 16px;
-  padding: 2rem;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 1rem;
-}
+  <link rel="stylesheet" href="{{ '/assets/css/:THEME.css' | replace: ':THEME', site.theme | relative_url }}">
 
-.featured-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(124,58,237,0.25) 0%, transparent 60%);
-  pointer-events: none;
-}
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 
-.featured-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 0.6rem;
-}
+  <link rel="stylesheet" href="{{ site.data.origin[type].webfonts | relative_url }}">
+  <link rel="stylesheet" href="{{ site.data.origin[type].fontawesome.css | relative_url }}">
 
-.feat-tag {
-  display: inline-block;
-  padding: 3px 12px;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  background: rgba(124,58,237,0.35);
-  color: #c4b5fd;
-  border: 1px solid rgba(124,58,237,0.5);
-  text-decoration: none;
-  transition: all 0.2s;
-}
+  {% if site.toc and page.toc %}
+    <link rel="stylesheet" href="{{ site.data.origin[type].toc.css | relative_url }}">
+  {% endif %}
 
-.feat-tag:nth-child(2) {
-  background: rgba(16,185,129,0.25);
-  color: #6ee7b7;
-  border-color: rgba(16,185,129,0.4);
-}
+  {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' %}
+    <link rel="stylesheet" href="{{ site.data.origin[type]['lazy-polyfill'].css | relative_url }}">
+  {% endif %}
 
-.feat-tag:hover { background: #7c3aed; color: #fff; border-color: #7c3aed; }
+  {% if page.layout == 'page' or page.layout == 'post' %}
+    <link rel="stylesheet" href="{{ site.data.origin[type].glightbox.css | relative_url }}">
+  {% endif %}
 
-.featured-title {
-  font-size: 1.65rem;
-  font-weight: 800;
-  line-height: 1.3;
-  margin: 0.75rem 0;
-  letter-spacing: -0.02em;
-}
+  <script src="{{ '/assets/js/dist/theme.min.js' | relative_url }}"></script>
 
-.featured-title a { color: #fff !important; text-decoration: none; }
-.featured-title a:hover { color: #c4b5fd !important; }
+  {% include js-selector.html lang=lang %}
 
-.featured-desc {
-  color: #d1d5db;
-  font-size: 0.92rem;
-  line-height: 1.7;
-  margin-bottom: 1rem;
-}
+  {% if jekyll.environment == 'production' %}
+    {% if site.pwa.enabled %}
+      <script
+        defer
+        src="{{ '/app.min.js' | relative_url }}?baseurl={{ site.baseurl | default: '' }}&register={{ site.pwa.cache.enabled }}"
+      ></script>
+    {% endif %}
 
-.featured-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.8rem;
-}
+    {% for analytics in site.analytics %}
+      {% capture str %}{{ analytics }}{% endcapture %}
+      {% assign platform = str | split: '{' | first %}
+      {% if site.analytics[platform].id and site.analytics[platform].id != empty %}
+        {% include analytics/{{ platform }}.html %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 
-.feat-date { color: #9ca3af; }
+  {% include metadata-hook.html %}
+</head>
 
-.feat-badge {
-  background: rgba(124,58,237,0.4);
-  color: #c4b5fd;
-  border: 1px solid rgba(124,58,237,0.6);
-  border-radius: 999px;
-  padding: 2px 10px;
-  font-size: 0.7rem;
-  font-weight: 700;
-}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const sidebar = document.getElementById("sidebar");
+    if (!sidebar) return;
 
-/* =============================================
-   POST CARD
-   ============================================= */
+    const ship = document.createElement("div");
+    ship.textContent = "🚀";
+    ship.style.cssText = `
+      position: absolute;
+      font-size: 2rem;
+      pointer-events: none;
+      z-index: 99;
+      filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.6));
+      transition: none;
+    `;
+    sidebar.appendChild(ship);
 
-.post-card {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-left: 4px solid #e5e7eb;
-  border-radius: 14px;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 0.75rem;
-  transition: box-shadow 0.3s ease, transform 0.3s ease, border-left-color 0.3s ease;
-}
+    let pos = 20;
+    let dir = 1;
+    const maxPos = sidebar.offsetWidth - 60;
 
-.post-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-}
-
-#post-list .post-card:nth-child(6n+2):hover { border-left-color: #7c3aed; }
-#post-list .post-card:nth-child(6n+3):hover { border-left-color: #2563eb; }
-#post-list .post-card:nth-child(6n+4):hover { border-left-color: #059669; }
-#post-list .post-card:nth-child(6n+5):hover { border-left-color: #dc2626; }
-#post-list .post-card:nth-child(6n+6):hover { border-left-color: #d97706; }
-#post-list .post-card:nth-child(6n+7):hover { border-left-color: #db2777; }
-
-.post-card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-bottom: 0.4rem;
-}
-
-.pc-tag {
-  display: inline-block;
-  padding: 2px 10px;
-  border-radius: 999px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  background: #f5f3ff;
-  color: #6d28d9;
-  border: 1px solid #ddd6fe;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.pc-tag:nth-child(2) { background: #f0fdf4; color: #065f46; border-color: #bbf7d0; }
-.pc-tag:nth-child(3) { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
-.pc-tag:hover { background: #7c3aed; color: #fff; border-color: #7c3aed; }
-
-.post-card-title {
-  font-size: 1.1rem;
-  font-weight: 750;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-  margin: 0.4rem 0;
-}
-
-.post-card-title a { color: #111827 !important; text-decoration: none; }
-.post-card:hover .post-card-title a { color: #7c3aed !important; }
-
-.post-card-desc {
-  color: #6b7280;
-  font-size: 0.88rem;
-  line-height: 1.65;
-  margin-bottom: 0.6rem;
-}
-
-.post-card-meta {
-  font-size: 0.78rem;
-  color: #9ca3af;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.pc-cats a { color: #6b7280; text-decoration: none; }
-.pc-cats a:hover { color: #7c3aed; }
-
-/* =============================================
-   PAGINATION
-   ============================================= */
-
-.btn-page {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 18px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  background: #f5f3ff;
-  color: #6d28d9;
-  border: 1px solid #ddd6fe;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.btn-page:hover { background: #7c3aed; color: #fff; border-color: #7c3aed; }
-.btn-page.disabled { opacity: 0; pointer-events: none; }
-.page-info { font-size: 0.85rem; color: #9ca3af; }
-
-/* =============================================
-   SIDEBAR TAGS
-   ============================================= */
-
-#panel-wrapper .post-tag {
-  display: inline-block !important;
-  border-radius: 999px !important;
-  padding: 4px 14px !important;
-  font-size: 0.73rem !important;
-  font-weight: 600 !important;
-  background: #f5f3ff !important;
-  color: #6d28d9 !important;
-  border: 1px solid #ddd6fe !important;
-  margin: 3px !important;
-  transition: all 0.2s ease !important;
-  text-decoration: none !important;
-}
-
-#panel-wrapper .post-tag:hover {
-  background: #7c3aed !important;
-  border-color: #7c3aed !important;
-  color: #ffffff !important;
-}
-
-/* =============================================
-   DARK MODE
-   ============================================= */
-
-[data-mode="dark"] .post-card { background: #1e1e2e !important; border-color: #2d2d3f !important; }
-[data-mode="dark"] .post-card-title a { color: #f3f4f6 !important; }
-[data-mode="dark"] .post-card-desc { color: #9ca3af !important; }
-[data-mode="dark"] .pc-tag {
-  background: rgba(124,58,237,0.2) !important;
-  color: #c4b5fd !important;
-  border-color: rgba(124,58,237,0.4) !important;
-}
-
-/* =============================================
-   BREADCRUMB
-   ============================================= */
-
-#breadcrumb { display: none !important; }
-
-/* =============================================
-   SIDEBAR
-   ============================================= */
-
-#sidebar { position: relative !important; overflow: hidden !important; }
-
-/* =============================================
-   MOBILE
-   ============================================= */
-
-@media (max-width: 768px) {
-  .featured-card { padding: 1.25rem; }
-  .featured-title { font-size: 1.3rem; }
-  .post-card { padding: 1rem 1.1rem; border-radius: 10px; }
-}
+    setInterval(() => {
+      pos += dir * 1.5;
+      if (pos >= maxPos) { pos = maxPos; dir = -1; }
+      if (pos <= 20)     { pos = 20;     dir = 1;  }
+      ship.style.left = pos + "px";
+      ship.style.bottom = "60px";
+      ship.style.transform = dir === 1 ? "scaleX(1) rotate(-10deg)" : "scaleX(-1) rotate(10deg)";
+    }, 16);
+  });
+</script>
