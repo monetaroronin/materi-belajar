@@ -135,3 +135,8 @@
 #main-wrapper .container {
   padding-top: 0 !important;
 }
+
+/* Hilangkan space topbar */
+#topbar-wrapper {
+  display: none !important;
+}
