@@ -1,6 +1,34 @@
 ---
 ---
 
+
+/* =============================================
+   FIX KRITIS: TOPBAR MENYEBABKAN RUANG KOSONG
+   #topbar pakai h-100 = ambil tinggi penuh container
+   ============================================= */
+
+#topbar-wrapper {
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+#topbar {
+  display: none !important;
+  height: 0 !important;
+}
+
+/* Row flex-grow-1 langsung mulai dari atas */
+.container.d-flex.flex-column > .row.flex-grow-1,
+#main-wrapper .row.flex-grow-1 {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
 /* =============================================
    MATERI BELAJAR — Custom CSS (Fixed v3)
    ============================================= */
