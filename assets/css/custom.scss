@@ -123,8 +123,10 @@
   visibility: hidden !important;
 }
 
+/* ← FIX ROKET: tambah overflow hidden agar tidak mendorong konten */
 #sidebar {
   position: relative !important;
+  overflow: hidden !important;
 }
 
 /* Kembalikan topbar, kurangi margin atas konten */
