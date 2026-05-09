@@ -118,24 +118,7 @@
   border-color: #7c3aed !important;
 }
 
-/* Spaceship animation di sidebar */
+
 #sidebar {
   position: relative !important;
-}
-
-#sidebar::after {
-  content: "🚀";
-  font-size: 1.5rem;
-  position: fixed;
-  top: 520px;
-  left: 15px;
-  animation: spaceship-fly 6s ease-in-out infinite alternate;
-  filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.6));
-  pointer-events: none;
-  z-index: 99;
-}
-
-@keyframes spaceship-fly {
-  0%   { left: 15px;  transform: scaleX(1)  rotate(-15deg); }
-  100% { left: 195px; transform: scaleX(-1) rotate(15deg); }
 }
