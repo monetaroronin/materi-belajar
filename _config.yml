@@ -1,7 +1,7 @@
 # The Site Configuration
 # Import the theme
 theme: jekyll-theme-chirpy
-lang: id
+lang: id-ID
 timezone: Asia/Jakarta
 title: Materi Belajar
 tagline: Kamu tidak bisa menuangkan sesuatu dari cangkir yang kosong.
