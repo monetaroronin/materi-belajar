@@ -1,11 +1,17 @@
 ---
 ---
 
+/* =============================================
+   MATERI BELAJAR — Custom CSS Final
+   ============================================= */
 
 /* =============================================
-   FIX KRITIS: TOPBAR MENYEBABKAN RUANG KOSONG
-   #topbar pakai h-100 = ambil tinggi penuh container
+   FIX: TOPBAR & RUANG KOSONG
    ============================================= */
+
+:root {
+  --topbar-height: 0px !important;
+}
 
 #topbar-wrapper {
   height: 0 !important;
@@ -14,7 +20,7 @@
   overflow: hidden !important;
   padding: 0 !important;
   margin: 0 !important;
-  flex-shrink: 0 !important;
+  display: none !important;
 }
 
 #topbar {
@@ -22,50 +28,28 @@
   height: 0 !important;
 }
 
-/* Row flex-grow-1 langsung mulai dari atas */
-.container.d-flex.flex-column > .row.flex-grow-1,
-#main-wrapper .row.flex-grow-1 {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-
-/* =============================================
-   MATERI BELAJAR — Custom CSS (Fixed v3)
-   ============================================= */
-
-/* =============================================
-   FIX RUANG KOSONG — main-wrapper langsung di body
-   ============================================= */
-
-/* Chirpy set padding-top via CSS var --topbar-height pada main-wrapper */
 #main-wrapper {
   padding-top: 0 !important;
   margin-top: 0 !important;
   --topbar-height: 0px !important;
 }
 
-/* Override CSS variable yang dipakai Chirpy untuk offset topbar */
-:root {
-  --topbar-height: 0px !important;
+#main-wrapper > .container,
+#main-wrapper > .container-xl {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
 }
 
-/* Kolom konten utama */
-#main-wrapper > .container-xl > .row,
-#main-wrapper > .container > .row {
+.container.d-flex.flex-column > .row,
+#main-wrapper .row {
   padding-top: 0 !important;
   margin-top: 0 !important;
   align-items: flex-start !important;
 }
 
-/* Post list */
 #post-list {
   padding-top: 0.75rem !important;
   margin-top: 0 !important;
-}
-
-/* Hapus topbar jika ada (beberapa versi masih punya) */
-#topbar-wrapper {
-  display: none !important;
 }
 
 /* =============================================
@@ -78,7 +62,7 @@ html, body {
 }
 
 /* =============================================
-   FEATURED CARD (post pertama)
+   FEATURED CARD
    ============================================= */
 
 .featured-card {
@@ -306,15 +290,10 @@ html, body {
 }
 
 /* =============================================
-   BREADCRUMB
+   BREADCRUMB & SIDEBAR
    ============================================= */
 
 #breadcrumb { display: none !important; }
-
-/* =============================================
-   SIDEBAR
-   ============================================= */
-
 #sidebar { position: relative !important; overflow: hidden !important; }
 
 /* =============================================
