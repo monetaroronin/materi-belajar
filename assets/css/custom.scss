@@ -259,3 +259,49 @@
   margin-top: 0 !important;
   padding-top: 1rem !important;
 }
+
+/* =========================================
+   FIX KONTEN TURUN KE BAWAH
+   ========================================= */
+
+body {
+  overflow-x: hidden !important;
+}
+
+/* Reset wrapper utama */
+#main-wrapper,
+#main-wrapper > .container,
+#main-wrapper > .container > .row,
+#topbar-wrapper,
+#topbar {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  top: 0 !important;
+  transform: none !important;
+}
+
+/* Pastikan content mulai dari atas */
+#main-wrapper .row {
+  align-items: flex-start !important;
+}
+
+/* Reset kemungkinan spacer kosong */
+main,
+#main,
+.page,
+.page-content,
+.content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Rocket jangan mempengaruhi layout */
+.rocket,
+.rocket-ship,
+.ship {
+  position: fixed !important;
+  left: 70px !important;
+  bottom: 40px !important;
+  z-index: 9999 !important;
+  pointer-events: none !important;
+}
