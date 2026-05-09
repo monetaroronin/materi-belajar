@@ -118,6 +118,10 @@
   border-color: #7c3aed !important;
 }
 
+/* Sembunyikan breadcrumb header */
+#breadcrumb {
+  display: none !important;
+}
 
 #sidebar {
   position: relative !important;
