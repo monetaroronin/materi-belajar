@@ -2,264 +2,272 @@
 ---
 
 /* =============================================
-   MATERI BELAJAR — Editorial Premium
-   Accent: Violet #7c3aed
-   Revised + Layout Safe
+   MATERI BELAJAR — Custom CSS (Fixed)
    ============================================= */
 
 /* =============================================
-   ROOT FIX
+   ROOT
    ============================================= */
 
-html,
-body {
+html, body {
   overflow-x: hidden !important;
   scroll-behavior: smooth;
 }
 
-/* Prevent weird vertical spacing */
-body,
-main,
-#main-wrapper,
-#main-wrapper > .container,
-#main-wrapper > .container > .row,
-#post-list,
-#topbar-wrapper,
-#topbar {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  transform: none !important;
+/* =============================================
+   FEATURED CARD (post pertama / pin)
+   ============================================= */
+
+.featured-card {
+  background: #1a1a2e;
+  border-radius: 16px;
+  padding: 2rem;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(124,58,237,0.25) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.featured-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.feat-tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: rgba(124,58,237,0.35);
+  color: #c4b5fd;
+  border: 1px solid rgba(124,58,237,0.5);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.feat-tag:nth-child(2) {
+  background: rgba(16,185,129,0.25);
+  color: #6ee7b7;
+  border-color: rgba(16,185,129,0.4);
+}
+
+.feat-tag:hover {
+  background: #7c3aed;
+  color: #fff;
+  border-color: #7c3aed;
+}
+
+.featured-title {
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.featured-title a {
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.featured-title a:hover {
+  color: #c4b5fd !important;
+}
+
+.featured-desc {
+  color: #d1d5db;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.featured-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+}
+
+.feat-date {
+  color: #9ca3af;
+}
+
+.feat-badge {
+  background: rgba(124,58,237,0.4);
+  color: #c4b5fd;
+  border: 1px solid rgba(124,58,237,0.6);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
 }
 
 /* =============================================
-   REMOVE EMPTY SPACE BUG
+   POST CARD
    ============================================= */
 
-/* Penyebab utama biasanya flex + min-height */
-#main-wrapper .row {
-  align-items: flex-start !important;
-  justify-content: flex-start !important;
-  min-height: auto !important;
+.post-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-left-color 0.3s ease;
 }
 
-/* Pastikan post list tidak terdorong */
-#post-list {
-  margin-top: 0 !important;
-  padding-top: 1rem !important;
-  min-height: auto !important;
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
 }
 
-/* Hapus kemungkinan spacer kosong */
-.empty-space,
-.spacer,
-.hero,
-.banner,
-.hero-wrapper,
-.hero-container {
-  display: none !important;
-  height: 0 !important;
-  min-height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
+/* Warna border kiri per urutan */
+#post-list .post-card:nth-child(6n+2):hover { border-left-color: #7c3aed; }
+#post-list .post-card:nth-child(6n+3):hover { border-left-color: #2563eb; }
+#post-list .post-card:nth-child(6n+4):hover { border-left-color: #059669; }
+#post-list .post-card:nth-child(6n+5):hover { border-left-color: #dc2626; }
+#post-list .post-card:nth-child(6n+6):hover { border-left-color: #d97706; }
+#post-list .post-card:nth-child(6n+7):hover { border-left-color: #db2777; }
+
+.post-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
-/* =============================================
-   RESET CARD
-   ============================================= */
-
-#post-list .card-wrapper {
-  --card-bg: #ffffff !important;
+.pc-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: #f5f3ff;
+  color: #6d28d9;
+  border: 1px solid #ddd6fe;
+  text-decoration: none;
+  transition: all 0.2s;
 }
 
-/* =============================================
-   CARD BASE
-   ============================================= */
-
-.card-wrapper {
-  background: #ffffff !important;
-
-  border: 1px solid #e5e7eb !important;
-  border-left: 4px solid #e5e7eb !important;
-  border-radius: 14px !important;
-
-  margin-bottom: 1rem !important;
-
-  overflow: hidden !important;
-
-  transition:
-    box-shadow 0.3s ease,
-    transform 0.3s ease,
-    border-left-color 0.3s ease !important;
+.pc-tag:nth-child(2) {
+  background: #f0fdf4;
+  color: #065f46;
+  border-color: #bbf7d0;
 }
 
-/* =============================================
-   CARD HOVER COLORS
-   ============================================= */
-
-#post-list .card-wrapper:nth-child(6n+1):hover {
-  border-left-color: #7c3aed !important;
-  box-shadow:
-    -4px 8px 32px rgba(124,58,237,0.15),
-    0 8px 32px rgba(0,0,0,0.08) !important;
+.pc-tag:nth-child(3) {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
 }
 
-#post-list .card-wrapper:nth-child(6n+2):hover {
-  border-left-color: #2563eb !important;
-  box-shadow:
-    -4px 8px 32px rgba(37,99,235,0.15),
-    0 8px 32px rgba(0,0,0,0.08) !important;
+.pc-tag:hover {
+  background: #7c3aed;
+  color: #fff;
+  border-color: #7c3aed;
 }
 
-#post-list .card-wrapper:nth-child(6n+3):hover {
-  border-left-color: #059669 !important;
-  box-shadow:
-    -4px 8px 32px rgba(5,150,105,0.15),
-    0 8px 32px rgba(0,0,0,0.08) !important;
+.post-card-title {
+  font-size: 1.1rem;
+  font-weight: 750;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
 }
 
-#post-list .card-wrapper:nth-child(6n+4):hover {
-  border-left-color: #dc2626 !important;
-  box-shadow:
-    -4px 8px 32px rgba(220,38,38,0.15),
-    0 8px 32px rgba(0,0,0,0.08) !important;
+.post-card-title a {
+  color: #111827 !important;
+  text-decoration: none;
 }
 
-#post-list .card-wrapper:nth-child(6n+5):hover {
-  border-left-color: #d97706 !important;
-  box-shadow:
-    -4px 8px 32px rgba(217,119,6,0.15),
-    0 8px 32px rgba(0,0,0,0.08) !important;
-}
-
-#post-list .card-wrapper:nth-child(6n):hover {
-  border-left-color: #db2777 !important;
-  box-shadow:
-    -4px 8px 32px rgba(219,39,119,0.15),
-    0 8px 32px rgba(0,0,0,0.08) !important;
-}
-
-#post-list .card-wrapper:hover {
-  transform: translateY(-2px) !important;
-}
-
-/* =============================================
-   TITLE HOVER
-   ============================================= */
-
-#post-list .card-wrapper:nth-child(6n+1):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(6n+1):hover .post-preview h2 {
+.post-card:hover .post-card-title a {
   color: #7c3aed !important;
 }
 
-#post-list .card-wrapper:nth-child(6n+2):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(6n+2):hover .post-preview h2 {
-  color: #2563eb !important;
+.post-card-desc {
+  color: #6b7280;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  margin-bottom: 0.6rem;
 }
 
-#post-list .card-wrapper:nth-child(6n+3):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(6n+3):hover .post-preview h2 {
-  color: #059669 !important;
+.post-card-meta {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
-#post-list .card-wrapper:nth-child(6n+4):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(6n+4):hover .post-preview h2 {
-  color: #dc2626 !important;
+.pc-cats a {
+  color: #6b7280;
+  text-decoration: none;
 }
 
-#post-list .card-wrapper:nth-child(6n+5):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(6n+5):hover .post-preview h2 {
-  color: #d97706 !important;
-}
-
-#post-list .card-wrapper:nth-child(6n):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(6n):hover .post-preview h2 {
-  color: #db2777 !important;
+.pc-cats a:hover {
+  color: #7c3aed;
 }
 
 /* =============================================
-   TYPOGRAPHY
+   PAGINATION
    ============================================= */
 
-.card-wrapper .post-preview h1,
-.card-wrapper .post-preview h2 {
-  color: #111827 !important;
-
-  font-weight: 750 !important;
-  letter-spacing: -0.02em !important;
-  line-height: 1.3 !important;
-
-  transition: color 0.3s ease !important;
+.btn-page {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #f5f3ff;
+  color: #6d28d9;
+  border: 1px solid #ddd6fe;
+  text-decoration: none;
+  transition: all 0.2s;
 }
 
-.card-wrapper p {
-  color: #6b7280 !important;
-
-  font-size: 0.92rem !important;
-  line-height: 1.7 !important;
+.btn-page:hover {
+  background: #7c3aed;
+  color: #fff;
+  border-color: #7c3aed;
 }
 
-.card-wrapper .post-meta {
-  color: #9ca3af !important;
-  font-size: 0.8rem !important;
+.btn-page.disabled {
+  opacity: 0;
+  pointer-events: none;
 }
 
-/* =============================================
-   TAG PILLS
-   ============================================= */
-
-.post-preview .post-meta a {
-  display: inline-block !important;
-
-  padding: 3px 10px !important;
-
-  border-radius: 999px !important;
-
-  font-size: 0.68rem !important;
-  font-weight: 700 !important;
-
-  letter-spacing: 0.04em !important;
-  text-transform: uppercase !important;
-
-  background: #f5f3ff !important;
-  color: #6d28d9 !important;
-
-  border: 1px solid #ddd6fe !important;
-
-  text-decoration: none !important;
-
-  margin-right: 4px !important;
-
-  transition: all 0.2s ease !important;
-}
-
-.post-preview .post-meta a:hover {
-  background: #7c3aed !important;
-  border-color: #7c3aed !important;
-  color: #ffffff !important;
+.page-info {
+  font-size: 0.85rem;
+  color: #9ca3af;
 }
 
 /* =============================================
-   SIDEBAR TAGS
+   SIDEBAR TAGS (panel kanan)
    ============================================= */
 
 #panel-wrapper .post-tag {
   display: inline-block !important;
-
   border-radius: 999px !important;
-
   padding: 4px 14px !important;
-
   font-size: 0.73rem !important;
   font-weight: 600 !important;
-
   background: #f5f3ff !important;
   color: #6d28d9 !important;
-
   border: 1px solid #ddd6fe !important;
-
   margin: 3px !important;
-
   transition: all 0.2s ease !important;
+  text-decoration: none !important;
 }
 
 #panel-wrapper .post-tag:hover {
@@ -269,7 +277,49 @@ main,
 }
 
 /* =============================================
-   BREADCRUMB
+   DARK MODE
+   ============================================= */
+
+[data-mode="dark"] .post-card {
+  background: #1e1e2e !important;
+  border-color: #2d2d3f !important;
+}
+
+[data-mode="dark"] .post-card-title a {
+  color: #f3f4f6 !important;
+}
+
+[data-mode="dark"] .post-card-desc {
+  color: #9ca3af !important;
+}
+
+[data-mode="dark"] .pc-tag {
+  background: rgba(124,58,237,0.2) !important;
+  color: #c4b5fd !important;
+  border-color: rgba(124,58,237,0.4) !important;
+}
+
+/* =============================================
+   MOBILE
+   ============================================= */
+
+@media (max-width: 768px) {
+  .featured-card {
+    padding: 1.25rem;
+  }
+
+  .featured-title {
+    font-size: 1.3rem;
+  }
+
+  .post-card {
+    padding: 1rem 1.1rem;
+    border-radius: 10px;
+  }
+}
+
+/* =============================================
+   BREADCRUMB — sembunyikan
    ============================================= */
 
 #breadcrumb {
@@ -277,62 +327,10 @@ main,
 }
 
 /* =============================================
-   SIDEBAR FIX
+   SIDEBAR ROCKET
    ============================================= */
 
 #sidebar {
   position: relative !important;
   overflow: hidden !important;
-}
-
-/* =============================================
-   ROCKET FIX
-   ============================================= */
-
-#sidebar .rocket,
-#sidebar .rocket-ship,
-#sidebar .ship,
-.rocket,
-.rocket-ship,
-.ship {
-  position: fixed !important;
-
-  left: 78px !important;
-  bottom: 42px !important;
-
-  z-index: 9999 !important;
-
-  pointer-events: none !important;
-}
-
-/* =============================================
-   TOPBAR FIX
-   ============================================= */
-
-#topbar-wrapper {
-  display: block !important;
-}
-
-/* =============================================
-   MOBILE OPTIMIZATION
-   ============================================= */
-
-@media (max-width: 768px) {
-
-  .card-wrapper {
-    border-radius: 10px !important;
-  }
-
-  .card-wrapper .post-preview h1,
-  .card-wrapper .post-preview h2 {
-    font-size: 1.15rem !important;
-  }
-
-  .rocket,
-  .rocket-ship,
-  .ship {
-    left: 20px !important;
-    bottom: 20px !important;
-    transform: scale(0.9) !important;
-  }
 }
