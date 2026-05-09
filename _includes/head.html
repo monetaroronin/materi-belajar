@@ -127,35 +127,3 @@
   {% include metadata-hook.html %}
 </head>
 </head>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const sidebar = document.getElementById("sidebar");
-    if (!sidebar) return;
-
-    const ship = document.createElement("div");
-    ship.textContent = "🚀";
-    ship.style.cssText = `
-      position: absolute;
-      font-size: 2rem;
-      pointer-events: none;
-      z-index: 99;
-      filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.6));
-      transition: none;
-    `;
-    sidebar.appendChild(ship);
-
-    let pos = 20;
-    let dir = 1;
-    const maxPos = sidebar.offsetWidth - 50;
-
-    setInterval(() => {
-      pos += dir * 1.5;
-      if (pos >= maxPos) { pos = maxPos; dir = -1; }
-      if (pos <= 20)     { pos = 20;     dir = 1;  }
-      ship.style.left = pos + "px";
-      ship.style.bottom = "80px";
-      ship.style.transform = dir === 1 ? "scaleX(1) rotate(-10deg)" : "scaleX(-1) rotate(10deg)";
-    }, 16);
-  });
-</script>
