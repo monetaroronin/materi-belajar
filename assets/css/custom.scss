@@ -117,3 +117,24 @@
   color: #fff !important;
   border-color: #7c3aed !important;
 }
+
+/* Spaceship animation di sidebar */
+#sidebar .sidebar-bottom::before {
+  content: "🚀";
+  font-size: 1.2rem;
+  position: absolute;
+  bottom: 80px;
+  left: -30px;
+  animation: spaceship-fly 8s linear infinite alternate;
+  filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.6));
+}
+
+@keyframes spaceship-fly {
+  0%   { left: 10px; transform: scaleX(1); }
+  100% { left: 180px; transform: scaleX(-1); }
+}
+
+/* Pastikan sidebar punya positioning */
+#sidebar {
+  position: relative !important;
+}
