@@ -34,6 +34,14 @@
   --topbar-height: 0px !important;
 }
 
+/* =============================================
+   FIX UTAMA: justify-content-center dari Chirpy
+   menyebabkan ruang kosong besar di atas konten
+   ============================================= */
+#main-wrapper > .container.d-flex.flex-column {
+  justify-content: flex-start !important;
+}
+
 #main-wrapper > .container,
 #main-wrapper > .container-xl {
   padding-top: 0 !important;
