@@ -2,8 +2,43 @@
 ---
 
 /* =============================================
-   MATERI BELAJAR — Custom CSS (Fixed)
+   MATERI BELAJAR — Custom CSS (Fixed v3)
    ============================================= */
+
+/* =============================================
+   FIX RUANG KOSONG — main-wrapper langsung di body
+   ============================================= */
+
+/* Chirpy set padding-top via CSS var --topbar-height pada main-wrapper */
+#main-wrapper {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  --topbar-height: 0px !important;
+}
+
+/* Override CSS variable yang dipakai Chirpy untuk offset topbar */
+:root {
+  --topbar-height: 0px !important;
+}
+
+/* Kolom konten utama */
+#main-wrapper > .container-xl > .row,
+#main-wrapper > .container > .row {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  align-items: flex-start !important;
+}
+
+/* Post list */
+#post-list {
+  padding-top: 0.75rem !important;
+  margin-top: 0 !important;
+}
+
+/* Hapus topbar jika ada (beberapa versi masih punya) */
+#topbar-wrapper {
+  display: none !important;
+}
 
 /* =============================================
    ROOT
@@ -15,7 +50,7 @@ html, body {
 }
 
 /* =============================================
-   FEATURED CARD (post pertama / pin)
+   FEATURED CARD (post pertama)
    ============================================= */
 
 .featured-card {
@@ -25,6 +60,7 @@ html, body {
   color: #fff;
   position: relative;
   overflow: hidden;
+  margin-bottom: 1rem;
 }
 
 .featured-card::before {
@@ -39,6 +75,7 @@ html, body {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  margin-bottom: 0.6rem;
 }
 
 .feat-tag {
@@ -61,28 +98,18 @@ html, body {
   border-color: rgba(16,185,129,0.4);
 }
 
-.feat-tag:hover {
-  background: #7c3aed;
-  color: #fff;
-  border-color: #7c3aed;
-}
+.feat-tag:hover { background: #7c3aed; color: #fff; border-color: #7c3aed; }
 
 .featured-title {
   font-size: 1.65rem;
   font-weight: 800;
   line-height: 1.3;
-  margin-bottom: 0.75rem;
+  margin: 0.75rem 0;
   letter-spacing: -0.02em;
 }
 
-.featured-title a {
-  color: #fff !important;
-  text-decoration: none;
-}
-
-.featured-title a:hover {
-  color: #c4b5fd !important;
-}
+.featured-title a { color: #fff !important; text-decoration: none; }
+.featured-title a:hover { color: #c4b5fd !important; }
 
 .featured-desc {
   color: #d1d5db;
@@ -98,9 +125,7 @@ html, body {
   font-size: 0.8rem;
 }
 
-.feat-date {
-  color: #9ca3af;
-}
+.feat-date { color: #9ca3af; }
 
 .feat-badge {
   background: rgba(124,58,237,0.4);
@@ -122,6 +147,7 @@ html, body {
   border-left: 4px solid #e5e7eb;
   border-radius: 14px;
   padding: 1.25rem 1.5rem;
+  margin-bottom: 0.75rem;
   transition: box-shadow 0.3s ease, transform 0.3s ease, border-left-color 0.3s ease;
 }
 
@@ -130,7 +156,6 @@ html, body {
   box-shadow: 0 8px 32px rgba(0,0,0,0.08);
 }
 
-/* Warna border kiri per urutan */
 #post-list .post-card:nth-child(6n+2):hover { border-left-color: #7c3aed; }
 #post-list .post-card:nth-child(6n+3):hover { border-left-color: #2563eb; }
 #post-list .post-card:nth-child(6n+4):hover { border-left-color: #059669; }
@@ -142,6 +167,7 @@ html, body {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+  margin-bottom: 0.4rem;
 }
 
 .pc-tag {
@@ -158,40 +184,20 @@ html, body {
   transition: all 0.2s;
 }
 
-.pc-tag:nth-child(2) {
-  background: #f0fdf4;
-  color: #065f46;
-  border-color: #bbf7d0;
-}
-
-.pc-tag:nth-child(3) {
-  background: #eff6ff;
-  color: #1d4ed8;
-  border-color: #bfdbfe;
-}
-
-.pc-tag:hover {
-  background: #7c3aed;
-  color: #fff;
-  border-color: #7c3aed;
-}
+.pc-tag:nth-child(2) { background: #f0fdf4; color: #065f46; border-color: #bbf7d0; }
+.pc-tag:nth-child(3) { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+.pc-tag:hover { background: #7c3aed; color: #fff; border-color: #7c3aed; }
 
 .post-card-title {
   font-size: 1.1rem;
   font-weight: 750;
   line-height: 1.4;
   letter-spacing: -0.01em;
-  margin-bottom: 0.4rem;
+  margin: 0.4rem 0;
 }
 
-.post-card-title a {
-  color: #111827 !important;
-  text-decoration: none;
-}
-
-.post-card:hover .post-card-title a {
-  color: #7c3aed !important;
-}
+.post-card-title a { color: #111827 !important; text-decoration: none; }
+.post-card:hover .post-card-title a { color: #7c3aed !important; }
 
 .post-card-desc {
   color: #6b7280;
@@ -209,14 +215,8 @@ html, body {
   gap: 4px;
 }
 
-.pc-cats a {
-  color: #6b7280;
-  text-decoration: none;
-}
-
-.pc-cats a:hover {
-  color: #7c3aed;
-}
+.pc-cats a { color: #6b7280; text-decoration: none; }
+.pc-cats a:hover { color: #7c3aed; }
 
 /* =============================================
    PAGINATION
@@ -236,24 +236,12 @@ html, body {
   transition: all 0.2s;
 }
 
-.btn-page:hover {
-  background: #7c3aed;
-  color: #fff;
-  border-color: #7c3aed;
-}
-
-.btn-page.disabled {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.page-info {
-  font-size: 0.85rem;
-  color: #9ca3af;
-}
+.btn-page:hover { background: #7c3aed; color: #fff; border-color: #7c3aed; }
+.btn-page.disabled { opacity: 0; pointer-events: none; }
+.page-info { font-size: 0.85rem; color: #9ca3af; }
 
 /* =============================================
-   SIDEBAR TAGS (panel kanan)
+   SIDEBAR TAGS
    ============================================= */
 
 #panel-wrapper .post-tag {
@@ -280,19 +268,9 @@ html, body {
    DARK MODE
    ============================================= */
 
-[data-mode="dark"] .post-card {
-  background: #1e1e2e !important;
-  border-color: #2d2d3f !important;
-}
-
-[data-mode="dark"] .post-card-title a {
-  color: #f3f4f6 !important;
-}
-
-[data-mode="dark"] .post-card-desc {
-  color: #9ca3af !important;
-}
-
+[data-mode="dark"] .post-card { background: #1e1e2e !important; border-color: #2d2d3f !important; }
+[data-mode="dark"] .post-card-title a { color: #f3f4f6 !important; }
+[data-mode="dark"] .post-card-desc { color: #9ca3af !important; }
 [data-mode="dark"] .pc-tag {
   background: rgba(124,58,237,0.2) !important;
   color: #c4b5fd !important;
@@ -300,37 +278,23 @@ html, body {
 }
 
 /* =============================================
+   BREADCRUMB
+   ============================================= */
+
+#breadcrumb { display: none !important; }
+
+/* =============================================
+   SIDEBAR
+   ============================================= */
+
+#sidebar { position: relative !important; overflow: hidden !important; }
+
+/* =============================================
    MOBILE
    ============================================= */
 
 @media (max-width: 768px) {
-  .featured-card {
-    padding: 1.25rem;
-  }
-
-  .featured-title {
-    font-size: 1.3rem;
-  }
-
-  .post-card {
-    padding: 1rem 1.1rem;
-    border-radius: 10px;
-  }
-}
-
-/* =============================================
-   BREADCRUMB — sembunyikan
-   ============================================= */
-
-#breadcrumb {
-  display: none !important;
-}
-
-/* =============================================
-   SIDEBAR ROCKET
-   ============================================= */
-
-#sidebar {
-  position: relative !important;
-  overflow: hidden !important;
+  .featured-card { padding: 1.25rem; }
+  .featured-title { font-size: 1.3rem; }
+  .post-card { padding: 1rem 1.1rem; border-radius: 10px; }
 }
