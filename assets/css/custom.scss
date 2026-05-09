@@ -32,35 +32,17 @@
 #post-list .card-wrapper:nth-child(9):hover  { border-left-color: #059669 !important; box-shadow: -4px 8px 32px rgba(5,150,105,0.15), 0 8px 32px rgba(0,0,0,0.08) !important; transform: translateY(-2px) !important; }
 #post-list .card-wrapper:nth-child(10):hover { border-left-color: #dc2626 !important; box-shadow: -4px 8px 32px rgba(220,38,38,0.15), 0 8px 32px rgba(0,0,0,0.08) !important; transform: translateY(-2px) !important; }
 
-/* Judul hover mengikuti warna border per posisi */
-#post-list .card-wrapper:nth-child(1):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(1):hover .post-preview h2  { color: #7c3aed !important; }
-#post-list .card-wrapper:nth-child(2):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(2):hover .post-preview h2  { color: #2563eb !important; }
-#post-list .card-wrapper:nth-child(3):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(3):hover .post-preview h2  { color: #059669 !important; }
-#post-list .card-wrapper:nth-child(4):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(4):hover .post-preview h2  { color: #dc2626 !important; }
-#post-list .card-wrapper:nth-child(5):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(5):hover .post-preview h2  { color: #d97706 !important; }
-#post-list .card-wrapper:nth-child(6):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(6):hover .post-preview h2  { color: #db2777 !important; }
-#post-list .card-wrapper:nth-child(7):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(7):hover .post-preview h2  { color: #7c3aed !important; }
-#post-list .card-wrapper:nth-child(8):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(8):hover .post-preview h2  { color: #2563eb !important; }
-#post-list .card-wrapper:nth-child(9):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(9):hover .post-preview h2  { color: #059669 !important; }
-#post-list .card-wrapper:nth-child(10):hover .post-preview h1,
-#post-list .card-wrapper:nth-child(10):hover .post-preview h2 { color: #dc2626 !important; }
-
 /* Judul */
-.card-wrapper .post-preview h1,
-.card-wrapper .post-preview h2 {
+.card-wrapper .card-title a,
+.card-wrapper h2 a {
   color: #111827 !important;
   font-weight: 700 !important;
   letter-spacing: -0.02em !important;
-  transition: color 0.3s ease !important;
+}
+
+.card-wrapper .card-title a:hover,
+.card-wrapper h2 a:hover {
+  color: #7c3aed !important;
 }
 
 /* Excerpt */
@@ -116,9 +98,4 @@
   background: #7c3aed !important;
   color: #fff !important;
   border-color: #7c3aed !important;
-}
-
-
-#sidebar {
-  position: relative !important;
 }
