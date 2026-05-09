@@ -72,6 +72,8 @@ pwa:
   cache:
     enabled: true
     deny_paths:
+feed:
+  show_icon: false
 paginate: 10
 kramdown:
   footnote_backlink: "&#8617;&#xfe0e;"
@@ -134,6 +136,5 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
-
 head_scripts:
   - /materi-belajar/assets/css/custom.css
