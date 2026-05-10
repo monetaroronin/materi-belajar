@@ -2,15 +2,13 @@
 ---
 
 /* =============================================
-   MATERI BELAJAR — Premium Reader Edition
+   MATERI BELAJAR — Premium Reader Edition v2
    Font  : Inter (body) + Playfair Display (judul)
    Accent: Violet #7c3aed
    ============================================= */
 
-/* ── GOOGLE FONTS ───────────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap');
 
-/* ── BASE FONT ──────────────────────────────────────────────────────────── */
 body, html {
   font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
   font-size: 16px !important;
@@ -18,13 +16,11 @@ body, html {
   background: #f8f7ff !important;
 }
 
-/* ── CARD: Reset semua background ke putih ─────────────────────────────── */
 #post-list .card-wrapper,
 #post-list .card-wrapper *:not(a[href*="/categories/"]):not(a[href*="/tags/"]):not(.post-tag) {
   background-color: #ffffff !important;
 }
 
-/* ── CARD: Base style ───────────────────────────────────────────────────── */
 .card-wrapper {
   background: #ffffff !important;
   border: none !important;
@@ -33,13 +29,8 @@ body, html {
   margin-bottom: 1.1rem !important;
   overflow: hidden !important;
   box-shadow: 0 2px 12px rgba(0,0,0,0.05) !important;
-  transition:
-    box-shadow 0.35s cubic-bezier(.4,0,.2,1),
-    transform  0.35s cubic-bezier(.4,0,.2,1),
-    border-left-color 0.35s ease !important;
 }
 
-/* ── CARD: Accent warna SELALU TAMPIL ──────────────────────────────────── */
 #post-list .card-wrapper:nth-child(7n+1) { border-left-color: #7c3aed !important; }
 #post-list .card-wrapper:nth-child(7n+2) { border-left-color: #2563eb !important; }
 #post-list .card-wrapper:nth-child(7n+3) { border-left-color: #059669 !important; }
@@ -48,7 +39,6 @@ body, html {
 #post-list .card-wrapper:nth-child(7n+6) { border-left-color: #db2777 !important; }
 #post-list .card-wrapper:nth-child(7n+7) { border-left-color: #0891b2 !important; }
 
-/* ── CARD: Hover ────────────────────────────────────────────────────────── */
 #post-list .card-wrapper:nth-child(7n+1):hover { box-shadow: -4px 12px 36px rgba(124,58,237,0.18), 0 8px 24px rgba(0,0,0,0.07) !important; transform: translateY(-3px) !important; }
 #post-list .card-wrapper:nth-child(7n+2):hover { box-shadow: -4px 12px 36px rgba(37,99,235,0.18),  0 8px 24px rgba(0,0,0,0.07) !important; transform: translateY(-3px) !important; }
 #post-list .card-wrapper:nth-child(7n+3):hover { box-shadow: -4px 12px 36px rgba(5,150,105,0.18),  0 8px 24px rgba(0,0,0,0.07) !important; transform: translateY(-3px) !important; }
@@ -57,7 +47,6 @@ body, html {
 #post-list .card-wrapper:nth-child(7n+6):hover { box-shadow: -4px 12px 36px rgba(219,39,119,0.18), 0 8px 24px rgba(0,0,0,0.07) !important; transform: translateY(-3px) !important; }
 #post-list .card-wrapper:nth-child(7n+7):hover { box-shadow: -4px 12px 36px rgba(8,145,178,0.18),  0 8px 24px rgba(0,0,0,0.07) !important; transform: translateY(-3px) !important; }
 
-/* ── ANIMASI SCROLL: card masuk dari bawah ──────────────────────────────── */
 #post-list .card-wrapper {
   opacity: 0 !important;
   transform: translateY(24px) !important;
@@ -82,11 +71,8 @@ body, html {
 #post-list .card-wrapper:nth-child(7)  { transition-delay: 0.36s !important; }
 #post-list .card-wrapper:nth-child(n+8){ transition-delay: 0.10s !important; }
 
-#post-list .card-wrapper.is-visible:hover {
-  transform: translateY(-3px) !important;
-}
+#post-list .card-wrapper.is-visible:hover { transform: translateY(-3px) !important; }
 
-/* ── TIPOGRAFI: Judul (Playfair Display) ────────────────────────────────── */
 #post-list .card-wrapper .card-title,
 #post-list .card-wrapper .card-title a,
 #post-list .card-wrapper h1, #post-list .card-wrapper h1 a,
@@ -105,7 +91,6 @@ body, html {
 #post-list .card-wrapper h2 a:hover,
 #post-list .card-wrapper h3 a:hover { color: #7c3aed !important; }
 
-/* ── TIPOGRAFI: Excerpt ─────────────────────────────────────────────────── */
 #post-list .card-wrapper p {
   font-family: 'Inter', sans-serif !important;
   color: #475569 !important;
@@ -114,7 +99,6 @@ body, html {
   background: transparent !important;
 }
 
-/* ── TIPOGRAFI: Post meta ───────────────────────────────────────────────── */
 #post-list .card-wrapper .post-meta {
   font-family: 'Inter', sans-serif !important;
   color: #94a3b8 !important;
@@ -122,7 +106,6 @@ body, html {
   background: transparent !important;
 }
 
-/* ── TAG PILL: Base ─────────────────────────────────────────────────────── */
 #post-list .card-wrapper a[href*="/categories/"],
 #post-list .card-wrapper a[href*="/tags/"],
 #post-list .card-wrapper .post-meta a,
@@ -144,7 +127,6 @@ body, html {
   border: 1px solid #ddd6fe !important;
 }
 
-/* ── TAG PILL: Warna per kategori ──────────────────────────────────────── */
 #post-list .card-wrapper a[href*="teknologi"]         { background: #dbeafe !important; color: #1d4ed8 !important; border-color: #bfdbfe !important; }
 #post-list .card-wrapper a[href*="politik"]           { background: #fce7f3 !important; color: #be185d !important; border-color: #fbcfe8 !important; }
 #post-list .card-wrapper a[href*="ekonomi"]           { background: #d1fae5 !important; color: #065f46 !important; border-color: #a7f3d0 !important; }
@@ -161,7 +143,6 @@ body, html {
 #post-list .card-wrapper a[href*="/categories/"]:hover,
 #post-list .card-wrapper a[href*="/tags/"]:hover { opacity: 0.72 !important; }
 
-/* ── SIDEBAR KANAN ──────────────────────────────────────────────────────── */
 #panel-wrapper #access-lastmod {
   background: #ffffff !important;
   border: 1px solid #e5e7eb !important;
@@ -233,7 +214,6 @@ body, html {
   transform: translateY(-1px) !important;
 }
 
-/* ── SIDEBAR NAV ────────────────────────────────────────────────────────── */
 #sidebar { font-family: 'Inter', sans-serif !important; }
 
 #sidebar .nav-link {
@@ -255,7 +235,6 @@ body, html {
   color: #7c3aed !important;
 }
 
-/* ── MOBILE READABILITY ─────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   #post-list .card-wrapper h2 a,
   #post-list .card-wrapper h3 a,
