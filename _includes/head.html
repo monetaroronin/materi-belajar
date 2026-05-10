@@ -1,129 +1,274 @@
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta
-    name="viewport"
-    content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
-  >
+---
+---
 
-  {%- capture seo_tags -%}
-    {% seo title=false %}
-  {%- endcapture -%}
+/* =============================================
+   MATERI BELAJAR — Premium Reader Edition
+   Font  : Inter (body) + Playfair Display (judul)
+   Accent: Violet #7c3aed
+   ============================================= */
 
-  {% if page.image %}
-    {% assign src = page.image.path | default: page.image %}
+/* ── GOOGLE FONTS ───────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap');
 
-    {% unless src contains '://' %}
-      {%- capture img_url -%}
-        {% include media-url.html src=src subpath=page.media_subpath absolute=true %}
-      {%- endcapture -%}
+/* ── BASE FONT ──────────────────────────────────────────────────────────── */
+body, html {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-size: 16px !important;
+  -webkit-font-smoothing: antialiased !important;
+  background: #f8f7ff !important;
+}
 
-      {%- capture old_url -%}{{ src | absolute_url }}{%- endcapture -%}
-      {%- capture new_url -%}{{ img_url }}{%- endcapture -%}
+/* ── CARD: Reset semua background ke putih ─────────────────────────────── */
+#post-list .card-wrapper,
+#post-list .card-wrapper *:not(a[href*="/categories/"]):not(a[href*="/tags/"]):not(.post-tag) {
+  background-color: #ffffff !important;
+}
 
-      {% assign seo_tags = seo_tags | replace: old_url, new_url %}
-    {% endunless %}
+/* ── CARD: Base style ───────────────────────────────────────────────────── */
+.card-wrapper {
+  background: #ffffff !important;
+  border: none !important;
+  border-radius: 16px !important;
+  border-left: 5px solid #e5e7eb !important;
+  margin-bottom: 1.1rem !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05) !important;
+  transition:
+    box-shadow 0.35s cubic-bezier(.4,0,.2,1),
+    transform  0.35s cubic-bezier(.4,0,.2,1),
+    border-left-color 0.35s ease !important;
+}
 
-  {% elsif site.social_preview_image %}
-    {%- capture img_url -%}
-      {% include media-url.html src=site.social_preview_image absolute=true %}
-    {%- endcapture -%}
+/* ── CARD: Accent warna SELALU TAMPIL ──────────────────────────────────── */
+#post-list .card-wrapper:nth-child(7n+1) { border-left-color: #7c3aed !important; }
+#post-list .card-wrapper:nth-child(7n+2) { border-left-color: #2563eb !important; }
+#post-list .card-wrapper:nth-child(7n+3) { border-left-color: #059669 !important; }
+#post-list .card-wrapper:nth-child(7n+4) { border-left-color: #e11d48 !important; }
+#post-list .card-wrapper:nth-child(7n+5) { border-left-color: #d97706 !important; }
+#post-list .card-wrapper:nth-child(7n+6) { border-left-color: #db2777 !important; }
+#post-list .card-wrapper:nth-child(7n+7) { border-left-color: #0891b2 !important; }
 
-    {%- capture og_image -%}
-      <meta property="og:image" content="{{ img_url }}" />
-    {%- endcapture -%}
+/* ── CARD: Hover ────────────────────────────────────────────────────────── */
+#post-list .card-wrapper:nth-child(7n+1):hover { box-shadow: -4px 12px 36px rgba(124,58,237,0.18), 0 8px 24px rgba(0,0,0,0.07) !important; transform: translateY(-3px) !important; }
+#post-list .card-wrapper:nth-child(7n+2):hover { box-shadow: -4px 12px 36px rgba(37,99,235,0.18),  0 8px 24px rgba(0,0,0,0.07) !important; transform: translateY(-3px) !important; }
+#post-list .card-wrapper:nth-child(7n+3):hover { box-shadow: -4px 12px 36px rgba(5,150,105,0.18),  0 8px 24px rgba(0,0,0,0.07) !important; transform: translateY(-3px) !important; }
+#post-list .card-wrapper:nth-child(7n+4):hover { box-shadow: -4px 12px 36px rgba(225,29,72,0.18),  0 8px 24px rgba(0,0,0,0.07) !important; transform: translateY(-3px) !important; }
+#post-list .card-wrapper:nth-child(7n+5):hover { box-shadow: -4px 12px 36px rgba(217,119,6,0.18),  0 8px 24px rgba(0,0,0,0.07) !important; transform: translateY(-3px) !important; }
+#post-list .card-wrapper:nth-child(7n+6):hover { box-shadow: -4px 12px 36px rgba(219,39,119,0.18), 0 8px 24px rgba(0,0,0,0.07) !important; transform: translateY(-3px) !important; }
+#post-list .card-wrapper:nth-child(7n+7):hover { box-shadow: -4px 12px 36px rgba(8,145,178,0.18),  0 8px 24px rgba(0,0,0,0.07) !important; transform: translateY(-3px) !important; }
 
-    {%- capture twitter_image -%}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta property="twitter:image" content="{{ img_url }}" />
-    {%- endcapture -%}
+/* ── ANIMASI SCROLL: card masuk dari bawah ──────────────────────────────── */
+#post-list .card-wrapper {
+  opacity: 0 !important;
+  transform: translateY(24px) !important;
+  transition:
+    opacity    0.5s cubic-bezier(.4,0,.2,1),
+    transform  0.5s cubic-bezier(.4,0,.2,1),
+    box-shadow 0.35s cubic-bezier(.4,0,.2,1),
+    border-left-color 0.35s ease !important;
+}
 
-    {% assign old_meta_clip = '<meta name="twitter:card" content="summary" />' %}
-    {% assign new_meta_clip = og_image | append: twitter_image %}
-    {% assign seo_tags = seo_tags | replace: old_meta_clip, new_meta_clip %}
-  {% endif %}
+#post-list .card-wrapper.is-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
 
-  {{ seo_tags }}
+#post-list .card-wrapper:nth-child(1)  { transition-delay: 0.00s !important; }
+#post-list .card-wrapper:nth-child(2)  { transition-delay: 0.06s !important; }
+#post-list .card-wrapper:nth-child(3)  { transition-delay: 0.12s !important; }
+#post-list .card-wrapper:nth-child(4)  { transition-delay: 0.18s !important; }
+#post-list .card-wrapper:nth-child(5)  { transition-delay: 0.24s !important; }
+#post-list .card-wrapper:nth-child(6)  { transition-delay: 0.30s !important; }
+#post-list .card-wrapper:nth-child(7)  { transition-delay: 0.36s !important; }
+#post-list .card-wrapper:nth-child(n+8){ transition-delay: 0.10s !important; }
 
-  {%- if site.social.fediverse_handle %}
-    <meta name="fediverse:creator" content="{{ site.social.fediverse_handle }}">
-  {% endif %}
+#post-list .card-wrapper.is-visible:hover {
+  transform: translateY(-3px) !important;
+}
 
-  <title>
-    {%- unless page.layout == 'home' -%}
-      {%- capture title -%}
-        {%- if page.collection == 'tabs' -%}
-          {%- assign tab_key = page.title | downcase -%}
-          {{- site.data.locales[include.lang].tabs[tab_key] -}}
-        {%- else -%}
-          {{- page.title -}}
-        {%- endif -%}
-      {%- endcapture -%}
-      {{- title | append: ' | ' -}}
-    {%- endunless -%}
-    {{- site.title -}}
-  </title>
+/* ── TIPOGRAFI: Judul (Playfair Display) ────────────────────────────────── */
+#post-list .card-wrapper .card-title,
+#post-list .card-wrapper .card-title a,
+#post-list .card-wrapper h1, #post-list .card-wrapper h1 a,
+#post-list .card-wrapper h2, #post-list .card-wrapper h2 a,
+#post-list .card-wrapper h3, #post-list .card-wrapper h3 a {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: 1.18rem !important;
+  font-weight: 700 !important;
+  line-height: 1.38 !important;
+  letter-spacing: -0.01em !important;
+  color: #0f172a !important;
+  background: transparent !important;
+}
 
-  {% include_cached favicons.html %}
+#post-list .card-wrapper .card-title a:hover,
+#post-list .card-wrapper h2 a:hover,
+#post-list .card-wrapper h3 a:hover { color: #7c3aed !important; }
 
-  {% unless site.assets.self_host.enabled %}
-    {% for hint in site.data.origin.cors.resource_hints %}
-      {% for link in hint.links %}
-        <link rel="{{ link.rel }}" href="{{ hint.url }}" {{ link.opts | join: ' ' }}>
-      {% endfor %}
-    {% endfor %}
-  {% endunless %}
+/* ── TIPOGRAFI: Excerpt ─────────────────────────────────────────────────── */
+#post-list .card-wrapper p {
+  font-family: 'Inter', sans-serif !important;
+  color: #475569 !important;
+  font-size: 0.93rem !important;
+  line-height: 1.7 !important;
+  background: transparent !important;
+}
 
-  {% unless jekyll.environment == 'production' %}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
-  {% endunless %}
+/* ── TIPOGRAFI: Post meta ───────────────────────────────────────────────── */
+#post-list .card-wrapper .post-meta {
+  font-family: 'Inter', sans-serif !important;
+  color: #94a3b8 !important;
+  font-size: 0.79rem !important;
+  background: transparent !important;
+}
 
-  <link rel="stylesheet" href="{{ '/assets/css/:THEME.css' | replace: ':THEME', site.theme | relative_url }}">
+/* ── TAG PILL: Base ─────────────────────────────────────────────────────── */
+#post-list .card-wrapper a[href*="/categories/"],
+#post-list .card-wrapper a[href*="/tags/"],
+#post-list .card-wrapper .post-meta a,
+#post-list .card-wrapper .categories a,
+#post-list .card-wrapper .post-categories a {
+  display: inline-block !important;
+  padding: 2px 10px !important;
+  border-radius: 999px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.67rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  margin-right: 4px !important;
+  transition: opacity 0.2s !important;
+  background: #f5f3ff !important;
+  color: #6d28d9 !important;
+  border: 1px solid #ddd6fe !important;
+}
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+/* ── TAG PILL: Warna per kategori ──────────────────────────────────────── */
+#post-list .card-wrapper a[href*="teknologi"]         { background: #dbeafe !important; color: #1d4ed8 !important; border-color: #bfdbfe !important; }
+#post-list .card-wrapper a[href*="politik"]           { background: #fce7f3 !important; color: #be185d !important; border-color: #fbcfe8 !important; }
+#post-list .card-wrapper a[href*="ekonomi"]           { background: #d1fae5 !important; color: #065f46 !important; border-color: #a7f3d0 !important; }
+#post-list .card-wrapper a[href*="sosial"]            { background: #fef3c7 !important; color: #92400e !important; border-color: #fde68a !important; }
+#post-list .card-wrapper a[href*="produktivitas"]     { background: #ede9fe !important; color: #5b21b6 !important; border-color: #ddd6fe !important; }
+#post-list .card-wrapper a[href*="kecerdasan-buatan"] { background: #e0f2fe !important; color: #0369a1 !important; border-color: #bae6fd !important; }
+#post-list .card-wrapper a[href*="kesehatan"]         { background: #ccfbf1 !important; color: #0f766e !important; border-color: #99f6e4 !important; }
+#post-list .card-wrapper a[href*="budaya"]            { background: #ffedd5 !important; color: #9a3412 !important; border-color: #fed7aa !important; }
+#post-list .card-wrapper a[href*="demokrasi"]         { background: #e0e7ff !important; color: #3730a3 !important; border-color: #c7d2fe !important; }
+#post-list .card-wrapper a[href*="sejarah"]           { background: #fef9c3 !important; color: #854d0e !important; border-color: #fef08a !important; }
+#post-list .card-wrapper a[href="/materi-belajar/categories/ai/"],
+#post-list .card-wrapper a[href="/materi-belajar/tags/ai/"] { background: #e0f2fe !important; color: #0369a1 !important; border-color: #bae6fd !important; }
 
-  <link rel="stylesheet" href="{{ site.data.origin[type].webfonts | relative_url }}">
-  <link rel="stylesheet" href="{{ site.data.origin[type].fontawesome.css | relative_url }}">
+#post-list .card-wrapper a[href*="/categories/"]:hover,
+#post-list .card-wrapper a[href*="/tags/"]:hover { opacity: 0.72 !important; }
 
-  {% if site.toc and page.toc %}
-    <link rel="stylesheet" href="{{ site.data.origin[type].toc.css | relative_url }}">
-  {% endif %}
+/* ── SIDEBAR KANAN ──────────────────────────────────────────────────────── */
+#panel-wrapper #access-lastmod {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 16px !important;
+  padding: 1.1rem 1.3rem !important;
+  margin-bottom: 1rem !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04) !important;
+}
 
-  {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' %}
-    <link rel="stylesheet" href="{{ site.data.origin[type]['lazy-polyfill'].css | relative_url }}">
-  {% endif %}
+#panel-wrapper #tags,
+#panel-wrapper .post-tag-wrapper,
+#panel-wrapper .panel-section,
+#panel-wrapper #trending-tags {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 16px !important;
+  padding: 1.1rem 1.3rem !important;
+  margin-bottom: 1rem !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04) !important;
+}
 
-  {% if page.layout == 'page' or page.layout == 'post' %}
-    <link rel="stylesheet" href="{{ site.data.origin[type].glightbox.css | relative_url }}">
-  {% endif %}
+#panel-wrapper h2,
+#panel-wrapper h3,
+#panel-wrapper .panel-heading {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  color: #94a3b8 !important;
+  margin-bottom: 0.8rem !important;
+}
 
-  <script src="{{ '/assets/js/dist/theme.min.js' | relative_url }}"></script>
+#panel-wrapper #access-lastmod li {
+  padding: 7px 0 !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  font-size: 0.82rem !important;
+  line-height: 1.45 !important;
+  list-style: none !important;
+}
+#panel-wrapper #access-lastmod li:last-child { border-bottom: none !important; }
+#panel-wrapper #access-lastmod a {
+  font-family: 'Inter', sans-serif !important;
+  color: #334155 !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+#panel-wrapper #access-lastmod a:hover { color: #7c3aed !important; }
 
-  {% include js-selector.html lang=lang %}
+#panel-wrapper .post-tag,
+#panel-wrapper a.post-tag {
+  border-radius: 999px !important;
+  padding: 4px 14px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  background: #f5f3ff !important;
+  color: #6d28d9 !important;
+  border: 1px solid #ddd6fe !important;
+  margin: 3px !important;
+  transition: all 0.2s !important;
+  display: inline-block !important;
+}
+#panel-wrapper .post-tag:hover,
+#panel-wrapper a.post-tag:hover {
+  background: #7c3aed !important;
+  color: #fff !important;
+  border-color: #7c3aed !important;
+  transform: translateY(-1px) !important;
+}
 
-  {% if jekyll.environment == 'production' %}
-    {% if site.pwa.enabled %}
-      <script
-        defer
-        src="{{ '/app.min.js' | relative_url }}?baseurl={{ site.baseurl | default: '' }}&register={{ site.pwa.cache.enabled }}"
-      ></script>
-    {% endif %}
+/* ── SIDEBAR NAV ────────────────────────────────────────────────────────── */
+#sidebar { font-family: 'Inter', sans-serif !important; }
 
-    {% for analytics in site.analytics %}
-      {% capture str %}{{ analytics }}{% endcapture %}
-      {% assign platform = str | split: '{' | first %}
-      {% if site.analytics[platform].id and site.analytics[platform].id != empty %}
-        {% include analytics/{{ platform }}.html %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-<!-- Custom CSS -->
-  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+#sidebar .nav-link {
+  border-left: 3px solid transparent !important;
+  padding-left: calc(1rem - 3px) !important;
+  transition: border-left-color 0.2s, color 0.2s !important;
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;
+}
+#sidebar .nav-link.active,
+#sidebar li.active > .nav-link {
+  border-left-color: #7c3aed !important;
+  color: #7c3aed !important;
+  font-weight: 600 !important;
+  background: transparent !important;
+}
+#sidebar .nav-link:not(.active):hover {
+  border-left-color: #ddd6fe !important;
+  color: #7c3aed !important;
+}
 
-  {% include metadata-hook.html %}
-</head>
-</head>
+/* ── MOBILE READABILITY ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  #post-list .card-wrapper h2 a,
+  #post-list .card-wrapper h3 a,
+  #post-list .card-wrapper .card-title a {
+    font-size: 1.08rem !important;
+    line-height: 1.42 !important;
+  }
+  #post-list .card-wrapper p {
+    font-size: 0.95rem !important;
+    line-height: 1.72 !important;
+  }
+  .card-wrapper {
+    border-radius: 12px !important;
+    margin-bottom: 0.85rem !important;
+  }
+}
