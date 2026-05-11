@@ -224,28 +224,64 @@
       }
 
       /* Strip inline style Chirpy yang bisa block sidebar — JANGAN hapus transform */
-      function forceSidebarVisible(sidebar) {
-        sidebar.style.removeProperty('display');
-        sidebar.style.removeProperty('visibility');
-        sidebar.style.removeProperty('opacity');
-        sidebar.style.removeProperty('pointer-events');
-      }
-
       function initHamburger() {
         var ham     = document.getElementById('mobile-hamburger');
         var sidebar = document.getElementById('sidebar');
         if (!ham || !sidebar) return;
 
+        /* Setup sidebar sebagai drawer via inline style — bypass CSS specificity */
+        function setupSidebar() {
+          var s = sidebar.style;
+          s.setProperty('position', 'fixed', 'important');
+          s.setProperty('top', '0', 'important');
+          s.setProperty('left', '0', 'important');
+          s.setProperty('right', 'auto', 'important');
+          s.setProperty('bottom', '0', 'important');
+          s.setProperty('width', '280px', 'important');
+          s.setProperty('height', '100vh', 'important');
+          s.setProperty('z-index', '9999', 'important');
+          s.setProperty('overflow-y', 'auto', 'important');
+          s.setProperty('overflow-x', 'hidden', 'important');
+          s.setProperty('transform', 'translateX(-110%)', 'important');
+          s.setProperty('transition', 'transform 0.3s ease', 'important');
+          s.setProperty('visibility', 'visible', 'important');
+          s.setProperty('opacity', '1', 'important');
+          s.setProperty('display', 'flex', 'important');
+          s.setProperty('flex-direction', 'column', 'important');
+          s.setProperty('padding', '1.5rem 1rem', 'important');
+          /* Background sesuai mode */
+          var mode = document.documentElement.getAttribute('data-mode') || 'light';
+          var bg = mode === 'dark' ? '#0f0f0f' : mode === 'sunset' ? '#fef3c7' : '#f8f7ff';
+          s.setProperty('background', bg, 'important');
+        }
+        setupSidebar();
+
+        /* Buat overlay */
+        var overlay = document.getElementById('sidebar-overlay');
+        if (!overlay) {
+          overlay = document.createElement('div');
+          overlay.id = 'sidebar-overlay';
+          overlay.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9998;cursor:pointer;';
+          document.body.appendChild(overlay);
+        }
+
         function openSidebar() {
-          forceSidebarVisible(sidebar);
+          /* Update background saat buka (mode bisa berubah) */
+          var mode = document.documentElement.getAttribute('data-mode') || 'light';
+          var bg = mode === 'dark' ? '#0f0f0f' : mode === 'sunset' ? '#fef3c7' : '#f8f7ff';
+          sidebar.style.setProperty('background', bg, 'important');
+          sidebar.style.setProperty('transform', 'translateX(0)', 'important');
+          sidebar.style.setProperty('box-shadow', '6px 0 32px rgba(0,0,0,0.25)', 'important');
+          overlay.style.display = 'block';
           document.body.classList.add('sidebar-open');
-          sidebar.classList.add('sidebar-open');
           ham.innerHTML = '&#10005;';
           ham.setAttribute('aria-label', 'Tutup menu');
         }
         function closeSidebar() {
+          sidebar.style.setProperty('transform', 'translateX(-110%)', 'important');
+          sidebar.style.removeProperty('box-shadow');
+          overlay.style.display = 'none';
           document.body.classList.remove('sidebar-open');
-          sidebar.classList.remove('sidebar-open');
           ham.innerHTML = '&#9776;';
           ham.setAttribute('aria-label', 'Buka menu');
         }
@@ -254,26 +290,15 @@
           e.stopPropagation();
           document.body.classList.contains('sidebar-open') ? closeSidebar() : openSidebar();
         });
-
-        document.addEventListener('click', function (e) {
-          if (!document.body.classList.contains('sidebar-open')) return;
-          if (!sidebar.contains(e.target) && !ham.contains(e.target)) {
-            closeSidebar();
-          }
-        });
-
+        overlay.addEventListener('click', closeSidebar);
         sidebar.querySelectorAll('a').forEach(function (link) {
           link.addEventListener('click', closeSidebar);
         });
-
-        window.addEventListener('resize', function () {
-          if (window.innerWidth > 1199) closeSidebar();
-        });
-
         document.addEventListener('keydown', function (e) {
           if (e.key === 'Escape') closeSidebar();
         });
       }
+
 
       function initThemeToggle() {
         /* Support dua ID: theme-toggle (dari topbar.html) dan dark-mode-toggle (Chirpy bawaan) */
