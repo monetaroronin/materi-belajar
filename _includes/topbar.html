@@ -2,5 +2,12 @@
 <div class="mobile-topbar" id="mobile-topbar">
   <button class="hamburger" id="mobile-hamburger" aria-label="Buka menu">&#9776;</button>
   <span class="site-title">{{ site.title }}</span>
+  
+  <!-- Search trigger — tambahkan ini -->
+  <button id="search-trigger" type="button" class="btn btn-link nav-btn"
+          aria-label="Search">
+    <i class="fas fa-search"></i>
+  </button>
+
   {% include dark-mode-toggle.html %}
 </div>
