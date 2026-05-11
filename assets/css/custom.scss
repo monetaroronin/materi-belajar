@@ -270,3 +270,39 @@ body, html {
     margin-bottom: 0.85rem !important;
   }
 }
+
+/* ── DARK MODE TOGGLE BUTTON ── */
+.theme-toggle {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  border-radius: 0.5rem !important;
+  background-color: #f3f4f6 !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0.5rem !important;
+  transition: background-color 0.2s !important;
+}
+.theme-toggle:hover {
+  background-color: #e5e7eb !important;
+}
+.theme-toggle svg {
+  width: 1rem !important;
+  height: 1rem !important;
+  color: #374151 !important;
+  fill: currentColor !important;
+}
+.theme-toggle .sun { display: none !important; }
+.theme-toggle .moon { display: block !important; }
+
+/* Dark mode: tampilkan sun, sembunyikan moon */
+[data-mode="dark"] .theme-toggle {
+  background-color: #1f2937 !important;
+}
+[data-mode="dark"] .theme-toggle:hover {
+  background-color: #374151 !important;
+}
+[data-mode="dark"] .theme-toggle .sun { display: block !important; }
+[data-mode="dark"] .theme-toggle .moon { display: none !important; }
