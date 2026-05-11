@@ -3,17 +3,18 @@
 
 /* =============================================
    MATERI BELAJAR — Premium Reader Edition
-   Font  : Inter (body) + Playfair Display (judul)
+   Font  : Nunito (body) + Lora (judul)
    Accent: Violet #7c3aed
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;600;700&display=swap');
 
 body, html {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif !important;
   font-size: 16px !important;
   -webkit-font-smoothing: antialiased !important;
   background: #f8f7ff !important;
+  color: #111827 !important;
 }
 
 #post-list .card-wrapper,
@@ -73,7 +74,12 @@ body, html {
 
 #post-list .card-wrapper.is-visible:hover { transform: translateY(-3px) !important; }
 
-/* ── TIPOGRAFI: Judul — semua kemungkinan selector Chirpy ── */
+/* ── TIPOGRAFI: Judul ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lora', Georgia, serif !important;
+  color: #111827 !important;
+}
+
 #post-list .card-wrapper .card-title,
 #post-list .card-wrapper .card-title a,
 #post-list .card-wrapper .card-body .card-title,
@@ -86,12 +92,12 @@ body, html {
 #post-list .card-wrapper h2, #post-list .card-wrapper h2 a,
 #post-list .card-wrapper h3, #post-list .card-wrapper h3 a,
 #post-list a.post-preview .card-body > *:first-child {
-  font-family: 'Playfair Display', Georgia, serif !important;
+  font-family: 'Lora', Georgia, serif !important;
   font-size: 1.18rem !important;
   font-weight: 700 !important;
   line-height: 1.38 !important;
   letter-spacing: -0.01em !important;
-  color: #0f172a !important;
+  color: #111827 !important;
   background: transparent !important;
 }
 
@@ -103,7 +109,7 @@ body, html {
 /* ── TIPOGRAFI: Excerpt ── */
 #post-list .card-wrapper p,
 #post-list .card-wrapper .card-body p {
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Nunito', sans-serif !important;
   color: #475569 !important;
   font-size: 0.93rem !important;
   line-height: 1.7 !important;
@@ -113,7 +119,7 @@ body, html {
 /* ── TIPOGRAFI: Post meta ── */
 #post-list .card-wrapper .post-meta,
 #post-list .card-wrapper .card-body .post-meta {
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Nunito', sans-serif !important;
   color: #94a3b8 !important;
   font-size: 0.79rem !important;
   background: transparent !important;
@@ -128,7 +134,7 @@ body, html {
   display: inline-block !important;
   padding: 2px 10px !important;
   border-radius: 999px !important;
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Nunito', sans-serif !important;
   font-size: 0.67rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.05em !important;
@@ -183,7 +189,7 @@ body, html {
 #panel-wrapper h2,
 #panel-wrapper h3,
 #panel-wrapper .panel-heading {
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Nunito', sans-serif !important;
   font-size: 0.7rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
@@ -201,7 +207,7 @@ body, html {
 }
 #panel-wrapper #access-lastmod li:last-child { border-bottom: none !important; }
 #panel-wrapper #access-lastmod a {
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Nunito', sans-serif !important;
   color: #334155 !important;
   text-decoration: none !important;
   font-weight: 500 !important;
@@ -212,7 +218,7 @@ body, html {
 #panel-wrapper a.post-tag {
   border-radius: 999px !important;
   padding: 4px 14px !important;
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Nunito', sans-serif !important;
   font-size: 0.72rem !important;
   font-weight: 600 !important;
   background: #f5f3ff !important;
@@ -231,7 +237,7 @@ body, html {
 }
 
 /* ── SIDEBAR NAV ── */
-#sidebar { font-family: 'Inter', sans-serif !important; }
+#sidebar { font-family: 'Nunito', sans-serif !important; }
 
 #sidebar .nav-link {
   border-left: 3px solid transparent !important;
@@ -318,6 +324,15 @@ body, html {
 [data-mode="dark"] .container,
 [data-mode="dark"] #page-wrapper {
   background: transparent !important;
+}
+
+[data-mode="dark"] h1,
+[data-mode="dark"] h2,
+[data-mode="dark"] h3,
+[data-mode="dark"] h4,
+[data-mode="dark"] h5,
+[data-mode="dark"] h6 {
+  color: #f1f5f9 !important;
 }
 
 /* Card */
