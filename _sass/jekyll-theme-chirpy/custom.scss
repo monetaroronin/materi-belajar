@@ -268,10 +268,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ==============================================
    SITE TITLE — gradient text (semua resolusi)
-   Chirpy pakai --site-title-color via CSS var,
-   jadi kita override lewat background-clip trick
+   Override --site-title-color langsung di dalam
+   selector supaya mengalahkan Chirpy di level
+   manapun, termasuk di dalam media query.
    ============================================== */
-.site-title {
+.site-title,
+#sidebar .site-title,
+.mobile-topbar .site-title,
+a.site-title {
+  --site-title-color: transparent !important;
   background: linear-gradient(135deg, #7c3aed, #2563eb) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
@@ -279,7 +284,11 @@ h1, h2, h3, h4, h5, h6 {
   color: transparent !important;
 }
 
-[data-mode="dark"] .site-title {
+[data-mode="dark"] .site-title,
+[data-mode="dark"] #sidebar .site-title,
+[data-mode="dark"] .mobile-topbar .site-title,
+[data-mode="dark"] a.site-title {
+  --site-title-color: transparent !important;
   background: linear-gradient(135deg, #a78bfa, #60a5fa) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
@@ -287,7 +296,11 @@ h1, h2, h3, h4, h5, h6 {
   color: transparent !important;
 }
 
-[data-mode="sunset"] .site-title {
+[data-mode="sunset"] .site-title,
+[data-mode="sunset"] #sidebar .site-title,
+[data-mode="sunset"] .mobile-topbar .site-title,
+[data-mode="sunset"] a.site-title {
+  --site-title-color: transparent !important;
   background: linear-gradient(135deg, #d97706, #f59e0b) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
@@ -738,8 +751,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   /* ── Site title di topbar: badge chip ── */
-  /* Gradient text sudah dihandle oleh rule .site-title global di atas.
-     Di sini hanya tambahkan styling chip/badge-nya. */
+  /* Gradient text dihandle rule global .site-title di atas.
+     Di sini hanya tambahkan chip/badge styling-nya. */
   .mobile-topbar .site-title {
     flex: unset !important;
     font-family: 'Lora', Georgia, serif !important;
