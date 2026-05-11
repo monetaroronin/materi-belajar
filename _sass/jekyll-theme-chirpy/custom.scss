@@ -9,6 +9,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;600;700&display=swap');
 
+/* ==============================================
+   OVERRIDE CSS VARIABLES CHIRPY
+   (harus di atas segalanya)
+   ============================================== */
+:root {
+  --site-title-color: transparent !important;
+}
+
 body, html {
   font-family: 'Nunito', system-ui, -apple-system, sans-serif !important;
   font-size: 16px !important;
@@ -256,6 +264,35 @@ h1, h2, h3, h4, h5, h6 {
 #sidebar .nav-link:not(.active):hover {
   border-left-color: #ddd6fe !important;
   color: #7c3aed !important;
+}
+
+/* ==============================================
+   SITE TITLE — gradient text (semua resolusi)
+   Chirpy pakai --site-title-color via CSS var,
+   jadi kita override lewat background-clip trick
+   ============================================== */
+.site-title {
+  background: linear-gradient(135deg, #7c3aed, #2563eb) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+[data-mode="dark"] .site-title {
+  background: linear-gradient(135deg, #a78bfa, #60a5fa) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+[data-mode="sunset"] .site-title {
+  background: linear-gradient(135deg, #d97706, #f59e0b) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 
 /* ==============================================
@@ -700,7 +737,9 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 2px 8px rgba(124,58,237,0.15) !important;
   }
 
-  /* ── Site title: badge chip gradient ── */
+  /* ── Site title di topbar: badge chip ── */
+  /* Gradient text sudah dihandle oleh rule .site-title global di atas.
+     Di sini hanya tambahkan styling chip/badge-nya. */
   .mobile-topbar .site-title {
     flex: unset !important;
     font-family: 'Lora', Georgia, serif !important;
@@ -716,21 +755,8 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 12px 0 8px !important;
     height: 32px !important;
     border-radius: 999px !important;
-    background: linear-gradient(135deg, #ede9fe, #dbeafe) !important;
     box-shadow: 0 1px 4px rgba(124,58,237,0.12) !important;
-    transition: all 0.2s ease !important;
-    /* gradient text */
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    color: transparent !important;
-    background-image: linear-gradient(135deg, #7c3aed, #2563eb) !important;
-  }
-  .mobile-topbar .site-title::before {
-    content: '📖' !important;
-    font-size: 0.9rem !important;
-    -webkit-text-fill-color: initial !important;
-    flex-shrink: 0 !important;
+    transition: box-shadow 0.2s ease, transform 0.2s ease !important;
   }
   .mobile-topbar .site-title:hover {
     box-shadow: 0 2px 10px rgba(124,58,237,0.22) !important;
@@ -767,12 +793,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #c4b5fd !important;
   }
   [data-mode="dark"] .mobile-topbar .site-title {
-    background: linear-gradient(135deg, #1e1b4b, #1e3a5f) !important;
-    background-image: linear-gradient(135deg, #a78bfa, #60a5fa) !important;
-    background-clip: text !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    color: transparent !important;
     box-shadow: 0 1px 4px rgba(124,58,237,0.25) !important;
   }
 
@@ -795,12 +815,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #92400e !important;
   }
   [data-mode="sunset"] .mobile-topbar .site-title {
-    background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
-    background-image: linear-gradient(135deg, #d97706, #f59e0b) !important;
-    background-clip: text !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    color: transparent !important;
     box-shadow: 0 1px 4px rgba(217,119,6,0.2) !important;
   }
 }
