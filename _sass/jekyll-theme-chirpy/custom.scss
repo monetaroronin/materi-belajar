@@ -957,3 +957,13 @@ html[data-mode="dark"] #search-trigger {
   height: 14px !important;
   flex-shrink: 0 !important;
 }
+
+.theme-toggle::after {
+  content: "Terang";
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+[data-mode="dark"] .theme-toggle::after { content: "Gelap"; }
+[data-mode="sunset"] .theme-toggle::after { content: "Sunset"; }
