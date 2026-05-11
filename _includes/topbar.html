@@ -1,14 +1,21 @@
-<div class="mobile-topbar" id="mobile-topbar" style="display:flex;align-items:center;gap:8px;flex-wrap:nowrap;">
-  <button class="hamburger" id="mobile-hamburger" aria-label="Buka menu">&#9776;</button>
-  <span class="site-title" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ site.title }}</span>
+<div class="mobile-topbar" id="mobile-topbar" style="display:flex;flex-direction:column;align-items:stretch;gap:6px;padding:8px 1rem;">
 
-  <!-- Tombol Cari -->
+  <!-- Baris 1: Hamburger + Judul + Toggle -->
+  <div style="display:flex;align-items:center;gap:8px;flex-wrap:nowrap;">
+    <button class="hamburger" id="mobile-hamburger" aria-label="Buka menu">&#9776;</button>
+    <span class="site-title" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ site.title }}</span>
+    <div style="display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;gap:6px;height:32px;">
+      {% include dark-mode-toggle.html %}
+    </div>
+  </div>
+
+  <!-- Baris 2: Tombol Cari full-width -->
   <button id="search-trigger" type="button" aria-label="Cari"
     style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 14px;
            border-radius:999px;border:1.5px solid #e5e7eb;background:#ffffff;
            cursor:pointer;color:#374151;font-family:'Nunito',sans-serif;
            font-size:0.75rem;font-weight:700;letter-spacing:0.04em;
-           box-shadow:0 1px 4px rgba(0,0,0,0.07);white-space:nowrap;flex-shrink:0;">
+           box-shadow:0 1px 4px rgba(0,0,0,0.07);white-space:nowrap;width:100%;justify-content:center;">
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
          viewBox="0 0 24 24" fill="none" stroke="currentColor"
          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -18,10 +25,6 @@
     Cari...
   </button>
 
- <div style="display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;gap:6px;height:32px;">
-    {% include dark-mode-toggle.html %}
-  </div>
-  
 </div>
 
 <!-- Search Overlay -->
