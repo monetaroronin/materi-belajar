@@ -277,22 +277,21 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* ── DARK MODE TOGGLE BUTTON (Pill + Animasi) ── */
+/* ── DARK MODE TOGGLE BUTTON (Icon only, compact) ── */
 .theme-toggle {
   display: flex !important;
   align-items: center !important;
-  gap: 6px !important;
-  padding: 6px 14px !important;
+  justify-content: center !important;
+  padding: 6px 10px !important;
   border-radius: 999px !important;
   border: 1.5px solid #e5e7eb !important;
   background-color: #ffffff !important;
   cursor: pointer !important;
-  font-family: 'Nunito', sans-serif !important;
-  font-size: 0.78rem !important;
-  font-weight: 700 !important;
+  font-size: 0 !important;
   color: #374151 !important;
   transition: all 0.3s cubic-bezier(.4,0,.2,1) !important;
   box-shadow: 0 1px 4px rgba(0,0,0,0.07) !important;
+  line-height: 1 !important;
   white-space: nowrap !important;
 }
 .theme-toggle:hover {
@@ -302,15 +301,20 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-1px) !important;
 }
 .theme-toggle svg {
-  width: 0.9rem !important;
-  height: 0.9rem !important;
-  fill: currentColor !important;
-  transition: transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.3s !important;
+  width: 1rem !important;
+  height: 1rem !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  display: block !important;
+  transition: transform 0.4s cubic-bezier(.4,0,.2,1) !important;
 }
-.theme-toggle .sun { display: none !important; }
-.theme-toggle .moon { display: block !important; }
-.theme-toggle .toggle-label-dark { display: inline !important; }
+.theme-toggle .toggle-label-dark,
 .theme-toggle .toggle-label-light { display: none !important; }
+.theme-toggle .sun  { display: none !important; }
+.theme-toggle .moon { display: block !important; }
 
 [data-mode="dark"] .theme-toggle {
   background-color: #1e1b4b !important;
@@ -323,10 +327,8 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff !important;
   box-shadow: 0 4px 16px rgba(124,58,237,0.35) !important;
 }
-[data-mode="dark"] .theme-toggle .sun { display: block !important; }
+[data-mode="dark"] .theme-toggle .sun  { display: block !important; }
 [data-mode="dark"] .theme-toggle .moon { display: none !important; }
-[data-mode="dark"] .theme-toggle .toggle-label-dark { display: none !important; }
-[data-mode="dark"] .theme-toggle .toggle-label-light { display: inline !important; }
 
 /* ── DARK MODE OVERRIDES ── */
 [data-mode="dark"] body,
