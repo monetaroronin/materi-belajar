@@ -137,19 +137,22 @@
 
   <!-- Dark Mode Toggle Script -->
   <script>
-    const toggle = document.getElementById('theme-toggle');
-    if (toggle) {
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+
       toggle.addEventListener('click', () => {
-        const isDark = document.documentElement.getAttribute('data-mode') === 'dark';
+        const html = document.documentElement;
+        const isDark = html.getAttribute('data-mode') === 'dark';
         if (isDark) {
-          document.documentElement.setAttribute('data-mode', 'light');
+          html.setAttribute('data-mode', 'light');
           localStorage.setItem('mode', 'light');
         } else {
-          document.documentElement.setAttribute('data-mode', 'dark');
+          html.setAttribute('data-mode', 'dark');
           localStorage.setItem('mode', 'dark');
         }
       });
-    }
+    });
   </script>
 
 </head>
