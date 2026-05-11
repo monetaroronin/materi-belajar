@@ -25,30 +25,42 @@ body, html {
 }
 
 /* ==============================================
-   SEARCH BUTTON FIX
-   Pastikan search trigger & wrapper tidak ter-hide
+   SEARCH BUTTON FIX — diperkuat
    ============================================== */
 #search-trigger,
+button#search-trigger,
 .search-wrapper,
-[data-toggle="search"],
 #topbar #search-trigger,
+#topbar button#search-trigger,
 #topbar .search-wrapper,
 .topbar-wrapper #search-trigger,
+.topbar-wrapper button#search-trigger,
 nav #search-trigger,
-nav .search-wrapper {
+nav .search-wrapper,
+[data-toggle="search"],
+i.search-trigger,
+span.search-trigger {
   display: inline-flex !important;
   visibility: visible !important;
   opacity: 1 !important;
   pointer-events: auto !important;
+  position: relative !important;
+  z-index: 100 !important;
 }
 
-/* Pastikan topbar Chirpy asli (#topbar) tidak tersembunyi */
+/* Jaga topbar Chirpy tetap muncul */
 #topbar,
 #topbar-wrapper,
 .topbar-wrapper {
   display: flex !important;
   visibility: visible !important;
   opacity: 1 !important;
+}
+
+/* Jaga #main-content atau wrapper tidak overlap topbar */
+#main-wrapper {
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 /* ==============================================
