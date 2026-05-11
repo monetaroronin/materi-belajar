@@ -223,13 +223,11 @@
         return MODES[(i + 1) % MODES.length];
       }
 
-      /* Strip semua inline style Chirpy yang bisa block sidebar */
+      /* Strip inline style Chirpy yang bisa block sidebar — JANGAN hapus transform */
       function forceSidebarVisible(sidebar) {
         sidebar.style.removeProperty('display');
-        sidebar.style.removeProperty('transform');
         sidebar.style.removeProperty('visibility');
         sidebar.style.removeProperty('opacity');
-        sidebar.style.removeProperty('left');
         sidebar.style.removeProperty('pointer-events');
       }
 
