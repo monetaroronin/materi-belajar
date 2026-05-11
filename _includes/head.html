@@ -211,6 +211,7 @@
     (function () {
       var MODES = ['light', 'sunset', 'dark'];
       var KEY   = 'mb-theme';
+      var BREAKPOINT = 1024; // px — di bawah ini dianggap mobile/tablet
 
       function save(m) {
         try { localStorage.setItem(KEY, m); } catch (e) {}
@@ -222,41 +223,61 @@
         var i = MODES.indexOf(m);
         return MODES[(i + 1) % MODES.length];
       }
+      function isDesktop() {
+        return window.innerWidth >= BREAKPOINT;
+      }
 
-      /* Strip inline style Chirpy yang bisa block sidebar — JANGAN hapus transform */
       function initHamburger() {
         var ham     = document.getElementById('mobile-hamburger');
         var sidebar = document.getElementById('sidebar');
         if (!ham || !sidebar) return;
 
-        /* Setup sidebar sebagai drawer via inline style — bypass CSS specificity */
-        function setupSidebar() {
-          var s = sidebar.style;
-          s.setProperty('position', 'fixed', 'important');
-          s.setProperty('top', '0', 'important');
-          s.setProperty('left', '0', 'important');
-          s.setProperty('right', 'auto', 'important');
-          s.setProperty('bottom', '0', 'important');
-          s.setProperty('width', '280px', 'important');
-          s.setProperty('height', '100vh', 'important');
-          s.setProperty('z-index', '9999', 'important');
-          s.setProperty('overflow-y', 'auto', 'important');
-          s.setProperty('overflow-x', 'hidden', 'important');
-          s.setProperty('transform', 'translateX(-110%)', 'important');
-          s.setProperty('transition', 'transform 0.3s ease', 'important');
-          s.setProperty('visibility', 'visible', 'important');
-          s.setProperty('opacity', '1', 'important');
-          s.setProperty('display', 'flex', 'important');
-          s.setProperty('flex-direction', 'column', 'important');
-          s.setProperty('padding', '1.5rem 1rem', 'important');
-          /* Background sesuai mode */
+        function getSidebarBg() {
           var mode = document.documentElement.getAttribute('data-mode') || 'light';
-          var bg = mode === 'dark' ? '#0f0f0f' : mode === 'sunset' ? '#fef3c7' : '#f8f7ff';
-          s.setProperty('background', bg, 'important');
+          return mode === 'dark' ? '#0f0f0f' : mode === 'sunset' ? '#fef3c7' : '#f8f7ff';
         }
+
+        function setupSidebar() {
+          if (isDesktop()) {
+            /* Desktop: hapus semua inline style — biarkan CSS Chirpy yang handle */
+            var props = [
+              'position','top','left','right','bottom','width','height',
+              'z-index','overflow-y','overflow-x','transform','transition',
+              'visibility','opacity','display','flex-direction','padding',
+              'background','box-shadow'
+            ];
+            props.forEach(function (p) { sidebar.style.removeProperty(p); });
+            /* Sembunyikan tombol hamburger di desktop */
+            ham.style.setProperty('display', 'none', 'important');
+          } else {
+            /* Mobile/tablet: sidebar jadi drawer */
+            var s = sidebar.style;
+            s.setProperty('position',       'fixed',            'important');
+            s.setProperty('top',            '0',                'important');
+            s.setProperty('left',           '0',                'important');
+            s.setProperty('right',          'auto',             'important');
+            s.setProperty('bottom',         '0',                'important');
+            s.setProperty('width',          '280px',            'important');
+            s.setProperty('height',         '100vh',            'important');
+            s.setProperty('z-index',        '9999',             'important');
+            s.setProperty('overflow-y',     'auto',             'important');
+            s.setProperty('overflow-x',     'hidden',           'important');
+            s.setProperty('transform',      'translateX(-110%)','important');
+            s.setProperty('transition',     'transform 0.3s ease','important');
+            s.setProperty('visibility',     'visible',          'important');
+            s.setProperty('opacity',        '1',                'important');
+            s.setProperty('display',        'flex',             'important');
+            s.setProperty('flex-direction', 'column',           'important');
+            s.setProperty('padding',        '1.5rem 1rem',      'important');
+            s.setProperty('background',     getSidebarBg(),     'important');
+            /* Tampilkan tombol hamburger di mobile */
+            ham.style.removeProperty('display');
+          }
+        }
+
         setupSidebar();
 
-        /* Buat overlay */
+        /* Overlay — hanya aktif di mobile */
         var overlay = document.getElementById('sidebar-overlay');
         if (!overlay) {
           overlay = document.createElement('div');
@@ -266,17 +287,15 @@
         }
 
         function openSidebar() {
-          /* Update background saat buka (mode bisa berubah) */
-          var mode = document.documentElement.getAttribute('data-mode') || 'light';
-          var bg = mode === 'dark' ? '#0f0f0f' : mode === 'sunset' ? '#fef3c7' : '#f8f7ff';
-          sidebar.style.setProperty('background', bg, 'important');
-          sidebar.style.setProperty('transform', 'translateX(0)', 'important');
-          sidebar.style.setProperty('box-shadow', '6px 0 32px rgba(0,0,0,0.25)', 'important');
+          sidebar.style.setProperty('background',   getSidebarBg(),               'important');
+          sidebar.style.setProperty('transform',    'translateX(0)',               'important');
+          sidebar.style.setProperty('box-shadow',   '6px 0 32px rgba(0,0,0,0.25)','important');
           overlay.style.display = 'block';
           document.body.classList.add('sidebar-open');
           ham.innerHTML = '&#10005;';
           ham.setAttribute('aria-label', 'Tutup menu');
         }
+
         function closeSidebar() {
           sidebar.style.setProperty('transform', 'translateX(-110%)', 'important');
           sidebar.style.removeProperty('box-shadow');
@@ -288,20 +307,36 @@
 
         ham.addEventListener('click', function (e) {
           e.stopPropagation();
+          if (isDesktop()) return; // desktop: hamburger nonaktif
           document.body.classList.contains('sidebar-open') ? closeSidebar() : openSidebar();
         });
+
         overlay.addEventListener('click', closeSidebar);
+
         sidebar.querySelectorAll('a').forEach(function (link) {
-          link.addEventListener('click', closeSidebar);
+          link.addEventListener('click', function () {
+            if (!isDesktop()) closeSidebar();
+          });
         });
+
         document.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape') closeSidebar();
+          if (e.key === 'Escape' && !isDesktop()) closeSidebar();
+        });
+
+        /* Re-setup saat resize (rotasi HP, resize browser) */
+        var resizeTimer;
+        window.addEventListener('resize', function () {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function () {
+            if (isDesktop() && document.body.classList.contains('sidebar-open')) {
+              closeSidebar();
+            }
+            setupSidebar();
+          }, 150);
         });
       }
 
-
       function initThemeToggle() {
-        /* Support dua ID: theme-toggle (dari topbar.html) dan dark-mode-toggle (Chirpy bawaan) */
         var btn = document.getElementById('theme-toggle') || document.querySelector('.theme-toggle');
         if (!btn) return;
         btn.addEventListener('click', function (e) {
