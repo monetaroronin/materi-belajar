@@ -993,13 +993,11 @@ button[id="mode-toggle"] {
   vertical-align: middle !important;
 }
 
-/* Fix: sejajarkan tombol Cari & Terang */
+/* Fix topbar alignment */
 #topbar-wrapper {
   align-items: center !important;
 }
 
-.theme-toggle {
+#topbar-wrapper > * {
   align-self: center !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
 }
