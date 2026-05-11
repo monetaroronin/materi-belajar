@@ -677,26 +677,43 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 1px 8px rgba(0,0,0,0.06) !important;
   }
 
+  /* Hamburger — pill bulat sejajar toggle */
   .mobile-topbar .hamburger {
-    background: none !important;
-    border: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 999px !important;
+    border: 1.5px solid #e5e7eb !important;
+    background: #ffffff !important;
     cursor: pointer !important;
-    font-size: 1.5rem !important;
     color: #374151 !important;
-    padding: 4px 8px !important;
+    font-size: 1rem !important;
+    padding: 0 !important;
     line-height: 1 !important;
     flex-shrink: 0 !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07) !important;
+    transition: all 0.2s ease !important;
   }
 
+  .mobile-topbar .hamburger:hover {
+    border-color: #7c3aed !important;
+    color: #7c3aed !important;
+    box-shadow: 0 2px 8px rgba(124,58,237,0.15) !important;
+  }
+
+  /* Site title — font Lora sejajar toggle */
   .mobile-topbar .site-title {
     flex: 1 !important;
-    font-family: 'Nunito', sans-serif !important;
+    font-family: 'Lora', Georgia, serif !important;
     font-weight: 700 !important;
     font-size: 1rem !important;
     color: #111827 !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
+    letter-spacing: -0.01em !important;
   }
 
   .mobile-topbar .theme-toggle {
@@ -719,7 +736,11 @@ h1, h2, h3, h4, h5, h6 {
     border-color: #2d2d4e !important;
     box-shadow: 0 1px 8px rgba(0,0,0,0.3) !important;
   }
-  [data-mode="dark"] .mobile-topbar .hamburger { color: #e2e8f0 !important; }
+  [data-mode="dark"] .mobile-topbar .hamburger {
+    background: #1e1b4b !important;
+    border-color: #4c1d95 !important;
+    color: #c4b5fd !important;
+  }
   [data-mode="dark"] .mobile-topbar .site-title { color: #f1f5f9 !important; }
 
   /* Sunset mode */
@@ -731,6 +752,10 @@ h1, h2, h3, h4, h5, h6 {
     border-color: #fde68a !important;
     box-shadow: 0 1px 8px rgba(180,83,9,0.1) !important;
   }
-  [data-mode="sunset"] .mobile-topbar .hamburger { color: #92400e !important; }
+  [data-mode="sunset"] .mobile-topbar .hamburger {
+    background: #fff7ed !important;
+    border-color: #f59e0b !important;
+    color: #92400e !important;
+  }
   [data-mode="sunset"] .mobile-topbar .site-title { color: #78350f !important; }
 }
