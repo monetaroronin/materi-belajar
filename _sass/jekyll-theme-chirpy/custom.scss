@@ -622,14 +622,17 @@ h1, h2, h3, h4, h5, h6 {
   #sidebar {
     position: fixed !important;
     top: 0 !important;
-    left: -300px !important;
+    left: 0 !important;
+    right: auto !important;
     width: 280px !important;
     height: 100vh !important;
     z-index: 1050 !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
-    transition: left 0.3s ease !important;
-    display: block !important;
+    transform: translateX(-100%) !important;
+    transition: transform 0.3s ease !important;
+    display: flex !important;
+    flex-direction: column !important;
     padding: 1.5rem 1rem !important;
     background: #f8f7ff !important;
     box-shadow: none !important;
@@ -639,7 +642,7 @@ h1, h2, h3, h4, h5, h6 {
 
   /* Sidebar terbuka */
   body.sidebar-open #sidebar {
-    left: 0 !important;
+    transform: translateX(0) !important;
     box-shadow: 6px 0 32px rgba(0,0,0,0.18) !important;
   }
 
@@ -704,7 +707,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   /* Dark mode */
-  [data-mode="dark"] #sidebar { background: #0f0f0f !important; }
+  [data-mode="dark"] #sidebar { background: #0f0f0f !important; transform: translateX(-100%) !important; }
+  body.sidebar-open [data-mode="dark"] #sidebar,
+  [data-mode="dark"] body.sidebar-open #sidebar { transform: translateX(0) !important; }
   [data-mode="dark"] body.sidebar-open::after { background: rgba(0,0,0,0.7) !important; }
   [data-mode="dark"] .mobile-topbar {
     background: #0f0f0f !important;
@@ -715,7 +720,8 @@ h1, h2, h3, h4, h5, h6 {
   [data-mode="dark"] .mobile-topbar .site-title { color: #f1f5f9 !important; }
 
   /* Sunset mode */
-  [data-mode="sunset"] #sidebar { background: #fef3c7 !important; }
+  [data-mode="sunset"] #sidebar { background: #fef3c7 !important; transform: translateX(-100%) !important; }
+  [data-mode="sunset"] body.sidebar-open #sidebar { transform: translateX(0) !important; }
   [data-mode="sunset"] body.sidebar-open::after { background: rgba(120,53,15,0.4) !important; }
   [data-mode="sunset"] .mobile-topbar {
     background: #fef3c7 !important;
