@@ -903,21 +903,8 @@ div.mobile-topbar .site-title {
 
 }
 
-/* ===== Topbar: Sejajarkan tombol Cari & Toggle Terang ===== */
-.mobile-topbar {
-  align-items: center !important;
-}
 
-/* Wrapper agar Cari & toggle sejajar sempurna */
-#search-trigger,
-.theme-toggle {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  height: 32px !important;
-  vertical-align: middle !important;
-  flex-shrink: 0 !important;
-}
+
 
 /* Samakan border & shape toggle dengan tombol Cari */
 .theme-toggle {
