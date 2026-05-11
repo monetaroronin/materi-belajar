@@ -2,13 +2,19 @@
   <button class="hamburger" id="mobile-hamburger" aria-label="Buka menu">&#9776;</button>
   <span class="site-title" style="flex:1;">{{ site.title }}</span>
 
-  <button id="search-trigger" type="button" aria-label="Cari" class="theme-toggle">
+  <button id="search-trigger" type="button" aria-label="Cari"
+    style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 14px;
+           border-radius:999px;border:1.5px solid #e5e7eb;background:#ffffff;
+           cursor:pointer;color:#374151;font-family:'Nunito',sans-serif;
+           font-size:0.75rem;font-weight:700;letter-spacing:0.04em;
+           box-shadow:0 1px 4px rgba(0,0,0,0.07);flex-shrink:0;">
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
          viewBox="0 0 24 24" fill="none" stroke="currentColor"
          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="11" cy="11" r="8"/>
       <line x1="21" y1="21" x2="16.65" y2="16.65"/>
     </svg>
+    Cari
   </button>
 
   {% include dark-mode-toggle.html %}
