@@ -138,8 +138,7 @@
   <!-- Anti-FOUC: terapkan tema tersimpan SEBELUM paint -->
   <script>
     (function () {
-      var MODES = ['light', 'sunset', 'dark'];
-      var KEY   = 'mb-theme';
+      var KEY = 'mb-theme';
       function getSaved() {
         try { return localStorage.getItem(KEY) || 'light'; } catch (e) { return 'light'; }
       }
@@ -243,28 +242,41 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var ham     = document.getElementById('mobile-hamburger');
-      var overlay = document.getElementById('sidebar-overlay');
       var sidebar = document.getElementById('sidebar');
-      if (!ham || !overlay || !sidebar) return;
+      var mask    = document.getElementById('mask');
+      if (!ham || !sidebar) return;
+
+      function openSidebar() {
+        document.body.classList.add('sidebar-open');
+        sidebar.classList.add('sidebar-open');
+        if (mask) mask.style.display = 'block';
+        ham.textContent = '✕';
+      }
+
+      function closeSidebar() {
+        document.body.classList.remove('sidebar-open');
+        sidebar.classList.remove('sidebar-open');
+        if (mask) mask.style.display = 'none';
+        ham.textContent = '☰';
+      }
 
       ham.addEventListener('click', function () {
-        sidebar.classList.toggle('sidebar-open');
-        overlay.classList.toggle('active');
-        ham.textContent = sidebar.classList.contains('sidebar-open') ? '✕' : '☰';
+        var isOpen = document.body.classList.contains('sidebar-open')
+                  || sidebar.classList.contains('sidebar-open');
+        isOpen ? closeSidebar() : openSidebar();
       });
 
-      overlay.addEventListener('click', function () {
-        sidebar.classList.remove('sidebar-open');
-        overlay.classList.remove('active');
-        ham.textContent = '☰';
-      });
+      /* Sync dengan mask bawaan Chirpy */
+      if (mask) {
+        mask.addEventListener('click', function () {
+          closeSidebar();
+        });
+      }
 
-      /* Tutup sidebar jika klik link di dalamnya */
+      /* Tutup saat klik link di sidebar */
       sidebar.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
-          sidebar.classList.remove('sidebar-open');
-          overlay.classList.remove('active');
-          ham.textContent = '☰';
+          closeSidebar();
         });
       });
     });
