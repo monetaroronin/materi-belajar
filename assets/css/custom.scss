@@ -2,7 +2,7 @@
 ---
 
 /* =============================================
-   MATERI BELAJAR — Premium Reader Edition v2
+   MATERI BELAJAR — Premium Reader Edition
    Font  : Inter (body) + Playfair Display (judul)
    Accent: Violet #7c3aed
    ============================================= */
@@ -73,11 +73,19 @@ body, html {
 
 #post-list .card-wrapper.is-visible:hover { transform: translateY(-3px) !important; }
 
+/* ── TIPOGRAFI: Judul — semua kemungkinan selector Chirpy ── */
 #post-list .card-wrapper .card-title,
 #post-list .card-wrapper .card-title a,
+#post-list .card-wrapper .card-body .card-title,
+#post-list .card-wrapper .card-body .card-title a,
+#post-list .card-wrapper .card-body h1,
+#post-list .card-wrapper .card-body h2,
+#post-list .card-wrapper .card-body h3,
+#post-list .card-wrapper .card-body p.card-text:first-child,
 #post-list .card-wrapper h1, #post-list .card-wrapper h1 a,
 #post-list .card-wrapper h2, #post-list .card-wrapper h2 a,
-#post-list .card-wrapper h3, #post-list .card-wrapper h3 a {
+#post-list .card-wrapper h3, #post-list .card-wrapper h3 a,
+#post-list a.post-preview .card-body > *:first-child {
   font-family: 'Playfair Display', Georgia, serif !important;
   font-size: 1.18rem !important;
   font-weight: 700 !important;
@@ -89,9 +97,12 @@ body, html {
 
 #post-list .card-wrapper .card-title a:hover,
 #post-list .card-wrapper h2 a:hover,
-#post-list .card-wrapper h3 a:hover { color: #7c3aed !important; }
+#post-list .card-wrapper h3 a:hover,
+#post-list a.post-preview:hover .card-body > *:first-child { color: #7c3aed !important; }
 
-#post-list .card-wrapper p {
+/* ── TIPOGRAFI: Excerpt ── */
+#post-list .card-wrapper p,
+#post-list .card-wrapper .card-body p {
   font-family: 'Inter', sans-serif !important;
   color: #475569 !important;
   font-size: 0.93rem !important;
@@ -99,13 +110,16 @@ body, html {
   background: transparent !important;
 }
 
-#post-list .card-wrapper .post-meta {
+/* ── TIPOGRAFI: Post meta ── */
+#post-list .card-wrapper .post-meta,
+#post-list .card-wrapper .card-body .post-meta {
   font-family: 'Inter', sans-serif !important;
   color: #94a3b8 !important;
   font-size: 0.79rem !important;
   background: transparent !important;
 }
 
+/* ── TAG PILL: Base ── */
 #post-list .card-wrapper a[href*="/categories/"],
 #post-list .card-wrapper a[href*="/tags/"],
 #post-list .card-wrapper .post-meta a,
@@ -127,6 +141,7 @@ body, html {
   border: 1px solid #ddd6fe !important;
 }
 
+/* ── TAG PILL: Warna per kategori ── */
 #post-list .card-wrapper a[href*="teknologi"]         { background: #dbeafe !important; color: #1d4ed8 !important; border-color: #bfdbfe !important; }
 #post-list .card-wrapper a[href*="politik"]           { background: #fce7f3 !important; color: #be185d !important; border-color: #fbcfe8 !important; }
 #post-list .card-wrapper a[href*="ekonomi"]           { background: #d1fae5 !important; color: #065f46 !important; border-color: #a7f3d0 !important; }
@@ -143,6 +158,7 @@ body, html {
 #post-list .card-wrapper a[href*="/categories/"]:hover,
 #post-list .card-wrapper a[href*="/tags/"]:hover { opacity: 0.72 !important; }
 
+/* ── SIDEBAR KANAN ── */
 #panel-wrapper #access-lastmod {
   background: #ffffff !important;
   border: 1px solid #e5e7eb !important;
@@ -214,6 +230,7 @@ body, html {
   transform: translateY(-1px) !important;
 }
 
+/* ── SIDEBAR NAV ── */
 #sidebar { font-family: 'Inter', sans-serif !important; }
 
 #sidebar .nav-link {
@@ -235,10 +252,12 @@ body, html {
   color: #7c3aed !important;
 }
 
+/* ── MOBILE READABILITY ── */
 @media (max-width: 768px) {
   #post-list .card-wrapper h2 a,
   #post-list .card-wrapper h3 a,
-  #post-list .card-wrapper .card-title a {
+  #post-list .card-wrapper .card-title a,
+  #post-list .card-wrapper .card-body > *:first-child {
     font-size: 1.08rem !important;
     line-height: 1.42 !important;
   }
