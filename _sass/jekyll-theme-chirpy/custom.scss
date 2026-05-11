@@ -268,14 +268,18 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ==============================================
    SITE TITLE — gradient text (semua resolusi)
-   Override --site-title-color langsung di dalam
-   selector supaya mengalahkan Chirpy di level
-   manapun, termasuk di dalam media query.
+   DevTools konfirmasi: elemen = span.site-title
+   di dalam div.mobile-topbar.
+   Gunakan tag+class (span.site-title) untuk
+   spesifisitas lebih tinggi dari Chirpy.
    ============================================== */
+span.site-title,
+a.site-title,
 .site-title,
+#sidebar span.site-title,
 #sidebar .site-title,
-.mobile-topbar .site-title,
-a.site-title {
+div.mobile-topbar span.site-title,
+div.mobile-topbar .site-title {
   --site-title-color: transparent !important;
   background: linear-gradient(135deg, #7c3aed, #2563eb) !important;
   -webkit-background-clip: text !important;
@@ -284,10 +288,11 @@ a.site-title {
   color: transparent !important;
 }
 
+[data-mode="dark"] span.site-title,
+[data-mode="dark"] a.site-title,
 [data-mode="dark"] .site-title,
-[data-mode="dark"] #sidebar .site-title,
-[data-mode="dark"] .mobile-topbar .site-title,
-[data-mode="dark"] a.site-title {
+[data-mode="dark"] #sidebar span.site-title,
+[data-mode="dark"] div.mobile-topbar span.site-title {
   --site-title-color: transparent !important;
   background: linear-gradient(135deg, #a78bfa, #60a5fa) !important;
   -webkit-background-clip: text !important;
@@ -296,10 +301,11 @@ a.site-title {
   color: transparent !important;
 }
 
+[data-mode="sunset"] span.site-title,
+[data-mode="sunset"] a.site-title,
 [data-mode="sunset"] .site-title,
-[data-mode="sunset"] #sidebar .site-title,
-[data-mode="sunset"] .mobile-topbar .site-title,
-[data-mode="sunset"] a.site-title {
+[data-mode="sunset"] #sidebar span.site-title,
+[data-mode="sunset"] div.mobile-topbar span.site-title {
   --site-title-color: transparent !important;
   background: linear-gradient(135deg, #d97706, #f59e0b) !important;
   -webkit-background-clip: text !important;
@@ -751,8 +757,9 @@ a.site-title {
   }
 
   /* ── Site title di topbar: badge chip ── */
-  /* Gradient text dihandle rule global .site-title di atas.
-     Di sini hanya tambahkan chip/badge styling-nya. */
+  /* Gradient dihandle rule global span.site-title di atas.
+     Di sini hanya chip/badge styling. */
+  .mobile-topbar span.site-title,
   .mobile-topbar .site-title {
     flex: unset !important;
     font-family: 'Lora', Georgia, serif !important;
@@ -771,6 +778,7 @@ a.site-title {
     box-shadow: 0 1px 4px rgba(124,58,237,0.12) !important;
     transition: box-shadow 0.2s ease, transform 0.2s ease !important;
   }
+  .mobile-topbar span.site-title:hover,
   .mobile-topbar .site-title:hover {
     box-shadow: 0 2px 10px rgba(124,58,237,0.22) !important;
     transform: translateY(-1px) !important;
@@ -805,6 +813,7 @@ a.site-title {
     border-color: #4c1d95 !important;
     color: #c4b5fd !important;
   }
+  [data-mode="dark"] .mobile-topbar span.site-title,
   [data-mode="dark"] .mobile-topbar .site-title {
     box-shadow: 0 1px 4px rgba(124,58,237,0.25) !important;
   }
@@ -827,6 +836,7 @@ a.site-title {
     border-color: #f59e0b !important;
     color: #92400e !important;
   }
+  [data-mode="sunset"] .mobile-topbar span.site-title,
   [data-mode="sunset"] .mobile-topbar .site-title {
     box-shadow: 0 1px 4px rgba(217,119,6,0.2) !important;
   }
