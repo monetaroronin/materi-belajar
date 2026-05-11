@@ -992,3 +992,8 @@ button[id="mode-toggle"] {
   height: 32px !important;
   vertical-align: middle !important;
 }
+
+/* Fix: sejajarkan tombol Terang dengan tombol Cari */
+.theme-toggle {
+  align-self: center !important;
+}
