@@ -135,4 +135,21 @@
     <script src="{{ '/assets/js/card-animate.js' | relative_url }}" defer></script>
   {% endif %}
 
+  <!-- Dark Mode Toggle Script -->
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-mode') === 'dark';
+        if (isDark) {
+          document.documentElement.setAttribute('data-mode', 'light');
+          localStorage.setItem('mode', 'light');
+        } else {
+          document.documentElement.setAttribute('data-mode', 'dark');
+          localStorage.setItem('mode', 'dark');
+        }
+      });
+    }
+  </script>
+
 </head>
