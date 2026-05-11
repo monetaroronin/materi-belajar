@@ -8,19 +8,15 @@ tagline: Kamu tidak bisa menuangkan sesuatu dari cangkir yang kosong.
 description: Blog ringkasan materi belajar pribadi
 url: "https://monetaroronin.github.io"
 baseurl: "/materi-belajar"
-
 github:
   username: monetaroronin
-
 twitter:
   username:
-
 social:
   name: monetaroronin
   email:
   links:
     - https://github.com/monetaroronin
-
 webmaster_verifications:
   google:
   bing:
@@ -28,7 +24,6 @@ webmaster_verifications:
   yandex:
   baidu:
   facebook:
-
 analytics:
   google:
     id:
@@ -44,18 +39,14 @@ analytics:
     id:
   fathom:
     id:
-
 pageviews:
   provider:
-
-theme_mode: light
-
+# theme_mode dikosongkan — mode dikelola oleh assets/js/theme-toggle.js
+theme_mode:
 cdn:
-
 avatar: /assets/img/avatar.png
 social_preview_image:
 toc: true
-
 comments:
   provider:
   disqus:
@@ -73,23 +64,18 @@ comments:
     input_position:
     lang:
     reactions_enabled:
-
 assets:
   self_host:
     enabled:
     env:
-
 pwa:
   enabled: true
   cache:
     enabled: true
     deny_paths:
-
 feed:
   show_icon: false
-
 paginate: 10
-
 kramdown:
   footnote_backlink: "&#8617;&#xfe0e;"
   syntax_highlighter: rouge
@@ -100,12 +86,10 @@ kramdown:
     block:
       line_numbers: true
       start_line: 1
-
 collections:
   tabs:
     output: true
     sort_by: order
-
 defaults:
   - scope:
       path: ""
@@ -125,10 +109,8 @@ defaults:
     values:
       layout: page
       permalink: /:title/
-
 sass:
   style: compressed
-
 compress_html:
   clippings: all
   comments: all
@@ -137,7 +119,6 @@ compress_html:
   blanklines: false
   ignore:
     envs: [development]
-
 exclude:
   - "*.gem"
   - "*.gemspec"
@@ -148,7 +129,6 @@ exclude:
   - purgecss.js
   - "*.config.js"
   - "package*.json"
-
 jekyll-archives:
   enabled: [categories, tags]
   layouts:
