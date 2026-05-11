@@ -74,7 +74,7 @@ body, html {
 
 #post-list .card-wrapper.is-visible:hover { transform: translateY(-3px) !important; }
 
-/* ── TIPOGRAFI: Judul ── */
+/* TIPOGRAFI: Judul */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Lora', Georgia, serif !important;
   color: #111827 !important;
@@ -106,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
 #post-list .card-wrapper h3 a:hover,
 #post-list a.post-preview:hover .card-body > *:first-child { color: #7c3aed !important; }
 
-/* ── TIPOGRAFI: Excerpt ── */
+/* TIPOGRAFI: Excerpt */
 #post-list .card-wrapper p,
 #post-list .card-wrapper .card-body p {
   font-family: 'Nunito', sans-serif !important;
@@ -116,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
   background: transparent !important;
 }
 
-/* ── TIPOGRAFI: Post meta ── */
+/* TIPOGRAFI: Post meta */
 #post-list .card-wrapper .post-meta,
 #post-list .card-wrapper .card-body .post-meta {
   font-family: 'Nunito', sans-serif !important;
@@ -125,7 +125,7 @@ h1, h2, h3, h4, h5, h6 {
   background: transparent !important;
 }
 
-/* ── TAG PILL: Base ── */
+/* TAG PILL: Base */
 #post-list .card-wrapper a[href*="/categories/"],
 #post-list .card-wrapper a[href*="/tags/"],
 #post-list .card-wrapper .post-meta a,
@@ -147,7 +147,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #ddd6fe !important;
 }
 
-/* ── TAG PILL: Warna per kategori ── */
+/* TAG PILL: Warna per kategori */
 #post-list .card-wrapper a[href*="teknologi"]         { background: #dbeafe !important; color: #1d4ed8 !important; border-color: #bfdbfe !important; }
 #post-list .card-wrapper a[href*="politik"]           { background: #fce7f3 !important; color: #be185d !important; border-color: #fbcfe8 !important; }
 #post-list .card-wrapper a[href*="ekonomi"]           { background: #d1fae5 !important; color: #065f46 !important; border-color: #a7f3d0 !important; }
@@ -164,7 +164,7 @@ h1, h2, h3, h4, h5, h6 {
 #post-list .card-wrapper a[href*="/categories/"]:hover,
 #post-list .card-wrapper a[href*="/tags/"]:hover { opacity: 0.72 !important; }
 
-/* ── SIDEBAR KANAN ── */
+/* SIDEBAR KANAN */
 #panel-wrapper #access-lastmod {
   background: #ffffff !important;
   border: 1px solid #e5e7eb !important;
@@ -236,7 +236,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-1px) !important;
 }
 
-/* ── SIDEBAR NAV ── */
+/* SIDEBAR NAV */
 #sidebar { font-family: 'Nunito', sans-serif !important; }
 
 #sidebar .nav-link {
@@ -258,7 +258,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #7c3aed !important;
 }
 
-/* ── MOBILE READABILITY ── */
+/* MOBILE */
 @media (max-width: 768px) {
   #post-list .card-wrapper h2 a,
   #post-list .card-wrapper h3 a,
@@ -277,15 +277,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* ── DARK MODE TOGGLE BUTTON (Pill oval, ikon + label via ::after) ── */
+/* DARK MODE TOGGLE BUTTON */
 .theme-toggle {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   gap: 6px !important;
-  /* FIX: tidak stretch mengikuti flex-column parent */
   align-self: flex-start !important;
-  /* Jarak dari tepi atas supaya tidak mepet */
   margin-top: 8px !important;
   width: auto !important;
   height: 32px !important;
@@ -304,8 +302,6 @@ h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
 }
-
-/* Label teks via pseudo-element — mode terang: tampilkan "Terang" */
 .theme-toggle::after {
   content: "Terang" !important;
   font-family: 'Nunito', sans-serif !important;
@@ -314,7 +310,6 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.04em !important;
   line-height: 1 !important;
 }
-
 .theme-toggle:hover {
   border-color: #7c3aed !important;
   color: #7c3aed !important;
@@ -333,24 +328,18 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0 !important;
   pointer-events: none !important;
 }
-
-/* Mode terang (default): tampilkan ikon matahari */
 .theme-toggle .sun  { display: block !important; }
 .theme-toggle .moon { display: none !important; }
-/* Sembunyikan label bawaan tema jika ada */
 .theme-toggle .toggle-label-dark,
 .theme-toggle .toggle-label-light { display: none !important; }
 
-/* Mode gelap: tampilkan ikon matahari + label "Terang" */
 [data-mode="dark"] .theme-toggle {
   background-color: #1e1b4b !important;
   border-color: #4c1d95 !important;
   color: #c4b5fd !important;
   box-shadow: 0 2px 8px rgba(124,58,237,0.25) !important;
 }
-[data-mode="dark"] .theme-toggle::after {
-  content: "Gelap" !important;
-}
+[data-mode="dark"] .theme-toggle::after { content: "Gelap" !important; }
 [data-mode="dark"] .theme-toggle:hover {
   border-color: #7c3aed !important;
   color: #ffffff !important;
@@ -359,30 +348,18 @@ h1, h2, h3, h4, h5, h6 {
 [data-mode="dark"] .theme-toggle .sun  { display: none !important; }
 [data-mode="dark"] .theme-toggle .moon { display: block !important; }
 
-/* ── DARK MODE OVERRIDES ── */
+/* DARK MODE */
 [data-mode="dark"] body,
-[data-mode="dark"] html {
-  background: #0f0f0f !important;
-  color: #e2e8f0 !important;
-}
+[data-mode="dark"] html { background: #0f0f0f !important; color: #e2e8f0 !important; }
 
 [data-mode="dark"] #main-wrapper,
 [data-mode="dark"] #core-wrapper,
 [data-mode="dark"] .container,
-[data-mode="dark"] #page-wrapper {
-  background: transparent !important;
-}
+[data-mode="dark"] #page-wrapper { background: transparent !important; }
 
-[data-mode="dark"] h1,
-[data-mode="dark"] h2,
-[data-mode="dark"] h3,
-[data-mode="dark"] h4,
-[data-mode="dark"] h5,
-[data-mode="dark"] h6 {
-  color: #f1f5f9 !important;
-}
+[data-mode="dark"] h1,[data-mode="dark"] h2,[data-mode="dark"] h3,
+[data-mode="dark"] h4,[data-mode="dark"] h5,[data-mode="dark"] h6 { color: #f1f5f9 !important; }
 
-/* Card */
 [data-mode="dark"] .card-wrapper,
 [data-mode="dark"] #post-list .card-wrapper {
   background: #1a1a2e !important;
@@ -393,7 +370,6 @@ h1, h2, h3, h4, h5, h6 {
   background-color: transparent !important;
 }
 
-/* Judul card */
 [data-mode="dark"] #post-list .card-wrapper .card-title,
 [data-mode="dark"] #post-list .card-wrapper .card-title a,
 [data-mode="dark"] #post-list .card-wrapper .card-body h1,
@@ -402,23 +378,14 @@ h1, h2, h3, h4, h5, h6 {
 [data-mode="dark"] #post-list .card-wrapper h1 a,
 [data-mode="dark"] #post-list .card-wrapper h2 a,
 [data-mode="dark"] #post-list .card-wrapper h3 a,
-[data-mode="dark"] #post-list a.post-preview .card-body > *:first-child {
-  color: #f1f5f9 !important;
-}
+[data-mode="dark"] #post-list a.post-preview .card-body > *:first-child { color: #f1f5f9 !important; }
 
-/* Excerpt */
 [data-mode="dark"] #post-list .card-wrapper p,
-[data-mode="dark"] #post-list .card-wrapper .card-body p {
-  color: #94a3b8 !important;
-}
+[data-mode="dark"] #post-list .card-wrapper .card-body p { color: #94a3b8 !important; }
 
-/* Post meta */
 [data-mode="dark"] #post-list .card-wrapper .post-meta,
-[data-mode="dark"] #post-list .card-wrapper .card-body .post-meta {
-  color: #64748b !important;
-}
+[data-mode="dark"] #post-list .card-wrapper .card-body .post-meta { color: #64748b !important; }
 
-/* Sidebar kanan */
 [data-mode="dark"] #panel-wrapper #access-lastmod,
 [data-mode="dark"] #panel-wrapper #tags,
 [data-mode="dark"] #panel-wrapper .post-tag-wrapper,
@@ -429,35 +396,20 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 2px 12px rgba(0,0,0,0.3) !important;
 }
 
-[data-mode="dark"] #panel-wrapper #access-lastmod a {
-  color: #cbd5e1 !important;
-}
-
-[data-mode="dark"] #panel-wrapper #access-lastmod li {
-  border-bottom-color: #2d2d4e !important;
-}
-
+[data-mode="dark"] #panel-wrapper #access-lastmod a { color: #cbd5e1 !important; }
+[data-mode="dark"] #panel-wrapper #access-lastmod li { border-bottom-color: #2d2d4e !important; }
 [data-mode="dark"] #panel-wrapper h2,
 [data-mode="dark"] #panel-wrapper h3,
-[data-mode="dark"] #panel-wrapper .panel-heading {
-  color: #64748b !important;
-}
+[data-mode="dark"] #panel-wrapper .panel-heading { color: #64748b !important; }
 
-/* ══════════════════════════════════════════
-   SUNSET MODE — warm amber, eye-care tone
-   seperti Night Light / f.lux / Eye Care
-   ══════════════════════════════════════════ */
-
-/* Tombol saat sunset */
+/* SUNSET MODE */
 [data-mode="sunset"] .theme-toggle {
   background-color: #fff7ed !important;
   border-color: #f59e0b !important;
   color: #92400e !important;
   box-shadow: 0 2px 8px rgba(245,158,11,0.2) !important;
 }
-[data-mode="sunset"] .theme-toggle::after {
-  content: "Sunset" !important;
-}
+[data-mode="sunset"] .theme-toggle::after { content: "Sunset" !important; }
 [data-mode="sunset"] .theme-toggle:hover {
   border-color: #d97706 !important;
   color: #78350f !important;
@@ -466,31 +418,17 @@ h1, h2, h3, h4, h5, h6 {
 [data-mode="sunset"] .theme-toggle .sun  { display: block !important; }
 [data-mode="sunset"] .theme-toggle .moon { display: none !important; }
 
-/* ── Body & Background ── */
 [data-mode="sunset"] body,
-[data-mode="sunset"] html {
-  background: #fef3c7 !important;
-  color: #451a03 !important;
-}
+[data-mode="sunset"] html { background: #fef3c7 !important; color: #451a03 !important; }
 
 [data-mode="sunset"] #main-wrapper,
 [data-mode="sunset"] #core-wrapper,
 [data-mode="sunset"] .container,
-[data-mode="sunset"] #page-wrapper {
-  background: transparent !important;
-}
+[data-mode="sunset"] #page-wrapper { background: transparent !important; }
 
-/* ── Heading ── */
-[data-mode="sunset"] h1,
-[data-mode="sunset"] h2,
-[data-mode="sunset"] h3,
-[data-mode="sunset"] h4,
-[data-mode="sunset"] h5,
-[data-mode="sunset"] h6 {
-  color: #78350f !important;
-}
+[data-mode="sunset"] h1,[data-mode="sunset"] h2,[data-mode="sunset"] h3,
+[data-mode="sunset"] h4,[data-mode="sunset"] h5,[data-mode="sunset"] h6 { color: #78350f !important; }
 
-/* ── Card ── */
 [data-mode="sunset"] .card-wrapper,
 [data-mode="sunset"] #post-list .card-wrapper {
   background: #fffbeb !important;
@@ -501,7 +439,6 @@ h1, h2, h3, h4, h5, h6 {
   background-color: transparent !important;
 }
 
-/* Judul card */
 [data-mode="sunset"] #post-list .card-wrapper .card-title,
 [data-mode="sunset"] #post-list .card-wrapper .card-title a,
 [data-mode="sunset"] #post-list .card-wrapper .card-body h1,
@@ -510,29 +447,18 @@ h1, h2, h3, h4, h5, h6 {
 [data-mode="sunset"] #post-list .card-wrapper h1 a,
 [data-mode="sunset"] #post-list .card-wrapper h2 a,
 [data-mode="sunset"] #post-list .card-wrapper h3 a,
-[data-mode="sunset"] #post-list a.post-preview .card-body > *:first-child {
-  color: #78350f !important;
-}
+[data-mode="sunset"] #post-list a.post-preview .card-body > *:first-child { color: #78350f !important; }
 
 [data-mode="sunset"] #post-list .card-wrapper .card-title a:hover,
 [data-mode="sunset"] #post-list .card-wrapper h2 a:hover,
-[data-mode="sunset"] #post-list .card-wrapper h3 a:hover {
-  color: #d97706 !important;
-}
+[data-mode="sunset"] #post-list .card-wrapper h3 a:hover { color: #d97706 !important; }
 
-/* Excerpt */
 [data-mode="sunset"] #post-list .card-wrapper p,
-[data-mode="sunset"] #post-list .card-wrapper .card-body p {
-  color: #92400e !important;
-}
+[data-mode="sunset"] #post-list .card-wrapper .card-body p { color: #92400e !important; }
 
-/* Post meta */
 [data-mode="sunset"] #post-list .card-wrapper .post-meta,
-[data-mode="sunset"] #post-list .card-wrapper .card-body .post-meta {
-  color: #b45309 !important;
-}
+[data-mode="sunset"] #post-list .card-wrapper .card-body .post-meta { color: #b45309 !important; }
 
-/* ── Sidebar kanan ── */
 [data-mode="sunset"] #panel-wrapper #access-lastmod,
 [data-mode="sunset"] #panel-wrapper #tags,
 [data-mode="sunset"] #panel-wrapper .post-tag-wrapper,
@@ -543,22 +469,12 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 2px 12px rgba(180,83,9,0.08) !important;
 }
 
-[data-mode="sunset"] #panel-wrapper #access-lastmod a {
-  color: #92400e !important;
-}
-[data-mode="sunset"] #panel-wrapper #access-lastmod a:hover {
-  color: #d97706 !important;
-}
-
-[data-mode="sunset"] #panel-wrapper #access-lastmod li {
-  border-bottom-color: #fde68a !important;
-}
-
+[data-mode="sunset"] #panel-wrapper #access-lastmod a { color: #92400e !important; }
+[data-mode="sunset"] #panel-wrapper #access-lastmod a:hover { color: #d97706 !important; }
+[data-mode="sunset"] #panel-wrapper #access-lastmod li { border-bottom-color: #fde68a !important; }
 [data-mode="sunset"] #panel-wrapper h2,
 [data-mode="sunset"] #panel-wrapper h3,
-[data-mode="sunset"] #panel-wrapper .panel-heading {
-  color: #b45309 !important;
-}
+[data-mode="sunset"] #panel-wrapper .panel-heading { color: #b45309 !important; }
 
 [data-mode="sunset"] #panel-wrapper .post-tag,
 [data-mode="sunset"] #panel-wrapper a.post-tag {
@@ -573,7 +489,6 @@ h1, h2, h3, h4, h5, h6 {
   border-color: #d97706 !important;
 }
 
-/* ── Sidebar nav ── */
 [data-mode="sunset"] #sidebar .nav-link.active,
 [data-mode="sunset"] #sidebar li.active > .nav-link {
   border-left-color: #d97706 !important;
@@ -584,23 +499,22 @@ h1, h2, h3, h4, h5, h6 {
   color: #d97706 !important;
 }
 
-/* ══════════════════════════════════════════
+/* ==============================================
    READING PROGRESS BAR
-   ══════════════════════════════════════════ */
+   ============================================== */
 #reading-progress-bar {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
-  width: 0% !important;
+  width: 0%;                /* NO !important — JS must be able to override this */
   height: 3px !important;
   z-index: 9999 !important;
   background: linear-gradient(90deg, #7c3aed, #a78bfa) !important;
   border-radius: 0 2px 2px 0 !important;
-  transition: width 0.1s linear !important;
+  transition: width 0.1s linear;
   pointer-events: none !important;
 }
 
-/* Warna progress bar per mode */
 [data-mode="dark"] #reading-progress-bar {
   background: linear-gradient(90deg, #7c3aed, #c4b5fd) !important;
 }
@@ -608,9 +522,9 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(90deg, #d97706, #fbbf24) !important;
 }
 
-/* ══════════════════════════════════════════
+/* ==============================================
    SCROLL-TO-TOP BUTTON
-   ══════════════════════════════════════════ */
+   ============================================== */
 #scroll-to-top {
   position: fixed !important;
   bottom: 2rem !important;
@@ -657,7 +571,6 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none !important;
 }
 
-/* Scroll-to-top: dark mode */
 [data-mode="dark"] #scroll-to-top {
   background: #1a1a2e !important;
   border-color: #4c1d95 !important;
@@ -670,7 +583,6 @@ h1, h2, h3, h4, h5, h6 {
   border-color: #7c3aed !important;
 }
 
-/* Scroll-to-top: sunset mode */
 [data-mode="sunset"] #scroll-to-top {
   background: #fffbeb !important;
   border-color: #f59e0b !important;
@@ -684,7 +596,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 6px 20px rgba(217,119,6,0.35) !important;
 }
 
-/* Mobile: geser sedikit ke kiri agar tidak ketutup scrollbar */
 @media (max-width: 768px) {
   #scroll-to-top {
     bottom: 1.5rem !important;
