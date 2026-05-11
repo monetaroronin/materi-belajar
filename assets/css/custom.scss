@@ -442,3 +442,144 @@ h1, h2, h3, h4, h5, h6 {
 [data-mode="dark"] #panel-wrapper .panel-heading {
   color: #64748b !important;
 }
+
+/* ══════════════════════════════════════════
+   SUNSET MODE — warm amber, eye-care tone
+   seperti Night Light / f.lux / Eye Care
+   ══════════════════════════════════════════ */
+
+/* Tombol saat sunset */
+[data-mode="sunset"] .theme-toggle {
+  background-color: #fff7ed !important;
+  border-color: #f59e0b !important;
+  color: #92400e !important;
+  box-shadow: 0 2px 8px rgba(245,158,11,0.2) !important;
+}
+[data-mode="sunset"] .theme-toggle::after {
+  content: "Sunset" !important;
+}
+[data-mode="sunset"] .theme-toggle:hover {
+  border-color: #d97706 !important;
+  color: #78350f !important;
+  box-shadow: 0 4px 16px rgba(217,119,6,0.3) !important;
+}
+[data-mode="sunset"] .theme-toggle .sun  { display: block !important; }
+[data-mode="sunset"] .theme-toggle .moon { display: none !important; }
+
+/* ── Body & Background ── */
+[data-mode="sunset"] body,
+[data-mode="sunset"] html {
+  background: #fef3c7 !important;
+  color: #451a03 !important;
+}
+
+[data-mode="sunset"] #main-wrapper,
+[data-mode="sunset"] #core-wrapper,
+[data-mode="sunset"] .container,
+[data-mode="sunset"] #page-wrapper {
+  background: transparent !important;
+}
+
+/* ── Heading ── */
+[data-mode="sunset"] h1,
+[data-mode="sunset"] h2,
+[data-mode="sunset"] h3,
+[data-mode="sunset"] h4,
+[data-mode="sunset"] h5,
+[data-mode="sunset"] h6 {
+  color: #78350f !important;
+}
+
+/* ── Card ── */
+[data-mode="sunset"] .card-wrapper,
+[data-mode="sunset"] #post-list .card-wrapper {
+  background: #fffbeb !important;
+  box-shadow: 0 2px 12px rgba(180,83,9,0.08) !important;
+}
+
+[data-mode="sunset"] #post-list .card-wrapper *:not(a[href*="/categories/"]):not(a[href*="/tags/"]):not(.post-tag) {
+  background-color: transparent !important;
+}
+
+/* Judul card */
+[data-mode="sunset"] #post-list .card-wrapper .card-title,
+[data-mode="sunset"] #post-list .card-wrapper .card-title a,
+[data-mode="sunset"] #post-list .card-wrapper .card-body h1,
+[data-mode="sunset"] #post-list .card-wrapper .card-body h2,
+[data-mode="sunset"] #post-list .card-wrapper .card-body h3,
+[data-mode="sunset"] #post-list .card-wrapper h1 a,
+[data-mode="sunset"] #post-list .card-wrapper h2 a,
+[data-mode="sunset"] #post-list .card-wrapper h3 a,
+[data-mode="sunset"] #post-list a.post-preview .card-body > *:first-child {
+  color: #78350f !important;
+}
+
+[data-mode="sunset"] #post-list .card-wrapper .card-title a:hover,
+[data-mode="sunset"] #post-list .card-wrapper h2 a:hover,
+[data-mode="sunset"] #post-list .card-wrapper h3 a:hover {
+  color: #d97706 !important;
+}
+
+/* Excerpt */
+[data-mode="sunset"] #post-list .card-wrapper p,
+[data-mode="sunset"] #post-list .card-wrapper .card-body p {
+  color: #92400e !important;
+}
+
+/* Post meta */
+[data-mode="sunset"] #post-list .card-wrapper .post-meta,
+[data-mode="sunset"] #post-list .card-wrapper .card-body .post-meta {
+  color: #b45309 !important;
+}
+
+/* ── Sidebar kanan ── */
+[data-mode="sunset"] #panel-wrapper #access-lastmod,
+[data-mode="sunset"] #panel-wrapper #tags,
+[data-mode="sunset"] #panel-wrapper .post-tag-wrapper,
+[data-mode="sunset"] #panel-wrapper .panel-section,
+[data-mode="sunset"] #panel-wrapper #trending-tags {
+  background: #fffbeb !important;
+  border-color: #fde68a !important;
+  box-shadow: 0 2px 12px rgba(180,83,9,0.08) !important;
+}
+
+[data-mode="sunset"] #panel-wrapper #access-lastmod a {
+  color: #92400e !important;
+}
+[data-mode="sunset"] #panel-wrapper #access-lastmod a:hover {
+  color: #d97706 !important;
+}
+
+[data-mode="sunset"] #panel-wrapper #access-lastmod li {
+  border-bottom-color: #fde68a !important;
+}
+
+[data-mode="sunset"] #panel-wrapper h2,
+[data-mode="sunset"] #panel-wrapper h3,
+[data-mode="sunset"] #panel-wrapper .panel-heading {
+  color: #b45309 !important;
+}
+
+[data-mode="sunset"] #panel-wrapper .post-tag,
+[data-mode="sunset"] #panel-wrapper a.post-tag {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+  border-color: #fde68a !important;
+}
+[data-mode="sunset"] #panel-wrapper .post-tag:hover,
+[data-mode="sunset"] #panel-wrapper a.post-tag:hover {
+  background: #d97706 !important;
+  color: #fff !important;
+  border-color: #d97706 !important;
+}
+
+/* ── Sidebar nav ── */
+[data-mode="sunset"] #sidebar .nav-link.active,
+[data-mode="sunset"] #sidebar li.active > .nav-link {
+  border-left-color: #d97706 !important;
+  color: #d97706 !important;
+}
+[data-mode="sunset"] #sidebar .nav-link:not(.active):hover {
+  border-left-color: #fde68a !important;
+  color: #d97706 !important;
+}
