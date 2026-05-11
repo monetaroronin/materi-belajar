@@ -609,6 +609,35 @@ h1, h2, h3, h4, h5, h6 {
    MOBILE TOPBAR & SIDEBAR NAVIGATION
    ============================================== */
 @media (max-width: 849px) {
+
+  /* Sidebar: sembunyikan default, tampil saat sidebar-open */
+  #sidebar {
+    display: none !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 280px !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
+    background: #f8f7ff !important;
+    padding: 1.5rem 1rem !important;
+    overflow-y: auto !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  #sidebar.sidebar-open,
+  body.sidebar-open #sidebar {
+    display: flex !important;
+  }
+
+  /* Gunakan mask bawaan Chirpy sebagai overlay */
+  #mask { z-index: 999 !important; }
+
+  /* Nonaktifkan overlay custom */
+  .sidebar-overlay { display: none !important; }
+
+  /* Mobile topbar */
   .mobile-topbar {
     position: fixed !important;
     top: 0 !important;
@@ -622,6 +651,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #f8f7ff !important;
     border-bottom: 1px solid #e5e7eb !important;
     z-index: 998 !important;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06) !important;
   }
 
   .mobile-topbar .hamburger {
@@ -632,6 +662,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #374151 !important;
     padding: 0 !important;
     line-height: 1 !important;
+    flex-shrink: 0 !important;
   }
 
   .mobile-topbar .site-title {
@@ -640,40 +671,16 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700 !important;
     font-size: 1rem !important;
     color: #111827 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
-  /* Toggle di mobile: reset margin-top bawaan */
   .mobile-topbar .theme-toggle {
     margin-top: 0 !important;
     align-self: center !important;
+    flex-shrink: 0 !important;
   }
-
-  #sidebar {
-    position: fixed !important;
-    top: 0 !important;
-    left: -280px !important;
-    width: 280px !important;
-    height: 100vh !important;
-    z-index: 1000 !important;
-    transition: left 0.3s ease !important;
-    background: #f8f7ff !important;
-    padding: 1.5rem 1rem !important;
-    overflow-y: auto !important;
-  }
-
-  #sidebar.sidebar-open {
-    left: 0 !important;
-  }
-
-  .sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.3);
-    z-index: 999;
-  }
-
-  .sidebar-overlay.active { display: block; }
 
   #main-wrapper {
     margin-top: 52px !important;
@@ -683,6 +690,7 @@ h1, h2, h3, h4, h5, h6 {
   [data-mode="dark"] .mobile-topbar {
     background: #0f0f0f !important;
     border-color: #2d2d4e !important;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.3) !important;
   }
   [data-mode="dark"] .mobile-topbar .hamburger { color: #e2e8f0 !important; }
   [data-mode="dark"] .mobile-topbar .site-title { color: #f1f5f9 !important; }
@@ -692,6 +700,7 @@ h1, h2, h3, h4, h5, h6 {
   [data-mode="sunset"] .mobile-topbar {
     background: #fef3c7 !important;
     border-color: #fde68a !important;
+    box-shadow: 0 1px 8px rgba(180,83,9,0.1) !important;
   }
   [data-mode="sunset"] .mobile-topbar .hamburger { color: #92400e !important; }
   [data-mode="sunset"] .mobile-topbar .site-title { color: #78350f !important; }
