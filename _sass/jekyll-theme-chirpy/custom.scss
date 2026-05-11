@@ -913,3 +913,59 @@ div.mobile-topbar .site-title {
   content: "Cari" !important;
 }
 }
+
+/* ===== Topbar: Sejajarkan tombol Cari & Toggle Terang ===== */
+.mobile-topbar {
+  align-items: center !important;
+}
+
+/* Wrapper agar Cari & toggle sejajar sempurna */
+#search-trigger,
+.theme-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 32px !important;
+  vertical-align: middle !important;
+  flex-shrink: 0 !important;
+}
+
+/* Samakan border & shape toggle dengan tombol Cari */
+.theme-toggle {
+  width: auto !important;
+  min-width: 32px !important;
+  padding: 0 10px !important;
+  border-radius: 999px !important;
+  border: 1.5px solid #e5e7eb !important;
+  background: #ffffff !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07) !important;
+  color: #374151 !important;
+  gap: 5px !important;
+  font-family: 'Nunito', sans-serif !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  cursor: pointer !important;
+}
+
+/* Dark mode: sesuaikan warna */
+[data-mode="dark"] .theme-toggle,
+html[data-mode="dark"] #search-trigger {
+  background: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+[data-mode="dark"] #search-trigger {
+  background: #1f2937!important;
+  border-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+/* Icon sun/moon dalam toggle */
+.theme-toggle .sun,
+.theme-toggle .moon {
+  width: 14px !important;
+  height: 14px !important;
+  flex-shrink: 0 !important;
+}
