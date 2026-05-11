@@ -209,9 +209,9 @@
   <!-- Hamburger + Theme Toggle -->
   <script>
     (function () {
-      var MODES = ['light', 'sunset', 'dark'];
-      var KEY   = 'mb-theme';
-      var BREAKPOINT = 1024; // px — di bawah ini dianggap mobile/tablet
+      var MODES      = ['light', 'sunset', 'dark'];
+      var KEY        = 'mb-theme';
+      var BREAKPOINT = 1024;
 
       function save(m) {
         try { localStorage.setItem(KEY, m); } catch (e) {}
@@ -226,58 +226,54 @@
       function isDesktop() {
         return window.innerWidth >= BREAKPOINT;
       }
+      function getSidebarBg() {
+        var mode = document.documentElement.getAttribute('data-mode') || 'light';
+        return mode === 'dark' ? '#0f0f0f' : mode === 'sunset' ? '#fef3c7' : '#f8f7ff';
+      }
 
+      /* ── Hamburger ── */
       function initHamburger() {
         var ham     = document.getElementById('mobile-hamburger');
         var sidebar = document.getElementById('sidebar');
-        if (!ham || !sidebar) return;
-
-        function getSidebarBg() {
-          var mode = document.documentElement.getAttribute('data-mode') || 'light';
-          return mode === 'dark' ? '#0f0f0f' : mode === 'sunset' ? '#fef3c7' : '#f8f7ff';
-        }
+        if (!ham || !sidebar) return false;
 
         function setupSidebar() {
           if (isDesktop()) {
-            /* Desktop: hapus semua inline style — biarkan CSS Chirpy yang handle */
-            var props = [
-              'position','top','left','right','bottom','width','height',
-              'z-index','overflow-y','overflow-x','transform','transition',
-              'visibility','opacity','display','flex-direction','padding',
-              'background','box-shadow'
-            ];
-            props.forEach(function (p) { sidebar.style.removeProperty(p); });
-            /* Sembunyikan tombol hamburger di desktop */
+            /* Desktop: bersihkan inline style, biarkan CSS Chirpy */
+            ['position','top','left','right','bottom','width','height',
+             'z-index','overflow-y','overflow-x','transform','transition',
+             'visibility','opacity','display','flex-direction','padding',
+             'background','box-shadow'].forEach(function (p) {
+              sidebar.style.removeProperty(p);
+            });
             ham.style.setProperty('display', 'none', 'important');
           } else {
-            /* Mobile/tablet: sidebar jadi drawer */
+            /* Mobile: sidebar jadi drawer */
             var s = sidebar.style;
-            s.setProperty('position',       'fixed',            'important');
-            s.setProperty('top',            '0',                'important');
-            s.setProperty('left',           '0',                'important');
-            s.setProperty('right',          'auto',             'important');
-            s.setProperty('bottom',         '0',                'important');
-            s.setProperty('width',          '280px',            'important');
-            s.setProperty('height',         '100vh',            'important');
-            s.setProperty('z-index',        '9999',             'important');
-            s.setProperty('overflow-y',     'auto',             'important');
-            s.setProperty('overflow-x',     'hidden',           'important');
-            s.setProperty('transform',      'translateX(-110%)','important');
-            s.setProperty('transition',     'transform 0.3s ease','important');
-            s.setProperty('visibility',     'visible',          'important');
-            s.setProperty('opacity',        '1',                'important');
-            s.setProperty('display',        'flex',             'important');
-            s.setProperty('flex-direction', 'column',           'important');
-            s.setProperty('padding',        '1.5rem 1rem',      'important');
-            s.setProperty('background',     getSidebarBg(),     'important');
-            /* Tampilkan tombol hamburger di mobile */
+            s.setProperty('position',       'fixed',             'important');
+            s.setProperty('top',            '0',                 'important');
+            s.setProperty('left',           '0',                 'important');
+            s.setProperty('right',          'auto',              'important');
+            s.setProperty('bottom',         '0',                 'important');
+            s.setProperty('width',          '280px',             'important');
+            s.setProperty('height',         '100vh',             'important');
+            s.setProperty('z-index',        '9999',              'important');
+            s.setProperty('overflow-y',     'auto',              'important');
+            s.setProperty('overflow-x',     'hidden',            'important');
+            s.setProperty('transform',      'translateX(-110%)', 'important');
+            s.setProperty('transition',     'transform 0.3s ease', 'important');
+            s.setProperty('visibility',     'visible',           'important');
+            s.setProperty('opacity',        '1',                 'important');
+            s.setProperty('display',        'flex',              'important');
+            s.setProperty('flex-direction', 'column',            'important');
+            s.setProperty('padding',        '1.5rem 1rem',       'important');
+            s.setProperty('background',     getSidebarBg(),      'important');
             ham.style.removeProperty('display');
           }
         }
 
         setupSidebar();
 
-        /* Overlay — hanya aktif di mobile */
         var overlay = document.getElementById('sidebar-overlay');
         if (!overlay) {
           overlay = document.createElement('div');
@@ -287,9 +283,9 @@
         }
 
         function openSidebar() {
-          sidebar.style.setProperty('background',   getSidebarBg(),               'important');
-          sidebar.style.setProperty('transform',    'translateX(0)',               'important');
-          sidebar.style.setProperty('box-shadow',   '6px 0 32px rgba(0,0,0,0.25)','important');
+          sidebar.style.setProperty('background',  getSidebarBg(),                'important');
+          sidebar.style.setProperty('transform',   'translateX(0)',               'important');
+          sidebar.style.setProperty('box-shadow',  '6px 0 32px rgba(0,0,0,0.25)','important');
           overlay.style.display = 'block';
           document.body.classList.add('sidebar-open');
           ham.innerHTML = '&#10005;';
@@ -307,7 +303,7 @@
 
         ham.addEventListener('click', function (e) {
           e.stopPropagation();
-          if (isDesktop()) return; // desktop: hamburger nonaktif
+          if (isDesktop()) return;
           document.body.classList.contains('sidebar-open') ? closeSidebar() : openSidebar();
         });
 
@@ -323,7 +319,6 @@
           if (e.key === 'Escape' && !isDesktop()) closeSidebar();
         });
 
-        /* Re-setup saat resize (rotasi HP, resize browser) */
         var resizeTimer;
         window.addEventListener('resize', function () {
           clearTimeout(resizeTimer);
@@ -334,11 +329,14 @@
             setupSidebar();
           }, 150);
         });
+
+        return true;
       }
 
+      /* ── Theme Toggle ── */
       function initThemeToggle() {
         var btn = document.getElementById('theme-toggle') || document.querySelector('.theme-toggle');
-        if (!btn) return;
+        if (!btn) return false;
         btn.addEventListener('click', function (e) {
           e.stopPropagation();
           var current = document.documentElement.getAttribute('data-mode') || 'light';
@@ -346,12 +344,24 @@
           applyMode(n);
           save(n);
         });
+        return true;
       }
 
-      document.addEventListener('DOMContentLoaded', function () {
-        initHamburger();
-        initThemeToggle();
-      });
+      /* Retry sampai elemen tersedia di DOM */
+      var _hamDone   = false;
+      var _themeDone = false;
+
+      function tryInit() {
+        if (!_hamDone)   _hamDone   = initHamburger();
+        if (!_themeDone) _themeDone = initThemeToggle();
+      }
+
+      tryInit();
+      var iv = setInterval(function () {
+        tryInit();
+        if (_hamDone && _themeDone) clearInterval(iv);
+      }, 100);
+
     })();
   </script>
 
