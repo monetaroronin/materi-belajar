@@ -236,7 +236,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-1px) !important;
 }
 
-/* SIDEBAR NAV */
+/* SIDEBAR KIRI NAV */
 #sidebar { font-family: 'Nunito', sans-serif !important; }
 
 #sidebar .nav-link {
@@ -514,7 +514,6 @@ h1, h2, h3, h4, h5, h6 {
   transition: width 0.1s linear;
   pointer-events: none !important;
 }
-
 [data-mode="dark"] #reading-progress-bar {
   background: linear-gradient(90deg, #7c3aed, #c4b5fd) !important;
 }
@@ -549,13 +548,11 @@ h1, h2, h3, h4, h5, h6 {
               background 0.2s ease !important;
   pointer-events: none !important;
 }
-
 #scroll-to-top.is-visible {
   opacity: 1 !important;
   transform: translateY(0) scale(1) !important;
   pointer-events: auto !important;
 }
-
 #scroll-to-top:hover {
   background: #7c3aed !important;
   color: #ffffff !important;
@@ -563,14 +560,12 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 6px 20px rgba(124,58,237,0.3) !important;
   transform: translateY(-2px) scale(1.05) !important;
 }
-
 #scroll-to-top svg {
   width: 18px !important;
   height: 18px !important;
   display: block !important;
   pointer-events: none !important;
 }
-
 [data-mode="dark"] #scroll-to-top {
   background: #1a1a2e !important;
   border-color: #4c1d95 !important;
@@ -582,7 +577,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff !important;
   border-color: #7c3aed !important;
 }
-
 [data-mode="sunset"] #scroll-to-top {
   background: #fffbeb !important;
   border-color: #f59e0b !important;
@@ -595,7 +589,6 @@ h1, h2, h3, h4, h5, h6 {
   border-color: #d97706 !important;
   box-shadow: 0 6px 20px rgba(217,119,6,0.35) !important;
 }
-
 @media (max-width: 768px) {
   #scroll-to-top {
     bottom: 1.5rem !important;
@@ -606,51 +599,65 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==============================================
-   MOBILE TOPBAR & SIDEBAR NAVIGATION
+   MOBILE TOPBAR & SIDEBAR
    ============================================== */
-@media (max-width: 849px) {
 
-  /* Sidebar: sembunyikan default, tampil saat sidebar-open */
+/* Topbar tersembunyi di desktop */
+.mobile-topbar {
+  display: none !important;
+}
+
+@media (max-width: 1199px) {
+
+  /* Sidebar: slide dari kiri */
   #sidebar {
-    display: none !important;
     position: fixed !important;
     top: 0 !important;
-    left: 0 !important;
+    left: -300px !important;
     width: 280px !important;
     height: 100vh !important;
-    z-index: 1000 !important;
-    background: #f8f7ff !important;
-    padding: 1.5rem 1rem !important;
+    z-index: 1050 !important;
     overflow-y: auto !important;
+    overflow-x: hidden !important;
+    transition: left 0.3s cubic-bezier(.4,0,.2,1) !important;
+    display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
+    padding: 1.5rem 1rem !important;
+    background: #f8f7ff !important;
+    box-shadow: none !important;
   }
 
   #sidebar.sidebar-open,
   body.sidebar-open #sidebar {
-    display: flex !important;
+    left: 0 !important;
+    box-shadow: 6px 0 32px rgba(0,0,0,0.18) !important;
   }
 
-  /* Gunakan mask bawaan Chirpy sebagai overlay */
-  #mask { z-index: 999 !important; }
-
-  /* Nonaktifkan overlay custom */
-  .sidebar-overlay { display: none !important; }
+  /* Overlay gelap saat sidebar terbuka */
+  body.sidebar-open::after {
+    content: '' !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(0,0,0,0.5) !important;
+    z-index: 1040 !important;
+    pointer-events: auto !important;
+  }
 
   /* Mobile topbar */
   .mobile-topbar {
+    display: flex !important;
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
     height: 52px !important;
-    display: flex !important;
     align-items: center !important;
     padding: 0 1rem !important;
     gap: 10px !important;
     background: #f8f7ff !important;
     border-bottom: 1px solid #e5e7eb !important;
-    z-index: 998 !important;
+    z-index: 1060 !important;
     box-shadow: 0 1px 8px rgba(0,0,0,0.06) !important;
   }
 
@@ -658,9 +665,9 @@ h1, h2, h3, h4, h5, h6 {
     background: none !important;
     border: none !important;
     cursor: pointer !important;
-    font-size: 1.4rem !important;
+    font-size: 1.5rem !important;
     color: #374151 !important;
-    padding: 0 !important;
+    padding: 4px 8px !important;
     line-height: 1 !important;
     flex-shrink: 0 !important;
   }
@@ -684,9 +691,12 @@ h1, h2, h3, h4, h5, h6 {
 
   #main-wrapper {
     margin-top: 52px !important;
+    padding-top: 0 !important;
   }
 
-  /* Dark mode mobile */
+  /* Dark mode */
+  [data-mode="dark"] #sidebar { background: #0f0f0f !important; }
+  [data-mode="dark"] body.sidebar-open::after { background: rgba(0,0,0,0.7) !important; }
   [data-mode="dark"] .mobile-topbar {
     background: #0f0f0f !important;
     border-color: #2d2d4e !important;
@@ -694,9 +704,10 @@ h1, h2, h3, h4, h5, h6 {
   }
   [data-mode="dark"] .mobile-topbar .hamburger { color: #e2e8f0 !important; }
   [data-mode="dark"] .mobile-topbar .site-title { color: #f1f5f9 !important; }
-  [data-mode="dark"] #sidebar { background: #0f0f0f !important; }
 
-  /* Sunset mode mobile */
+  /* Sunset mode */
+  [data-mode="sunset"] #sidebar { background: #fef3c7 !important; }
+  [data-mode="sunset"] body.sidebar-open::after { background: rgba(120,53,15,0.4) !important; }
   [data-mode="sunset"] .mobile-topbar {
     background: #fef3c7 !important;
     border-color: #fde68a !important;
@@ -704,5 +715,4 @@ h1, h2, h3, h4, h5, h6 {
   }
   [data-mode="sunset"] .mobile-topbar .hamburger { color: #92400e !important; }
   [data-mode="sunset"] .mobile-topbar .site-title { color: #78350f !important; }
-  [data-mode="sunset"] #sidebar { background: #fef3c7 !important; }
 }
