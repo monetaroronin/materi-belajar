@@ -277,26 +277,23 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* ── DARK MODE TOGGLE BUTTON ── */
+/* ── DARK MODE TOGGLE BUTTON (Pill oval, icon only) ── */
 .theme-toggle {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 36px !important;
-  height: 36px !important;
-  min-width: 36px !important;
-  max-width: 36px !important;
-  padding: 0 !important;
-  border-radius: 50% !important;
+  width: auto !important;
+  height: 32px !important;
+  padding: 0 14px !important;
+  border-radius: 999px !important;
   border: 1.5px solid #e5e7eb !important;
   background-color: #ffffff !important;
   cursor: pointer !important;
   color: #374151 !important;
   transition: all 0.3s cubic-bezier(.4,0,.2,1) !important;
   box-shadow: 0 1px 4px rgba(0,0,0,0.07) !important;
-  overflow: hidden !important;
-  flex-shrink: 0 !important;
   box-sizing: border-box !important;
+  flex-shrink: 0 !important;
 }
 .theme-toggle:hover {
   border-color: #7c3aed !important;
@@ -305,8 +302,8 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-1px) !important;
 }
 .theme-toggle svg {
-  width: 1rem !important;
-  height: 1rem !important;
+  width: 15px !important;
+  height: 15px !important;
   fill: none !important;
   stroke: currentColor !important;
   stroke-width: 2 !important;
@@ -316,6 +313,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0 !important;
   pointer-events: none !important;
 }
+/* Sembunyikan label teks, tampilkan hanya ikon */
 .theme-toggle .toggle-label-dark,
 .theme-toggle .toggle-label-light { display: none !important; }
 .theme-toggle .sun  { display: none !important; }
