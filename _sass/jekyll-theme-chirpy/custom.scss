@@ -480,14 +480,7 @@ div.mobile-topbar .site-title {
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
 }
-.theme-toggle::after {
-  content: "Terang" !important;
-  font-family: 'Nunito', sans-serif !important;
-  font-size: 0.75rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.04em !important;
-  line-height: 1 !important;
-}
+
 .theme-toggle:hover {
   border-color: #7c3aed !important;
   color: #7c3aed !important;
@@ -517,7 +510,7 @@ div.mobile-topbar .site-title {
   color: #c4b5fd !important;
   box-shadow: 0 2px 8px rgba(124,58,237,0.25) !important;
 }
-[data-mode="dark"] .theme-toggle::after { content: "Gelap" !important; }
+
 [data-mode="dark"] .theme-toggle:hover {
   border-color: #7c3aed !important;
   color: #ffffff !important;
@@ -532,7 +525,7 @@ div.mobile-topbar .site-title {
   color: #92400e !important;
   box-shadow: 0 2px 8px rgba(245,158,11,0.2) !important;
 }
-[data-mode="sunset"] .theme-toggle::after { content: "Sunset" !important; }
+
 [data-mode="sunset"] .theme-toggle:hover {
   border-color: #d97706 !important;
   color: #78350f !important;
@@ -906,12 +899,7 @@ div.mobile-topbar .site-title {
     box-shadow: 0 1px 4px rgba(217,119,6,0.2) !important;
   }
 
- button#search-trigger.theme-toggle::after,
-#search-trigger.theme-toggle::after,
-[data-mode="dark"] #search-trigger.theme-toggle::after,
-[data-mode="sunset"] #search-trigger.theme-toggle::after {
-  content: "Cari" !important;
-}
+
 }
 
 /* ===== Topbar: Sejajarkan tombol Cari & Toggle Terang ===== */
