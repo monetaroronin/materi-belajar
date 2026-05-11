@@ -1,16 +1,17 @@
-<div class="mobile-topbar" id="mobile-topbar">
+<div class="mobile-topbar" id="mobile-topbar" style="display:flex;align-items:center;gap:8px;flex-wrap:nowrap;">
   <button class="hamburger" id="mobile-hamburger" aria-label="Buka menu">&#9776;</button>
-  <span class="site-title" style="flex:1;">{{ site.title }}</span>
+  <span class="site-title" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ site.title }}</span>
 
-  <!-- Search Inline -->
-  <div id="search-container" style="position:relative;flex-shrink:0;">
-    <!-- Tombol Cari (default) -->
+  <!-- Search Container -->
+  <div id="search-container" style="position:relative;flex-shrink:0;display:flex;align-items:center;">
+
+    <!-- Tombol Cari -->
     <button id="search-trigger" type="button" aria-label="Cari"
       style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 14px;
              border-radius:999px;border:1.5px solid #e5e7eb;background:#ffffff;
              cursor:pointer;color:#374151;font-family:'Nunito',sans-serif;
              font-size:0.75rem;font-weight:700;letter-spacing:0.04em;
-             box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+             box-shadow:0 1px 4px rgba(0,0,0,0.07);white-space:nowrap;">
       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
            viewBox="0 0 24 24" fill="none" stroke="currentColor"
            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -20,10 +21,10 @@
       Cari
     </button>
 
-    <!-- Input Search (muncul saat aktif) -->
+    <!-- Input Search -->
     <div id="search-box" style="display:none;align-items:center;gap:6px;height:32px;
          padding:0 10px;border-radius:999px;border:1.5px solid #7c3aed;background:#ffffff;
-         box-shadow:0 1px 4px rgba(0,0,0,0.1);min-width:220px;">
+         box-shadow:0 1px 4px rgba(0,0,0,0.1);">
       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
            viewBox="0 0 24 24" fill="none" stroke="#9ca3af"
            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -32,15 +33,15 @@
       </svg>
       <input id="search-input" type="text" placeholder="Cari artikel..."
         style="border:none;outline:none;font-size:0.8rem;font-family:'Nunito',sans-serif;
-               color:#111827;background:transparent;width:160px;">
+               color:#111827;background:transparent;width:150px;">
       <button id="search-close" style="background:none;border:none;cursor:pointer;
               color:#9ca3af;font-size:0.9rem;padding:0;line-height:1;">✕</button>
     </div>
 
-    <!-- Dropdown Hasil -->
-    <div id="search-dropdown" style="display:none;position:absolute;top:38px;right:0;
-         width:320px;background:#fff;border-radius:10px;border:1px solid #e5e7eb;
-         box-shadow:0 8px 30px rgba(0,0,0,0.15);overflow:hidden;z-index:9999;max-height:400px;overflow-y:auto;">
+    <!-- Dropdown -->
+    <div id="search-dropdown" style="display:none;position:absolute;top:40px;right:0;
+         width:300px;background:#fff;border-radius:10px;border:1px solid #e5e7eb;
+         box-shadow:0 8px 30px rgba(0,0,0,0.15);z-index:9999;max-height:380px;overflow-y:auto;">
     </div>
   </div>
 
@@ -96,15 +97,16 @@
     }
 
     dropdown.innerHTML = found.map(function(p) {
-      var img = p.img ? '<img src="' + p.img + '" style="width:48px;height:48px;object-fit:cover;border-radius:6px;flex-shrink:0;">' 
-                       : '<div style="width:48px;height:48px;border-radius:6px;background:#f3f4f6;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#d1d5db;font-size:1.2rem;">📄</div>';
-      var cats = p.categories ? '<span style="color:#7c3aed;font-size:0.7rem;">' + p.categories + '</span>' : '';
-      return '<a href="' + p.url + '" style="display:flex;align-items:center;gap:12px;padding:10px 14px;text-decoration:none;color:inherit;border-bottom:1px solid #f3f4f6;" onmouseover="this.style.background=\'#f9fafb\'" onmouseout="this.style.background=\'\'">'+
-        img +
-        '<div style="min-width:0;">' +
-          '<div style="font-weight:700;font-size:0.85rem;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + p.title + '</div>' +
-          cats +
-        '</div></a>';
+      var img = p.img
+        ? '<img src="' + p.img + '" style="width:44px;height:44px;object-fit:cover;border-radius:6px;flex-shrink:0;">'
+        : '<div style="width:44px;height:44px;border-radius:6px;background:#f3f4f6;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;">📄</div>';
+      var cats = p.categories ? '<div style="color:#7c3aed;font-size:0.7rem;margin-top:2px;">' + p.categories + '</div>' : '';
+      return '<a href="' + p.url + '" style="display:flex;align-items:center;gap:10px;padding:10px 12px;text-decoration:none;color:inherit;border-bottom:1px solid #f3f4f6;" onmouseover="this.style.background=\'#f9fafb\'" onmouseout="this.style.background=\'\'">'
+        + img
+        + '<div style="min-width:0;">'
+        + '<div style="font-weight:700;font-size:0.82rem;color:#111827;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + p.title + '</div>'
+        + cats
+        + '</div></a>';
     }).join('');
     dropdown.style.display = 'block';
   }
