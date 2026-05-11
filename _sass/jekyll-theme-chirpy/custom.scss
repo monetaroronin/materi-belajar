@@ -74,7 +74,7 @@ body, html {
 
 #post-list .card-wrapper.is-visible:hover { transform: translateY(-3px) !important; }
 
-/* TIPOGRAFI: Judul */
+/* ── TIPOGRAFI: Judul ── */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Lora', Georgia, serif !important;
   color: #111827 !important;
@@ -106,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
 #post-list .card-wrapper h3 a:hover,
 #post-list a.post-preview:hover .card-body > *:first-child { color: #7c3aed !important; }
 
-/* TIPOGRAFI: Excerpt */
+/* ── TIPOGRAFI: Excerpt ── */
 #post-list .card-wrapper p,
 #post-list .card-wrapper .card-body p {
   font-family: 'Nunito', sans-serif !important;
@@ -116,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
   background: transparent !important;
 }
 
-/* TIPOGRAFI: Post meta */
+/* ── TIPOGRAFI: Post meta ── */
 #post-list .card-wrapper .post-meta,
 #post-list .card-wrapper .card-body .post-meta {
   font-family: 'Nunito', sans-serif !important;
@@ -125,7 +125,7 @@ h1, h2, h3, h4, h5, h6 {
   background: transparent !important;
 }
 
-/* TAG PILL: Base */
+/* ── TAG PILL: Base ── */
 #post-list .card-wrapper a[href*="/categories/"],
 #post-list .card-wrapper a[href*="/tags/"],
 #post-list .card-wrapper .post-meta a,
@@ -147,7 +147,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #ddd6fe !important;
 }
 
-/* TAG PILL: Warna per kategori */
+/* ── TAG PILL: Warna per kategori ── */
 #post-list .card-wrapper a[href*="teknologi"]         { background: #dbeafe !important; color: #1d4ed8 !important; border-color: #bfdbfe !important; }
 #post-list .card-wrapper a[href*="politik"]           { background: #fce7f3 !important; color: #be185d !important; border-color: #fbcfe8 !important; }
 #post-list .card-wrapper a[href*="ekonomi"]           { background: #d1fae5 !important; color: #065f46 !important; border-color: #a7f3d0 !important; }
@@ -164,7 +164,7 @@ h1, h2, h3, h4, h5, h6 {
 #post-list .card-wrapper a[href*="/categories/"]:hover,
 #post-list .card-wrapper a[href*="/tags/"]:hover { opacity: 0.72 !important; }
 
-/* SIDEBAR KANAN */
+/* ── SIDEBAR KANAN ── */
 #panel-wrapper #access-lastmod {
   background: #ffffff !important;
   border: 1px solid #e5e7eb !important;
@@ -236,7 +236,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-1px) !important;
 }
 
-/* SIDEBAR KIRI NAV */
+/* ── SIDEBAR KIRI NAV ── */
 #sidebar { font-family: 'Nunito', sans-serif !important; }
 
 #sidebar .nav-link {
@@ -325,6 +325,7 @@ h1, h2, h3, h4, h5, h6 {
   display: block !important;
   pointer-events: none !important;
 }
+
 [data-mode="dark"] #scroll-to-top {
   background: #1a1a2e !important;
   border-color: #4c1d95 !important;
@@ -336,6 +337,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff !important;
   border-color: #7c3aed !important;
 }
+
 [data-mode="sunset"] #scroll-to-top {
   background: #fffbeb !important;
   border-color: #f59e0b !important;
@@ -348,6 +350,7 @@ h1, h2, h3, h4, h5, h6 {
   border-color: #d97706 !important;
   box-shadow: 0 6px 20px rgba(217,119,6,0.35) !important;
 }
+
 @media (max-width: 768px) {
   #scroll-to-top {
     bottom: 1.5rem !important;
@@ -430,7 +433,6 @@ h1, h2, h3, h4, h5, h6 {
 [data-mode="dark"] .theme-toggle .sun  { display: none !important; }
 [data-mode="dark"] .theme-toggle .moon { display: block !important; }
 
-/* SUNSET MODE TOGGLE */
 [data-mode="sunset"] .theme-toggle {
   background-color: #fff7ed !important;
   border-color: #f59e0b !important;
@@ -457,8 +459,8 @@ h1, h2, h3, h4, h5, h6 {
 [data-mode="dark"] .container,
 [data-mode="dark"] #page-wrapper { background: transparent !important; }
 
-[data-mode="dark"] h1,[data-mode="dark"] h2,[data-mode="dark"] h3,
-[data-mode="dark"] h4,[data-mode="dark"] h5,[data-mode="dark"] h6 { color: #f1f5f9 !important; }
+[data-mode="dark"] h1, [data-mode="dark"] h2, [data-mode="dark"] h3,
+[data-mode="dark"] h4, [data-mode="dark"] h5, [data-mode="dark"] h6 { color: #f1f5f9 !important; }
 
 [data-mode="dark"] .card-wrapper,
 [data-mode="dark"] #post-list .card-wrapper {
@@ -513,8 +515,8 @@ h1, h2, h3, h4, h5, h6 {
 [data-mode="sunset"] .container,
 [data-mode="sunset"] #page-wrapper { background: transparent !important; }
 
-[data-mode="sunset"] h1,[data-mode="sunset"] h2,[data-mode="sunset"] h3,
-[data-mode="sunset"] h4,[data-mode="sunset"] h5,[data-mode="sunset"] h6 { color: #78350f !important; }
+[data-mode="sunset"] h1, [data-mode="sunset"] h2, [data-mode="sunset"] h3,
+[data-mode="sunset"] h4, [data-mode="sunset"] h5, [data-mode="sunset"] h6 { color: #78350f !important; }
 
 [data-mode="sunset"] .card-wrapper,
 [data-mode="sunset"] #post-list .card-wrapper {
@@ -611,14 +613,12 @@ h1, h2, h3, h4, h5, h6 {
    MOBILE TOPBAR & SIDEBAR
    ============================================== */
 
-/* Topbar tersembunyi di desktop */
-.mobile-topbar {
-  display: none !important;
-}
+/* Tersembunyi di desktop */
+.mobile-topbar { display: none !important; }
 
 @media (max-width: 1199px) {
 
-  /* Sidebar: tersembunyi di kiri via transform */
+  /* ── Sidebar: slide dari kiri ── */
   #sidebar {
     position: fixed !important;
     top: 0 !important;
@@ -643,14 +643,12 @@ h1, h2, h3, h4, h5, h6 {
     pointer-events: auto !important;
   }
 
-  /* Sidebar terbuka */
   body.sidebar-open #sidebar,
   #sidebar.sidebar-open {
     transform: translateX(0) !important;
     box-shadow: 6px 0 32px rgba(0,0,0,0.25) !important;
   }
 
-  /* Overlay gelap saat sidebar terbuka */
   body.sidebar-open::after {
     content: '' !important;
     position: fixed !important;
@@ -660,7 +658,7 @@ h1, h2, h3, h4, h5, h6 {
     pointer-events: auto !important;
   }
 
-  /* Mobile topbar */
+  /* ── Mobile topbar ── */
   .mobile-topbar {
     display: flex !important;
     position: fixed !important;
@@ -677,7 +675,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 1px 8px rgba(0,0,0,0.06) !important;
   }
 
-  /* Hamburger — pill bulat sejajar toggle */
+  /* ── Hamburger ── */
   .mobile-topbar .hamburger {
     display: inline-flex !important;
     align-items: center !important;
@@ -696,14 +694,13 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 1px 4px rgba(0,0,0,0.07) !important;
     transition: all 0.2s ease !important;
   }
-
   .mobile-topbar .hamburger:hover {
     border-color: #7c3aed !important;
     color: #7c3aed !important;
     box-shadow: 0 2px 8px rgba(124,58,237,0.15) !important;
   }
 
-  /* Site title — badge chip dengan icon + gradient */
+  /* ── Site title: badge chip gradient ── */
   .mobile-topbar .site-title {
     flex: unset !important;
     font-family: 'Lora', Georgia, serif !important;
@@ -713,36 +710,28 @@ h1, h2, h3, h4, h5, h6 {
     white-space: nowrap !important;
     overflow: visible !important;
     text-decoration: none !important;
-
-    /* Badge chip */
     display: inline-flex !important;
     align-items: center !important;
     gap: 5px !important;
     padding: 0 12px 0 8px !important;
     height: 32px !important;
     border-radius: 999px !important;
-
-    /* Gradient background chip */
     background: linear-gradient(135deg, #ede9fe, #dbeafe) !important;
     box-shadow: 0 1px 4px rgba(124,58,237,0.12) !important;
     transition: all 0.2s ease !important;
-
-    /* Gradient text */
+    /* gradient text */
     -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    background-image: linear-gradient(135deg, #7c3aed, #2563eb) !important;
     background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    background-image: linear-gradient(135deg, #7c3aed, #2563eb) !important;
   }
-
-  /* Icon 📖 via ::before */
   .mobile-topbar .site-title::before {
     content: '📖' !important;
     font-size: 0.9rem !important;
     -webkit-text-fill-color: initial !important;
-    text-fill-color: initial !important;
     flex-shrink: 0 !important;
   }
-
   .mobile-topbar .site-title:hover {
     box-shadow: 0 2px 10px rgba(124,58,237,0.22) !important;
     transform: translateY(-1px) !important;
@@ -759,5 +748,59 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 0 !important;
   }
 
-  /* Dark mode */
-  [data-mode="dark"] #sidebar { background: #0f0f0f !important; z-index: 9999 !
+  /* ── Dark mode ── */
+  [data-mode="dark"] #sidebar {
+    background: #0f0f0f !important;
+    z-index: 9999 !important;
+  }
+  [data-mode="dark"] body.sidebar-open #sidebar { transform: translateX(0) !important; }
+  [data-mode="dark"] body.sidebar-open::after   { background: rgba(0,0,0,0.7) !important; }
+
+  [data-mode="dark"] .mobile-topbar {
+    background: #0f0f0f !important;
+    border-color: #2d2d4e !important;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.3) !important;
+  }
+  [data-mode="dark"] .mobile-topbar .hamburger {
+    background: #1e1b4b !important;
+    border-color: #4c1d95 !important;
+    color: #c4b5fd !important;
+  }
+  [data-mode="dark"] .mobile-topbar .site-title {
+    background: linear-gradient(135deg, #1e1b4b, #1e3a5f) !important;
+    background-image: linear-gradient(135deg, #a78bfa, #60a5fa) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    box-shadow: 0 1px 4px rgba(124,58,237,0.25) !important;
+  }
+
+  /* ── Sunset mode ── */
+  [data-mode="sunset"] #sidebar {
+    background: #fef3c7 !important;
+    z-index: 9999 !important;
+  }
+  [data-mode="sunset"] body.sidebar-open #sidebar { transform: translateX(0) !important; }
+  [data-mode="sunset"] body.sidebar-open::after   { background: rgba(120,53,15,0.4) !important; }
+
+  [data-mode="sunset"] .mobile-topbar {
+    background: #fef3c7 !important;
+    border-color: #fde68a !important;
+    box-shadow: 0 1px 8px rgba(180,83,9,0.1) !important;
+  }
+  [data-mode="sunset"] .mobile-topbar .hamburger {
+    background: #fff7ed !important;
+    border-color: #f59e0b !important;
+    color: #92400e !important;
+  }
+  [data-mode="sunset"] .mobile-topbar .site-title {
+    background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
+    background-image: linear-gradient(135deg, #d97706, #f59e0b) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    box-shadow: 0 1px 4px rgba(217,119,6,0.2) !important;
+  }
+}
