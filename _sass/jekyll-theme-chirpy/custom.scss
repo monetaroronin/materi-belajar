@@ -906,7 +906,10 @@ div.mobile-topbar .site-title {
     box-shadow: 0 1px 4px rgba(217,119,6,0.2) !important;
   }
 
-  #search-trigger.theme-toggle::after {
+ button#search-trigger.theme-toggle::after,
+#search-trigger.theme-toggle::after,
+[data-mode="dark"] #search-trigger.theme-toggle::after,
+[data-mode="sunset"] #search-trigger.theme-toggle::after {
   content: "Cari" !important;
 }
 }
