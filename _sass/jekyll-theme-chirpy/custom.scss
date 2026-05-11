@@ -11,7 +11,6 @@
 
 /* ==============================================
    OVERRIDE CSS VARIABLES CHIRPY
-   (harus di atas segalanya)
    ============================================== */
 :root {
   --site-title-color: transparent !important;
@@ -25,6 +24,36 @@ body, html {
   color: #111827 !important;
 }
 
+/* ==============================================
+   SEARCH BUTTON FIX
+   Pastikan search trigger & wrapper tidak ter-hide
+   ============================================== */
+#search-trigger,
+.search-wrapper,
+[data-toggle="search"],
+#topbar #search-trigger,
+#topbar .search-wrapper,
+.topbar-wrapper #search-trigger,
+nav #search-trigger,
+nav .search-wrapper {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Pastikan topbar Chirpy asli (#topbar) tidak tersembunyi */
+#topbar,
+#topbar-wrapper,
+.topbar-wrapper {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* ==============================================
+   POST LIST CARDS
+   ============================================== */
 #post-list .card-wrapper,
 #post-list .card-wrapper *:not(a[href*="/categories/"]):not(a[href*="/tags/"]):not(.post-tag) {
   background-color: #ffffff !important;
@@ -268,10 +297,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ==============================================
    SITE TITLE — gradient text (semua resolusi)
-   DevTools konfirmasi: elemen = span.site-title
-   di dalam div.mobile-topbar.
-   Gunakan tag+class (span.site-title) untuk
-   spesifisitas lebih tinggi dari Chirpy.
    ============================================== */
 span.site-title,
 a.site-title,
@@ -560,6 +585,16 @@ div.mobile-topbar .site-title {
 [data-mode="dark"] #panel-wrapper h3,
 [data-mode="dark"] #panel-wrapper .panel-heading { color: #64748b !important; }
 
+/* Search fix dark mode */
+[data-mode="dark"] #search-trigger,
+[data-mode="dark"] .search-wrapper,
+[data-mode="dark"] [data-toggle="search"],
+[data-mode="dark"] #topbar #search-trigger {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 /* ==============================================
    SUNSET MODE
    ============================================== */
@@ -644,6 +679,16 @@ div.mobile-topbar .site-title {
   color: #d97706 !important;
 }
 
+/* Search fix sunset mode */
+[data-mode="sunset"] #search-trigger,
+[data-mode="sunset"] .search-wrapper,
+[data-mode="sunset"] [data-toggle="search"],
+[data-mode="sunset"] #topbar #search-trigger {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 /* ==============================================
    MOBILE CARD
    ============================================== */
@@ -669,7 +714,8 @@ div.mobile-topbar .site-title {
    MOBILE TOPBAR & SIDEBAR
    ============================================== */
 
-/* Tersembunyi di desktop */
+/* Desktop: sembunyikan custom mobile topbar,
+   tapi JANGAN sembunyikan #topbar milik Chirpy */
 .mobile-topbar { display: none !important; }
 
 @media (max-width: 1199px) {
@@ -714,7 +760,7 @@ div.mobile-topbar .site-title {
     pointer-events: auto !important;
   }
 
-  /* ── Mobile topbar ── */
+  /* ── Custom mobile topbar ── */
   .mobile-topbar {
     display: flex !important;
     position: fixed !important;
@@ -756,9 +802,7 @@ div.mobile-topbar .site-title {
     box-shadow: 0 2px 8px rgba(124,58,237,0.15) !important;
   }
 
-  /* ── Site title di topbar: badge chip ── */
-  /* Gradient dihandle rule global span.site-title di atas.
-     Di sini hanya chip/badge styling. */
+  /* ── Site title di topbar ── */
   .mobile-topbar span.site-title,
   .mobile-topbar .site-title {
     flex: unset !important;
@@ -793,6 +837,15 @@ div.mobile-topbar .site-title {
   #main-wrapper {
     margin-top: 52px !important;
     padding-top: 0 !important;
+  }
+
+  /* Pastikan search tetap muncul di mobile */
+  #topbar #search-trigger,
+  #topbar .search-wrapper,
+  [data-toggle="search"] {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   /* ── Dark mode ── */
