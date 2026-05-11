@@ -277,22 +277,26 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* ── DARK MODE TOGGLE BUTTON (Icon only, compact) ── */
+/* ── DARK MODE TOGGLE BUTTON ── */
 .theme-toggle {
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 6px 10px !important;
-  border-radius: 999px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  max-width: 36px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
   border: 1.5px solid #e5e7eb !important;
   background-color: #ffffff !important;
   cursor: pointer !important;
-  font-size: 0 !important;
   color: #374151 !important;
   transition: all 0.3s cubic-bezier(.4,0,.2,1) !important;
   box-shadow: 0 1px 4px rgba(0,0,0,0.07) !important;
-  line-height: 1 !important;
-  white-space: nowrap !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
 }
 .theme-toggle:hover {
   border-color: #7c3aed !important;
@@ -309,7 +313,8 @@ h1, h2, h3, h4, h5, h6 {
   stroke-linecap: round !important;
   stroke-linejoin: round !important;
   display: block !important;
-  transition: transform 0.4s cubic-bezier(.4,0,.2,1) !important;
+  flex-shrink: 0 !important;
+  pointer-events: none !important;
 }
 .theme-toggle .toggle-label-dark,
 .theme-toggle .toggle-label-light { display: none !important; }
