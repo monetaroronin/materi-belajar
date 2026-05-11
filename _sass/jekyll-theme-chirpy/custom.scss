@@ -967,3 +967,28 @@ html[data-mode="dark"] #search-trigger {
 }
 [data-mode="dark"] .theme-toggle::after { content: "Gelap"; }
 [data-mode="sunset"] .theme-toggle::after { content: "Sunset"; }
+
+/* ===== FIX: Search & Mode Toggle sejajar di desktop ===== */
+#topbar {
+  display: flex !important;
+  align-items: center !important;
+}
+
+#topbar-wrapper .topbar-breadcrumb,
+#topbar-wrapper #breadcrumb {
+  flex: 1 !important;
+}
+
+#search-trigger {
+  display: inline-flex !important;
+  align-items: center !important;
+  height: 32px !important;
+}
+
+#mode-toggle,
+button[id="mode-toggle"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  height: 32px !important;
+  vertical-align: middle !important;
+}
