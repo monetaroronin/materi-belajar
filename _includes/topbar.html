@@ -19,3 +19,23 @@
 
   {% include dark-mode-toggle.html %}
 </div>
+
+<script>
+  document.getElementById('search-trigger').addEventListener('click', function() {
+    // Trigger search Chirpy
+    var chirpySearch = document.getElementById('search-cancel') || 
+                       document.querySelector('[data-toggle="search"]') ||
+                       document.querySelector('.search-trigger');
+    if (chirpySearch) {
+      chirpySearch.click();
+    } else {
+      // Fallback: toggle search wrapper langsung
+      var wrapper = document.getElementById('search-wrapper');
+      if (wrapper) {
+        wrapper.classList.toggle('d-none');
+        var input = wrapper.querySelector('input');
+        if (input) input.focus();
+      }
+    }
+  });
+</script>
