@@ -305,9 +305,9 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0 !important;
 }
 
-/* Label teks via pseudo-element — mode terang: tampilkan "Gelap" */
+/* Label teks via pseudo-element — mode terang: tampilkan "Terang" */
 .theme-toggle::after {
-  content: "Gelap" !important;
+  content: "Terang" !important;
   font-family: 'Nunito', sans-serif !important;
   font-size: 0.75rem !important;
   font-weight: 700 !important;
@@ -334,9 +334,9 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none !important;
 }
 
-/* Mode terang (default): tampilkan ikon bulan */
-.theme-toggle .sun  { display: none !important; }
-.theme-toggle .moon { display: block !important; }
+/* Mode terang (default): tampilkan ikon matahari */
+.theme-toggle .sun  { display: block !important; }
+.theme-toggle .moon { display: none !important; }
 /* Sembunyikan label bawaan tema jika ada */
 .theme-toggle .toggle-label-dark,
 .theme-toggle .toggle-label-light { display: none !important; }
@@ -349,15 +349,15 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 2px 8px rgba(124,58,237,0.25) !important;
 }
 [data-mode="dark"] .theme-toggle::after {
-  content: "Terang" !important;
+  content: "Gelap" !important;
 }
 [data-mode="dark"] .theme-toggle:hover {
   border-color: #7c3aed !important;
   color: #ffffff !important;
   box-shadow: 0 4px 16px rgba(124,58,237,0.35) !important;
 }
-[data-mode="dark"] .theme-toggle .sun  { display: block !important; }
-[data-mode="dark"] .theme-toggle .moon { display: none !important; }
+[data-mode="dark"] .theme-toggle .sun  { display: none !important; }
+[data-mode="dark"] .theme-toggle .moon { display: block !important; }
 
 /* ── DARK MODE OVERRIDES ── */
 [data-mode="dark"] body,
