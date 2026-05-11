@@ -1,6 +1,26 @@
 <!-- Mobile Topbar -->
 <div class="mobile-topbar" id="mobile-topbar">
-  <button class="hamburger" id="mobile-hamburger" aria-label="Buka menu">&#9776;</button>
+  
+  <button
+    class="hamburger"
+    id="mobile-hamburger"
+    aria-label="Buka menu">
+    &#9776;
+  </button>
+
   <span class="site-title">{{ site.title }}</span>
-  {% include dark-mode-toggle.html %}
+
+  <div class="topbar-actions">
+
+    <button
+      id="search-trigger"
+      class="search-btn"
+      aria-label="Cari">
+      <i class="fas fa-search"></i>
+    </button>
+
+    {% include dark-mode-toggle.html %}
+
+  </div>
+
 </div>
